@@ -18,14 +18,14 @@
                         'category': '[{if $_category}][{$_category->getLink()|replace:$oViewConf->getHomeLink():""|rtrim:"/"}][{else}]-[{/if}]',
                         [{if $listId == 'productList' || $listId == 'categoryList'}]
                             [{if $oViewConf->getGTMproductListPerformanceSetting() == "1"}]
-                                'list': '[{oxmultilang ident="CATEGORIES"}]',
+                                'list': '[{oxmultilang ident="CATEGORIES"}]'
                             [{elseif $oViewConf->getGTMproductListPerformanceSetting() == "2"}]
-                                'list': '[{if $_tmCategory}][{$_tmCategory->getLink()|replace:$oViewConf->getHomeLink():""|rtrim:"/"}][{else}]-[{/if}]',
+                                'list': '[{if $_tmCategory}][{$_tmCategory->getLink()|replace:$oViewConf->getHomeLink():""|rtrim:"/"}][{else}]-[{/if}]'
                             [{/if}]
                         [{else}]
-                            'list': '[{$listId|default:$oView->getClassName()}]',
+                            'list': '[{$listId|default:$oView->getClassName()}]'
                         [{/if}]
-                        'position': [{$smarty.foreach.productlist.iteration}]
+                        [{*'position': [{$smarty.foreach.productlist.iteration|default:1}]*}]
                     }
                 ]
             }
