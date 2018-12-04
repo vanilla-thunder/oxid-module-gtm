@@ -25,14 +25,15 @@
                 },
                 'products':[
                     [{foreach key="_index" from=$_gtmBasket->getContents() item="_gtmBasketitem" name="gtmTransactionProducts"}]
+                    [{assign var="_price" value=$basketitem->getPrice()}]
                     {
                         'id':'[{$_gtmArticles[$_index]->oxarticles__oxartnum->value}]',
                         'name': '[{$_gtmArticles[$_index]->oxarticles__oxtitle->value}]',
                         'variant':'[{$_gtmArticles[$_index]->oxarticles__oxvarselect->value}]',
-                        'price': '[{$_gtmBasketitem->getFTotalPrice()|replace:",":"."}]',
-                        'item_price': '[{$_gtmBasketitem->getFTotalPrice()|replace:",":"."}]',
+                        'price': [{$_price->getPrice()}],
+                        'item_price': [{$_price->getPrice()}],
                         'quantity':[{$_gtmBasketitem->getAmount()}],
-                        'position':[{$smarty.foreach.gtmTransactionProducts.index}]
+                        'position':[{$smarty.foreach.gtmTransactionProducts.iteration}]
                     }[{if !$smarty.foreach.gtmTransactionProducts.last}],[{/if}]
                     [{/foreach}]
                 ]

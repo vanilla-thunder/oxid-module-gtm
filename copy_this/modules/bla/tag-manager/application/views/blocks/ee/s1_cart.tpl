@@ -3,17 +3,17 @@
     <script>
         dataLayer.push({
             "event":"ee.checkout",
-            'eventLabel':'Checkout 1',
             "ecommerce": {
                 "checkout": {
                     "actionField": {"step":1},
                     "products": [
 [{foreach key=basketindex from=$oxcmp_basket->getContents() item=basketitem name=gtmCartContents}]
+                        [{assign var="_price" value=$basketitem->getPrice()}]
                         {
                             'id':'[{$gtmCartArticles[$basketindex]->oxarticles__oxartnum->value}]',
                             'name': '[{$gtmCartArticles[$basketindex]->oxarticles__oxtitle->value}]',
                             'variant':'[{$gtmCartArticles[$basketindex]->oxarticles__oxvarselect->value}]',
-                            'price': '[{$basketitem->getFTotalPrice()|replace:",":"."}]',
+                            'price': [{$_price->getPrice()}],
                             'quantity':[{$basketitem->getAmount()}],
                             'position':[{$smarty.foreach.gtmCartContents.index}]
                         }[{if !$smarty.foreach.gtmCartContents.last}],[{/if}]

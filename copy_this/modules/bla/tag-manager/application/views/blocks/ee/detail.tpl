@@ -1,40 +1,44 @@
 [{strip}]
     [{assign var="_cur" value=$oView->getActCurrency()}]
-    [{assign var="_product" value=$oView->getProduct()}]
-    [{assign var="_manufacturer" value=$_product->getManufacturer()}]
-    [{assign var="_category" value=$_product->getCategory()}]
+    [{assign var="_tmProduct" value=$oView->getProduct()}]
+    [{assign var="_tmManufacturer" value=$_tmProduct->getManufacturer()}]
+    [{assign var="_tmCategory" value=$_tmProduct->getCategory()}]
     <script type="text/javascript">
         var _products = [
             {
-                'name': '[{$_product->oxarticles__oxtitle->value}]',
-                'variant':'[{$_product->oxarticles__oxvarselect->value}]',
-                'id': '[{$_product->oxarticles__oxartnum->value}]',
-                'price': [{$_product->oxarticles__oxprice->value}],
-                [{if $_manufacturer}]'brand':'[{$_manufacturer->oxmanufacturers__oxtitle->value}]',[{/if}]
-                'category': '[{if _category}][{$_category->getLink()|replace:$oViewConf->getHomeLink():""|rtrim:"/"}][{else}]-[{/if}]'
+                'name': '[{$_tmProduct->oxarticles__oxtitle->value}]',
+                [{if $_tmProduct->oxarticles__oxvarselect->value}]'variant':'[{$_tmProduct->oxarticles__oxvarselect->value}]',[{/if}]
+                'id': '[{$_tmProduct->oxarticles__oxartnum->value}]',
+                'price': [{$_tmProduct->oxarticles__oxprice->value}],
+                [{if $_tmManufacturer}]'brand':'[{$_tmManufacturer->oxmanufacturers__oxtitle->value}]',[{/if}]
+                'category': '[{if $_tmCategory}][{$_tmCategory->getLink()|parse_url:5|ltrim:"/"|rtrim:"/"}][{else}]-[{/if}]'
             }
         ];
 
-        if(typeof document.referrer !== "undefined" && document.referrer.indexOf("[{$oViewConf->getHomeLink()}]") === 0)
-        {
-            var _ref = document.referrer.replace("[{$oViewConf->getHomeLink()}]","");
-            if( _ref.indexOf('?') > -1 ) _ref = _ref.substring(0,_ref.indexOf('?'));
+        var getRefPath = function() {
+            var l = document.createElement("a");
+            l.href = document.referrer;
+            return l.pathname;
+        };
 
-            if( _ref.lastIndexOf('/') === (_ref.length-1) )
-            {
-                console.log("jap, der kommt von hier!");
-                dataLayer.push({
-                    'event': 'ee.click',
-                    'eventLabel':'Click',
-                    'ecommerce': {
-                        'currencyCode': '[{$_cur->name}]',
-                        'click': {
-                            'actionField': {'list': _ref.replace(/\/$/, "")},
-                            'products': _products
-                        }
+        if( typeof document.referrer !== "undefined"
+            && document.referrer.indexOf(document.location.hostname) !== -1 /* Besucher ist von hier */
+            /*&& getRefPath() !== "/index.php" */
+            && document.location.pathname !== "/index.php"
+            && getRefPath() !== document.location.pathname)
+        {
+            /*console.log("jap, der kommt von hier!");*/
+            dataLayer.push({
+                'event': 'ee.click',
+                'eventLabel':'Click',
+                'ecommerce': {
+                    'currencyCode': '[{$_cur->name}]',
+                    'click': {
+                        'actionField': {'list': getRefPath().replace(/^\//, "").replace(/\/$/, "")},
+                        'products': _products
                     }
-                });
-            }
+                }
+            });
         }
         dataLayer.push({
             'event':'ee.product',

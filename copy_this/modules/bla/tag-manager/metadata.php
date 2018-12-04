@@ -63,7 +63,7 @@ $aModule = [
 			'block'    => 'theme_svg_icons',
 			'file'     => '/application/views/blocks/theme_svg_icons.tpl'
 		],
-		// detail + add to cart
+		// detail + click + add to basket
 		[
 		  'template' => 'page/details/inc/productmain.tpl',
 		  'block'    => 'details_productmain_title',

@@ -14,18 +14,18 @@
                     {
                         'name': '[{$_tmProduct->oxarticles__oxtitle->value}]',
                         'id':   '[{$_tmProduct->oxarticles__oxartnum->value}]',
-                        'price': '[{$_tmProduct->oxarticles__oxprice->value}]',
-                        'category': '[{if $_category}][{$_category->getLink()|replace:$oViewConf->getHomeLink():""|rtrim:"/"}][{else}]-[{/if}]',
+                        'price': [{$_tmProduct->oxarticles__oxprice->value}],
+                        'category': '[{if $_tmCategory}][{$_tmCategory->getLink()|parse_url:5|ltrim:"/"|rtrim:"/"}][{else}]-[{/if}]',
                         [{if $listId == 'productList' || $listId == 'categoryList'}]
                             [{if $oViewConf->getGTMproductListPerformanceSetting() == "1"}]
-                                'list': '[{oxmultilang ident="CATEGORIES"}]'
+                                'list': '[{oxmultilang ident="CATEGORIES"}]',
                             [{elseif $oViewConf->getGTMproductListPerformanceSetting() == "2"}]
-                                'list': '[{if $_tmCategory}][{$_tmCategory->getLink()|replace:$oViewConf->getHomeLink():""|rtrim:"/"}][{else}]-[{/if}]'
+                                'list': '[{if $_tmCategory}][{$_tmCategory->getLink()|parse_url:5|ltrim:"/"|rtrim:"/"}][{else}]-[{/if}]',
                             [{/if}]
                         [{else}]
-                            'list': '[{$listId|default:$oView->getClassName()}]'
+                            'list': '[{$listId|default:$oView->getClassName()}]',
                         [{/if}]
-                        [{*'position': [{$smarty.foreach.productlist.iteration|default:1}]*}]
+                        'position': [{$smarty.foreach.productlist.iteration|default:1}]
                     }
                 ]
             }
