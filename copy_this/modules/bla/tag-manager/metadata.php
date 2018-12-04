@@ -19,7 +19,7 @@ $aModule = [
     'title'       => '<strong style="color:#95b900;font-size:125%;">best</strong><strong style="color:#c4ca77;font-size:125%;">life</strong> <strong>Tag Manager</strong>',
     'description' => 'Tag Manager integration for OXID eShop: Google, Matomo and Yandex',
     'thumbnail'   => '../bestlife.png',
-    'version'     => '0.2.0 ( 2018-12-03 )',
+    'version'     => '0.2.0 ( 2018-12-04 )',
     'author'      => 'Marat Bedoev, bestlife AG',
     'email'       => 'oxid@bestlife.ag',
     'url'         => 'https://github.com/vanilla-thunder/oxid-module-tag-manager',
@@ -83,6 +83,11 @@ $aModule = [
 		[
 			'template' => 'widget/product/listitem_line.tpl',
 			'block'    => 'widget_product_listitem_line_tobasket',
+			'file'     => '/application/views/blocks/ee/impression.tpl'
+		],
+		[
+			'template' => 'widget/product/boxproduct.tpl',
+			'block'    => 'widget_product_boxproduct_price',
 			'file'     => '/application/views/blocks/ee/impression.tpl'
 		],
 		// checkout

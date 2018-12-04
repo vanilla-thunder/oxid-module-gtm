@@ -1,6 +1,6 @@
 # [bla] tag-manager  
 Tag Manager integration for OXID eShop: Google, Matomo and Yandex  
-module version 0.2.0 ( 2018-12-03 )
+module version 0.2.0 ( 2018-12-04 )
 
 # Installation
 * [https://github.com/vanilla-thunder/oxid-module-tag-manager/archive/master.zip](https://github.com/vanilla-thunder/oxid-module-tag-manager/archive/master.zip) herunterladen und entpacken
