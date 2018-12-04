@@ -1,6 +1,6 @@
 [{$smarty.block.parent}]
 [{strip}]
-    [{assign var="_tmProduct" value=$oView->getPrduct()}]
+    [{assign var="_tmProduct" value=$oView->getProduct()}]
     [{assign var="_tmCategory" value=$_tmProduct->getCategory()}]
     [{* assign var="_tmManufacturer" value=$_tmProduct->getManufacturer() *}]
     [{* setting: [{ $oViewConf->getGTMproductListPerformanceSetting() }] || id: [{$listId}] *}]
