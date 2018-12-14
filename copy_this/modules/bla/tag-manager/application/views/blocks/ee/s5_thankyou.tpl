@@ -25,7 +25,7 @@
                 },
                 'products':[
                     [{foreach key="_index" from=$_gtmBasket->getContents() item="_gtmBasketitem" name="gtmTransactionProducts"}]
-                    [{assign var="_price" value=$basketitem->getPrice()}]
+                    [{assign var="_price" value=$_gtmBasketitem->getPrice()}]
                     {
                         'id':'[{$_gtmArticles[$_index]->oxarticles__oxartnum->value}]',
                         'name': '[{$_gtmArticles[$_index]->oxarticles__oxtitle->value}]',
