@@ -14,6 +14,7 @@
                             'name': '[{$gtmCartArticles[$basketindex]->oxarticles__oxtitle->value}]',
                             'variant':'[{$gtmCartArticles[$basketindex]->oxarticles__oxvarselect->value}]',
                             'price': [{$_price->getPrice()}],
+                            'item_price': [{$_price->getPrice()}],
                             'quantity':[{$basketitem->getAmount()}],
                             'position':[{$smarty.foreach.gtmCartContents.index}]
                         }[{if !$smarty.foreach.gtmCartContents.last}],[{/if}]

@@ -2,7 +2,7 @@
 [{*
     dataLayer.push({
         'event': 'ee.checkout',
-            'eventLabel':'Checkout 5',
+        'eventLabel':'Checkout 5',
         'ecommerce': {'checkout': {'actionField': {'step': 5}}}
     });
 *}]
