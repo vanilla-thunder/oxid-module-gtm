@@ -17,26 +17,6 @@ class blatm_events extends oxI18n
 {
     public static function onActivate()
     {
-        /** @var oxLegacyDb $oDb */
-        $oDb = oxDb::getDB();
-        $aColumns = $oDb->getAssoc("SHOW COLUMNS FROM oxorder");
-
-        // rename BLAREFERRER column -> BLAHTTPREF or create new
-        if( array_key_exists( "BLAREFERRER", $aColumns )) $oDb->Execute("ALTER TABLE `oxorder` CHANGE `BLAREFERRER` `BLAHTTPREF` TEXT NOT NULL COMMENT 'bla/tag-manager http ref'");
-        else if(!array_key_exists( "BLAHTTPREF", $aColumns )) $oDb->Execute("ALTER TABLE `oxorder` ADD `BLAHTTPREF` TEXT NOT NULL COMMENT 'bla/tag-manager http ref'");
-
-        // rename BLAMEDIACODE column -> BLAREF or create new
-        if( array_key_exists( "BLAMEDIACODE", $aColumns )) $oDb->Execute("ALTER TABLE `oxorder` CHANGE `BLAMEDIACODE` `BLAREF` VARCHAR( 64 ) NOT NULL COMMENT 'bla/tag-manager ref'");
-        else if(!array_key_exists( "BLAREF",     $aColumns )) $oDb->Execute("ALTER TABLE `oxorder` ADD `BLAREF` VARCHAR( 64 ) NOT NULL COMMENT 'bla/tag-manager ref'");
-
-        // rename BLASUBCODE column -> BLASUBREF or create new
-        if( array_key_exists( "BLASUBCODE", $aColumns )) $oDb->Execute("ALTER TABLE `oxorder` CHANGE `BLASUBCODE` `BLASUBREF` VARCHAR( 64 ) NOT NULL COMMENT 'bla/tag-manager subref'");
-        else if(!array_key_exists( "BLASUBREF",  $aColumns )) $oDb->Execute("ALTER TABLE `oxorder` ADD `BLASUBREF` VARCHAR( 64 ) NOT NULL COMMENT 'bla/tag-manager subref'");
-
-        // regenerating DB views
-        $oMetaData = oxNew('oxDbMetaDataHandler');
-        $oMetaData->updateViews();
-
         //clear tmp
         foreach (glob(oxRegistry::getConfig()->getConfigParam("sCompileDir") . "smarty/*") as $item) if (!is_dir($item)) unlink($item);
     }

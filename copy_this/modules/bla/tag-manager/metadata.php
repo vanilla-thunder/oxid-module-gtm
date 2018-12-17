@@ -15,42 +15,26 @@
 
 $sMetadataVersion = '1.1';
 $aModule = [
-    'id'          => 'tag-manager',
-    'title'       => '<strong style="color:#95b900;font-size:125%;">best</strong><strong style="color:#c4ca77;font-size:125%;">life</strong> <strong>Tag Manager</strong>',
-    'description' => 'Tag Manager integration for OXID eShop: Google, Matomo and Yandex',
-    'thumbnail'   => '../bestlife.png',
-    'version'     => '0.2.0 ( 2018-12-04 )',
-    'author'      => 'Marat Bedoev, bestlife AG',
-    'email'       => 'oxid@bestlife.ag',
-    'url'         => 'https://github.com/vanilla-thunder/oxid-module-tag-manager',
-    'extend'      => [
-        // http ref & co
-        'oxorder'            => 'bla/tag-manager/application/extend/oxorder_blatm',
-        'oxsession'          => 'bla/tag-manager/application/extend/oxsession_blatm',
-        // ref Anpassung für Shopgate
-        'ShopgatePluginOxid' => 'bla/tag-manager/application/extend/ShopgatePluginOxid_blatm',
-        // ecommerce tracking
-        'oxviewconfig'       => 'bla/tag-manager/application/extend/oxviewconf_blatm'
-    ],
-    'files'       => [
-        'blatm_events' => 'bla/tag-manager/application/files/blatm_events.php',
-    ],
-    'events' => [
-        'onActivate' => 'blatm_events::onActivate'
-    ],
-    'templates'   => [],
-    'blocks'      => [
-		// refs
-		[
-			'template' => 'order_overview.tpl',
-			'block'    => 'admin_order_overview_checkout',
-			'file'     => '/application/views/admin/blocks/admin_order_overview_checkout.tpl'
-		],
-		[
-			'template' => 'email/html/order_owner.tpl',
-			'block'    => 'email_html_order_owner_orderemail',
-			'file'     => '/application/views/blocks/email_html_order_owner_orderemail.tpl'
-		],
+	'id'          => 'tag-manager',
+	'title'       => '<strong style="color:#95b900;font-size:125%;">best</strong><strong style="color:#c4ca77;font-size:125%;">life</strong> <strong>Tag Manager</strong>',
+	'description' => 'Tag Manager integration for OXID eShop: Google, Matomo and Yandex',
+	'thumbnail'   => '../bestlife.png',
+	'version'     => '0.2.0 ( 2018-12-04 )',
+	'author'      => 'Marat Bedoev, bestlife AG',
+	'email'       => 'oxid@bestlife.ag',
+	'url'         => 'https://github.com/vanilla-thunder/oxid-module-tag-manager',
+	'extend'      => [
+		// ecommerce tracking
+		'oxviewconfig'       => 'bla/tag-manager/application/extend/oxviewconf_blatm'
+	],
+	'files'       => [
+		'blatm_events' => 'bla/tag-manager/application/files/blatm_events.php',
+	],
+	'events' => [
+		'onActivate' => 'blatm_events::onActivate'
+	],
+	'templates'   => [],
+	'blocks'      => [
 		// tag manager js
 		[
 			'template' => 'layout/base.tpl',
@@ -153,29 +137,13 @@ $aModule = [
 			'type'  => 'str',
 			'value' => ''
 		],
-		[
-			'group' => 'bla_tm_Main',
-			'name'  => 'bla_tm_defaultref',
-			'type'  => 'str',
-			'value' => '123456'
-		],
-		[
-			'group' => 'bla_tm_Main',
-			'name'  => 'bla_tm_shopgateref',
-			'type'  => 'str',
-			'value' => 'SHOPGATE'
-		]
-	]
+	],
 ];
 
-
 /* todo:
-
         modified:   application/translations/de/blagtm_lang.php
         modified:   application/views/blocks/base_head_meta_robots.tpl
         modified:   application/views/blocks/ee/impression.tpl
         modified:   application/views/blocks/ee/s5_thankyou.tpl
-        modified:   application/views/blocks/email_html_order_owner_orderemail.tpl
         modified:   application/views/blocks/theme_svg_icons.tpl
-
 */
