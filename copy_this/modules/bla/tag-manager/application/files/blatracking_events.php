@@ -29,7 +29,7 @@ class blatracking_events extends oxI18n {
     {
         /** @var oxLegacyDb $oDb */
         $oDb = oxDb::getDB();
-        $aColumns = $oDb->getAssoc("SHOW COLUMNS FROM oxorder");
+        $aColumns = $oDb->getRow("SHOW COLUMNS FROM oxorder");
 
         // rename BLAREFERRER column or create new
 		if( array_key_exists( "BLAREFERRER", $aColumns )) $oDb->Execute("ALTER TABLE `oxorder` CHANGE `BLAREFERRER` `BLAHTTPREF` TEXT NOT NULL COMMENT 'bla-tracking http ref'");
