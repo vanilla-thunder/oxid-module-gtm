@@ -1,0 +1,30 @@
+{
+  "name": "vanilla-thunder/oxid-module-gtm",
+  "description": "Google Tag Manager with new Google Analytics 4 for OXID eShop v6.2+<br/>more about GA4: <a href='https://developers.google.com/tag-manager/ecommerce-ga4' target='_blank'>Ecommerce (GA4) Developer Guide</a>",
+  "type": "oxideshop-module",
+  "homepage": "https://github.com/vanilla-thunder/oxid-module-gtm",
+  "license": [
+    "GPL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "Marat Bedoev",
+      "email": "hello@mb-dev.pro"
+    }
+  ],
+  "extra": {
+    "oxideshop": {
+      "target-directory": "vt/GoogleTagManager"
+    }
+  },
+  "require": {
+    "php": ">=7.1",
+    "oxid-esales/oxideshop-ce": "^v6.2",
+    "google/apiclient":" ^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "VanillaThunder\\": "../../../source/modules/vt"
+    }
+  }
+}

@@ -1,13 +1,20 @@
-# [bla] tag-manager  
-Tag Manager integration for OXID eShop: Google, Matomo and Yandex  
+# [vt] Google Tag Manager  
+Google Tag Manager integration for OXID eShop v6.2 und höher  
 module version 0.2.0 ( 2018-12-04 )
 
 # Installation
-* [https://github.com/vanilla-thunder/oxid-module-tag-manager/archive/master.zip](https://github.com/vanilla-thunder/oxid-module-tag-manager/archive/master.zip) herunterladen und entpacken
+* ``composer require vanilla-thunder/oxid-module-gtm --no-update``
+
 * Inhalt von "copy_this" in den Shop hochladen
 * Modul aktivieren und Moduleinstellungen konfigurieren
 
-# Einrichtung + allgemeine Funktionsweise:
+# Tag Manager konfigurieren:
++ https://support.google.com/tagmanager/answer/9442095
+
+
+
+
+
 Alle drei unterstützten Tag Manager werden mit Daten aus einer gemeinsamen Datenschicht (dataLayer) gefüttert.   
 Für die einfachste Übersicht der enthaltenen Daten empfehle ich den Vorschau-Modus vom Google Tag Manager.
 
@@ -35,6 +42,9 @@ Hier ist ein Beispiel für die Einrichtung von Enhanced Ecomemrce Tracking über
 + Trigger : EE-Trigger
 
 Eine Video-Anleitung mit der kompletten Google Analytics Einrichtung folgt in Kürze.
+
+### Google Analytics 4 Referenz
+https://developers.google.com/tag-manager/ecommerce-ga4
 
 
 ### LICENSE AGREEMENT
