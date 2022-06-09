@@ -1,34 +1,23 @@
 # [vt] Google Tag Manager  
 Google Tag Manager integration for OXID eShop v6.2 und höher  
-module version 0.2.0 ( 2018-12-04 )
+module version 0.5.0 ( 2021-12-10 )
 
-# Installation
+## Installation
 * ``composer require vanilla-thunder/oxid-module-gtm --no-update``
-
-* Inhalt von "copy_this" in den Shop hochladen
 * Modul aktivieren und Moduleinstellungen konfigurieren
 
-# Tag Manager konfigurieren:
+## Tag Manager konfigurieren:
 + https://support.google.com/tagmanager/answer/9442095
 
+## Google Analytics 4 Einrichtung
 
+## GA4 Events / Customizing
+für alle implementierten GA4 Events existieren Templates unter `source/modules/GoogleTagManager/Application/views/ga4/`, dabei entspricht der Dateiname dem Eventnamen in GA4. 
+Die Einbindung dieser Event-Templates erfolgt über TPL-Blöcke unter `source/modules/GoogleTagManager/Application/views/blocks/`.   
 
+## Universal Analytics Events
 
-
-Alle drei unterstützten Tag Manager werden mit Daten aus einer gemeinsamen Datenschicht (dataLayer) gefüttert.   
-Für die einfachste Übersicht der enthaltenen Daten empfehle ich den Vorschau-Modus vom Google Tag Manager.
-
-Bei jedem Seitenaufruf wird die Datenschicht mit einigen wenigen Infos erstellt, die man zum reinen Erfassen der Seitenaufrufe benötigt:
- + **page.type** - Seitentyp: default / cms / product / listing / checkout (an google analytics angelehnt) 
- + **page.title** - Seitentitel (außer Startseite, sie hat keinen Titel. Danke OXID...)
- + **page.class** - OXID Controller Klasse (start, search, etc)
- + **user.country** - Land des Benutzers, sofern dieser angemeldet ist.
- + **user.httpref** - http referrer
- 
-Alle für Ecommerce Tracking releavanten Daten werden mit speziellen Ecommerce Events in die Datenschicht eingefügt.
-Hier ist ein Beispiel für die Einrichtung von Enhanced Ecomemrce Tracking über Google Tag Manager:
-  
-**"EE-Trigger" für Ecomemrce-Tags (Beispiel für Google Tag Manager):**  
+**"EE-Trigger" für Ecomemrce-Tags (Beispiel für Google Tag Manager):**
 + Triggertyp: Benutzerdefiniertes Ereignis
 + Ereignisname: ``ee\..*``
 + Übereinstimmung mit regulärem Ausdruck verwenden
@@ -41,16 +30,26 @@ Hier ist ein Beispiel für die Einrichtung von Enhanced Ecomemrce Tracking über
 + Label: {{Event Label}}
 + Trigger : EE-Trigger
 
-Eine Video-Anleitung mit der kompletten Google Analytics Einrichtung folgt in Kürze.
+## Verfügbare Datalayer Variablen 
+Für die einfachste Übersicht der enthaltenen Daten empfehle ich den Vorschau-Modus vom Google Tag Manager.
 
-### Google Analytics 4 Referenz
-https://developers.google.com/tag-manager/ecommerce-ga4
+Bei jedem Seitenaufruf wird die Datenschicht mit einigen wenigen Infos erstellt, die man zum reinen Erfassen der Seitenaufrufe benötigt:
+ + **page.type** - Seitentyp: default / cms / product / listing / checkout (an google analytics angelehnt) 
+ + **page.title** - Seitentitel (außer Startseite, sie hat keinen Titel. Danke OXID...)
+ + **page.cl** - OXID Controller Klasse (start, search, etc)
+ + **userid** - oxID vom Benutzer bzw `false` falls nicht eingeloggt
+ + **sessionid** - session iD
+ 
+Alle für Ecommerce Tracking releavanten Daten werden mit speziellen Ecommerce Events in die Datenschicht eingefügt.
+Hier ist ein Beispiel für die Einrichtung von Enhanced Ecomemrce Tracking über Google Tag Manager:
+
+
 
 
 ### LICENSE AGREEMENT
-   [bla] tag-manager  
-   Copyright (C) 2018 bestlife AG  
-   info:  oxid@bestlife.ag  
+   [vt] google-tag-manager  
+   Copyright (C) 2021 Marat Bedoev  
+   info:  info@mb-dev.pro oder so /** @todo: überarbeiten, wenn ich wieder nüchtern bin */  
   
    This program is free software;  
    you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation;

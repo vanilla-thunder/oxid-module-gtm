@@ -26,6 +26,6 @@ input.confinput:hover {outline:3px solid #ff3600;}
 $aLang = [
     'charset'                             => 'UTF-8',
     'SHOP_MODULE_GROUP_vt_gtm_settings'   => $style . 'Einstellungen',
-    'SHOP_MODULE_vt_gtm_containerid'      => 'Container ID',
+    'SHOP_MODULE_vt_gtm_sContainerID'      => 'Container ID',
     'SHOP_MODULE_vt_gtm_promotionlistids' => 'Promotion Produktlisten IDs <div>Weitere Infos zu dieser Einstellung: <b><u><a href="https://github.com/vanilla-thunder/oxid-module-gtm/wiki/Promotion-Produktlisten" target="_blank">Modui-Wiki</a></u></b></div>',
 ];

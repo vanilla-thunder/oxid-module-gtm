@@ -25,46 +25,74 @@ class ViewConfig extends ViewConfig_parent
 
     // Google Tag Manager Container ID
     private $sContainerId = null;
+
     public function getGtmContainerId()
     {
-        if ( $this->sContainerId === null ) {
+        if ($this->sContainerId === null)
+        {
             $this->sContainerId = ContainerFactory::getInstance()
-                ->getContainer()
-                ->get(ModuleSettingBridgeInterface::class)
-                ->get('vt_gtm_containerid', 'vt-gtm');
+                                                  ->getContainer()
+                                                  ->get(ModuleSettingBridgeInterface::class)
+                                                  ->get('vt_gtm_sContainerID', 'vt-gtm');
         }
         return $this->sContainerId;
     }
 
+    private $blGA4enabled = null;
 
+    public function isGA4enabled()
+    {
+        if ($this->blGA4enabled === null)
+        {
+            $this->sContainerId = ContainerFactory::getInstance()
+                                                  ->getContainer()
+                                                  ->get(ModuleSettingBridgeInterface::class)
+                                                  ->get('vt_gtm_blEnableGA4', 'vt-gtm');
+        }
+
+        return $this->blGA4enabled;
+    }
 
     public function getGtmDataLayer()
     {
-    	if( !$this->getGtmContainerId() ) return "[]";
+        if (!$this->getGtmContainerId()) return "[]";
 
         $oConfig = Registry::getConfig();
-        $oView = $oConfig->getTopActiveView(); /** @var FrontendController $oShop */
+        $oView   = $oConfig->getTopActiveView();
+        /** @var FrontendController $oShop */
         //$oShop = oxRegistry::getConfig()->getActiveShop(); /** @var oxShop $oShop */
         $oUser = $oConfig->getUser();
 
-        $dataLayer = [
-            'page_title' => $oView->getTitle(),
-            'controller' => $this->getTopActionClassName(),
-            'user' => ( $oUser ? "true" : "false" )
+        $cl         = $this->getTopActionClassName();
+        $aPageTypes = [
+            "content"  => "cms",
+            "details"  => "product",
+            "alist"    => "listing",
+            "search"   => "listing",
+            "basket"   => "checkout",
+            "user"     => "checkout",
+            "payment"  => "checkout",
+            "order"    => "checkout",
+            "thankyou" => "checkout",
         ];
 
-        return json_encode([$dataLayer],JSON_PRETTY_PRINT);
+        $dataLayer = [
+            'page'      => [
+                'type'  => $aPageTypes[$cl] ?? "unknown",
+                'title' => $oView->getTitle(),
+                'cl'    => $cl,
+            ],
+            'userid'    => ($oUser ? $oUser->getId() : false),
+            'sessionid' => session_id() ?? false,
+            //'httpref'   => $_SERVER["HTTP_REFERER"] ?? "unknown"
+        ];
+
+        return json_encode([$dataLayer], JSON_PRETTY_PRINT);
 
         unset($dataLayer["user"]["http"]); // das brauchen wir hier nicht
 
-        $cl = $this->getActiveClassName();
-        if( $cl === "content" ) $dataLayer["page"]["type"] = "cms";
-        elseif( $cl === "details" ) $dataLayer["page"]["type"] = "product";
-        elseif( in_array($cl,["alist","search"]) ) $dataLayer["page"]["type"] = "listing";
-        elseif( in_array($cl,["basket","user","payment","order","thankyou"]) ) $dataLayer["page"]["type"] = "checkout";
 
-
-        return json_encode([$dataLayer],JSON_PRETTY_PRINT);
+        return json_encode([$dataLayer], JSON_PRETTY_PRINT);
         /*
                 // --- Produktdaten ---
                 $transactionProducts = [];
@@ -87,11 +115,15 @@ class ViewConfig extends ViewConfig_parent
         */
     }
 
+    public function triggerGA4events()
+    {
+        // general events
+
+    }
+
     public function isPromotionList($listId)
     {
-        $oConfig = Registry::getConfig();
-        $aPromotionListIds = $oConfig->getConfigParam("") ?? [ 'bargainItems', 'newItems', 'topBox', 'alsoBought', 'accessories', 'cross' ];
-
-
+        $oConfig           = Registry::getConfig();
+        $aPromotionListIds = $oConfig->getConfigParam("") ?? ['bargainItems', 'newItems', 'topBox', 'alsoBought', 'accessories', 'cross'];
     }
 }
