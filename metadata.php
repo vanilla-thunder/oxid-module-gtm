@@ -18,7 +18,7 @@ $aModule          = [
     'title'       => '[vt] Google Tag Manager',
     'description' => 'Google Tag Manager Integration for OXID eShop v6.2+',
     'thumbnail'   => 'thumbnail.png',
-    'version'     => '0.5.0 ( 2021-07-17 )',
+    'version'     => '0.6.0',
     'author'      => 'Marat Bedoev',
     'email'       => openssl_decrypt("Az6pE7kPbtnTzjHlPhPCa4ktJLphZ/w9gKgo5vA//p4=", str_rot13("nrf-128-pop"), str_rot13("gvalzpr")),
     'url'         => 'https://github.com/vanilla-thunder/oxid-module-gtm',
