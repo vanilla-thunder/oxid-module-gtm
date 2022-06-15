@@ -1,0 +1,9 @@
+_notes
+Thumbs.db
+.DS_Store
+.idea
+.phpstorm.meta.php
+node_modules
+PATCHES.txt
+mysqldumper
+phpMyAdmin-*
