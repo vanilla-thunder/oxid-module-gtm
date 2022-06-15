@@ -3,8 +3,16 @@ Google Tag Manager integration for OXID eShop v6.2 und höher
 module version 0.5.0 ( 2021-12-10 )
 
 ## Installation
-* ``composer require vanilla-thunder/oxid-module-gtm --no-update``
-* Modul aktivieren und Moduleinstellungen konfigurieren
+1. Execute the following commands from the main directory of the OXID:
+   ```
+   composer config repositories.vtgtm vcs https://github.com/vanilla-thunder/oxid-module-gtm.git
+   composer require --no-update vanilla-thunder/oxid-module-gtm
+   composer update --no-interaction
+   vendor/bin/oe-console oe:module:install-configuration source/modules/vt/GoogleTagManager/
+   vendor/bin/oe-console oe:module:apply-configuration
+   ```
+2. Enable moudle "[vt] Google Tag Manager (`vanilla-thunder/oxid-module-gtm`) in the OXID eShop Admin (https://www.domain.tld/admin/).
+3. If necessary, flush the `tmp/` directory and regenerate views.
 
 ## Tag Manager konfigurieren:
 + https://support.google.com/tagmanager/answer/9442095
