@@ -12,6 +12,8 @@
  * You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses/>
  **/
 
+use OxidEsales\Eshop\Core\ViewConfig;
+
 $sMetadataVersion = '2.1';
 $aModule          = [
     'id'          => 'vt-gtm',
@@ -23,7 +25,7 @@ $aModule          = [
     'email'       => openssl_decrypt("Az6pE7kPbtnTzjHlPhPCa4ktJLphZ/w9gKgo5vA//p4=", str_rot13("nrf-128-pop"), str_rot13("gvalzpr")),
     'url'         => 'https://github.com/vanilla-thunder/oxid-module-gtm',
     'extend'      => [
-        \OxidEsales\Eshop\Core\ViewConfig::class => VanillaThunder\GoogleTagManager\Application\Extend\ViewConfig::class
+        ViewConfig::class => VanillaThunder\GoogleTagManager\Application\Extend\ViewConfig::class
     ],
     'templates'   => [
         // GA4 events

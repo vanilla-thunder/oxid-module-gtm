@@ -1,6 +1,6 @@
 # [vt] Google Tag Manager  
 Google Tag Manager integration for OXID eShop v6.2 und höher  
-module version 0.5.0 ( 2021-12-10 )
+module version 0.6.0
 
 ## Installation
 1. Execute the following commands from the main directory of the OXID:
@@ -56,8 +56,8 @@ Hier ist ein Beispiel für die Einrichtung von Enhanced Ecomemrce Tracking über
 
 ### LICENSE AGREEMENT
    [vt] google-tag-manager  
-   Copyright (C) 2021 Marat Bedoev  
-   info:  info@mb-dev.pro oder so /** @todo: überarbeiten, wenn ich wieder nüchtern bin */  
+   Copyright (C) 2022 Marat Bedoev  
+   info:  info@mb-dev.pro  
   
    This program is free software;  
    you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation;
