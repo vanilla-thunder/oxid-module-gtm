@@ -27,11 +27,11 @@ input.confinput:hover {outline:3px solid #ff3600;}
 $aLang = [
     'charset'                             => 'UTF-8',
 
-    'SHOP_MODULE_GROUP_vt_gtm_settings'   => $style . 'Einstellungen',
+    'SHOP_MODULE_GROUP_vt_gtm_settings'   => $style . 'Settings',
     'SHOP_MODULE_vt_gtm_sContainerID'      => 'Container ID',
-    'SHOP_MODULE_vt_gtm_aPromotionlistIDs' => 'Promotion Produktlisten IDs <div>Weitere Infos zu dieser Einstellung: <b><u><a href="https://github.com/vanilla-thunder/oxid-module-gtm/wiki/Promotion-Produktlisten" target="_blank">Modul-Wiki</a></u></b></div>',
-    'SHOP_MODULE_vt_gtm_blGA4enabled' => ' Google Analytics 4 aktivieren',
-    'SHOP_MODULE_vt_gtm_blUAenabled' => 'Universal Analytics aktivieren (Dreprecated)',
+    'SHOP_MODULE_vt_gtm_aPromotionlistIDs' => 'Promotion Product List IDs <div>Learn more about this settings: <b><u><a href="https://github.com/vanilla-thunder/oxid-module-gtm/wiki/Promotion-Produktlisten" target="_blank">Module Wiki</a></u></b></div>',
+    'SHOP_MODULE_vt_gtm_blGA4enabled' => 'Enable Google Analytics 4',
+    'SHOP_MODULE_vt_gtm_blUAenabled' => 'Enable Universal Analytics (Dreprecated)',
     'SHOP_MODULE_vt_gtm_sMpapisecret' => 'MP API Secret',
-    'SHOP_MODULE_vt_gtm_blEnableDebug' => 'Debugmodus aktivieren',
+    'SHOP_MODULE_vt_gtm_blEnableDebug' => 'Enable Debug Mode',
 ];
