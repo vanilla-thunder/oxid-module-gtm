@@ -22,7 +22,7 @@
     }
   },
   "require": {
-    "php": ">=7.1",
+    "php": ">=7.4",
     "oxid-esales/oxideshop-ce": "^v6.2",
     "google/apiclient":" ^2.0"
   },

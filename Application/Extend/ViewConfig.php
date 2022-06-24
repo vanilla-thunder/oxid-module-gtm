@@ -19,9 +19,13 @@ use OxidEsales\Eshop\Application\Controller\FrontendController;
 use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
 use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ModuleSettingBridgeInterface;
+use VanillaThunder\GoogleTagManager\Application\Traits\GA4Trait;
+use VanillaThunder\GoogleTagManager\Application\Traits\UATrait;
 
 class ViewConfig extends ViewConfig_parent
 {
+    use UATrait;
+    use GA4Trait;
 
     // Google Tag Manager Container ID
     private $sContainerId = null;
@@ -38,59 +42,30 @@ class ViewConfig extends ViewConfig_parent
         return $this->sContainerId;
     }
 
-    private $blGA4enabled = null;
-
-    public function isGA4enabled()
-    {
-        if ($this->blGA4enabled === null)
-        {
-            $this->sContainerId = ContainerFactory::getInstance()
-                                                  ->getContainer()
-                                                  ->get(ModuleSettingBridgeInterface::class)
-                                                  ->get('vt_gtm_blEnableGA4', 'vt-gtm');
-        }
-
-        return $this->blGA4enabled;
-    }
+    private $oConfig;
+    private $oView;
+    private $oShop;
+    private $oUser;
+    private $cl;
 
     public function getGtmDataLayer()
     {
         if (!$this->getGtmContainerId()) return "[]";
 
-        $oConfig = Registry::getConfig();
-        $oView   = $oConfig->getTopActiveView();
+        $this->oConfig = Registry::getConfig();
+        $this->oView   = $this->oConfig->getTopActiveView();
         /** @var FrontendController $oShop */
-        //$oShop = oxRegistry::getConfig()->getActiveShop(); /** @var oxShop $oShop */
-        $oUser = $oConfig->getUser();
+        //$this->oShop = oxRegistry::getConfig()->getActiveShop(); /** @var oxShop $oShop */
+        $this->oUser = $this->oConfig->getUser();
 
-        $cl         = $this->getTopActionClassName();
-        $aPageTypes = [
-            "content"  => "cms",
-            "details"  => "product",
-            "alist"    => "listing",
-            "search"   => "listing",
-            "basket"   => "checkout",
-            "user"     => "checkout",
-            "payment"  => "checkout",
-            "order"    => "checkout",
-            "thankyou" => "checkout",
-        ];
+        $this->cl         = $this->getTopActionClassName();
 
-        $dataLayer = [
-            'page'      => [
-                'type'  => $aPageTypes[$cl] ?? "unknown",
-                'title' => $oView->getTitle(),
-                'cl'    => $cl,
-            ],
-            'userid'    => ($oUser ? $oUser->getId() : false),
-            'sessionid' => session_id() ?? false,
-            //'httpref'   => $_SERVER["HTTP_REFERER"] ?? "unknown"
-        ];
-
-        return json_encode([$dataLayer], JSON_PRETTY_PRINT);
+        $dataLayer = array_merge(
+            $this->_getUABasicDatalayer(),
+            $this->_getGA4BasicDatalayer()
+        );
 
         unset($dataLayer["user"]["http"]); // das brauchen wir hier nicht
-
 
         return json_encode([$dataLayer], JSON_PRETTY_PRINT);
         /*
