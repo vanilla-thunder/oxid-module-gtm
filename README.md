@@ -19,24 +19,10 @@ module version 0.6.0
 
 ## Google Analytics 4 Einrichtung
 
-## GA4 Events / Customizing
-für alle implementierten GA4 Events existieren Templates unter `source/modules/GoogleTagManager/Application/views/ga4/`, dabei entspricht der Dateiname dem Eventnamen in GA4. 
-Die Einbindung dieser Event-Templates erfolgt über TPL-Blöcke unter `source/modules/GoogleTagManager/Application/views/blocks/`.   
+## GA4 in GTM einrichten
++ GA4 Event Trigger:
++ GA4 Event Tag
 
-## Universal Analytics Events
-
-**"EE-Trigger" für Ecomemrce-Tags (Beispiel für Google Tag Manager):**
-+ Triggertyp: Benutzerdefiniertes Ereignis
-+ Ereignisname: ``ee\..*``
-+ Übereinstimmung mit regulärem Ausdruck verwenden
-+ Diesen Trigger auslösen bei: Alle benutzerdefinierten Ereignisse
-
-**"EE-Tag" für Google Analytics Enhanced Ecommerce:**
-+ Tag-Typ: Google Analytics - Universal Analytics
-+ Tracking-Typ: Ereignis
-+ Aktion: {{Event}}
-+ Label: {{Event Label}}
-+ Trigger : EE-Trigger
 
 ## Verfügbare Datalayer Variablen 
 Für die einfachste Übersicht der enthaltenen Daten empfehle ich den Vorschau-Modus vom Google Tag Manager.
@@ -47,15 +33,54 @@ Bei jedem Seitenaufruf wird die Datenschicht mit einigen wenigen Infos erstellt,
  + **page.cl** - OXID Controller Klasse (start, search, etc)
  + **userid** - oxID vom Benutzer bzw `false` falls nicht eingeloggt
  + **sessionid** - session iD
- 
-Alle für Ecommerce Tracking releavanten Daten werden mit speziellen Ecommerce Events in die Datenschicht eingefügt.
-Hier ist ein Beispiel für die Einrichtung von Enhanced Ecomemrce Tracking über Google Tag Manager:
 
 
+# Customizing
+At fist glance this might look a bit complicated, but I promise you, its smart as f😱ck.  
+Lets start with the module's structure:
++ all the templates are here: `source/modules/vt/GoogleTagManager/Application/views/`
++ template blocks are used to inject module functions into templates
++ GA4 events are placed in dedicated templates inside `ga4` subdirectory
++ there are two main template blocks: 
+  1) `_gtm_js.tpl` for GTM JS code and base datalayer variables
+  2) `_gtm_nojs.tpl` for GTM nojs fallback code
++ other blocks are used to inject events into right spots, those files are named according to the blocks they use
+
+Now look into `blocks/details_productmain_title.tpl` file, it includes the dedicated template for the "view_item" event:  
+`[{include file=$oViewConf->getGtmEventTpl("ga4/view_item") event="view_item" gtmProduct=$oView->getProduct()}]`  
+The template name is returned by the method `getGtmEventTpl()` from the ViewConfig extension:
+```PHP
+public function getGtmEventTpl($event) {
+    $tpl = $event.".tpl";
+
+    // first check if there is custom template in theme dir
+    $themePath = $this->getTemplateDir();
+    var_dump($themePath);
+    if (file_exists($themePath.$tpl)) return $tpl;
+
+    // fallback to default module's templates
+    $modulePath = $this->getModulePath("vt-gtm","/Application/views/");
+    return (file_exists($modulePath.$tpl ? "ga4_".$tpl : "empty.tpl"));
+}
+```
+basically, it maps event "ga4/view_item" to this template `source/modules/vt/GoogleTagManager/Application/views/ga4/view_item.tpl`
+
+Now, lets say you need to change the event template. You have two options here:
+1) add custom event template to you child theme, e.g. `source/Application/views/wave/tpl/ga4/view_item.tpl`
+2) create own module, that extends ViewConfig and overwrites `getGtmEventTpl` method, e.g.:
+```PHP
+public function getGtmEventTpl($event) {
+    if($event === "ga4/view_item") return "my_custom_template.tpl";
+    else return parent::getGtmEventTpl($event);
+}
+```
+
+The check if file exists is added to prevent php errors when there is no template for particular event.  
 
 
 ### LICENSE AGREEMENT
    [vt] google-tag-manager  
+   with friendly help from [Kussin | eCommerce und Online-Marketing GmbH](https://kussin.de)  
    Copyright (C) 2022 Marat Bedoev  
    info:  info@mb-dev.pro  
   

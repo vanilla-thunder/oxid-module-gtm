@@ -90,6 +90,23 @@ class ViewConfig extends ViewConfig_parent
         */
     }
 
+    // if you need to change default event templates
+    // you can put your own event templates into your (child) theme
+    // or overwrite this method in your own module
+    public function getGtmEventTpl($event)
+    {
+        $tpl = $event.".tpl";
+
+        // first check if there is custom template in theme dir
+        $themePath = $this->getTemplateDir();
+        var_dump($themePath);
+        if (file_exists($themePath.$tpl)) return $tpl;
+
+        // fallback to default module's templates
+        $modulePath = $this->getModulePath("vt-gtm","/Application/views/");
+        return (file_exists($modulePath.$tpl ? "ga4_".$tpl : "empty.tpl"));
+    }
+
     public function triggerGA4events()
     {
         // general events

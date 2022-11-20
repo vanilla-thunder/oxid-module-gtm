@@ -28,24 +28,26 @@ $aModule          = [
         ViewConfig::class => VanillaThunder\GoogleTagManager\Application\Extend\ViewConfig::class
     ],
     'templates'   => [
+        // empty placeholder tpl to prevent errors
+        'gtm_empty.tpl'             => 'vt/GoogleTagManager/Application/views/empty.tpl',
         // GA4 events
-        'ga4_add_payment_info.tpl' => 'vt/GoogleTagManager/Application/views/ga4/add_payment_info.tpl',
-        'add_shipping_info.tpl'    => 'vt/GoogleTagManager/Application/views/ga4/add_shipping_info.tpl',
-        'ga4_add_to_cart.tpl'      => 'vt/GoogleTagManager/Application/views/ga4/add_to_cart.tpl',
-        'ga4_begin_checkout.tpl'   => 'vt/GoogleTagManager/Application/views/ga4/begin_checkout.tpl',
-        'ga4_generate_lead.tpl'    => 'vt/GoogleTagManager/Application/views/ga4/generate_lead.tpl',
-        'ga4_login.tpl'            => 'vt/GoogleTagManager/Application/views/ga4/login.tpl',
-        'ga4_purchase.tpl'         => 'vt/GoogleTagManager/Application/views/ga4/purchase.tpl',
-        'ga4_remove_from_cart.tpl' => 'vt/GoogleTagManager/Application/views/ga4/remove_from_cart.tpl',
-        'ga4_search.tpl'           => 'vt/GoogleTagManager/Application/views/ga4/search.tpl',
-        'ga4_select_content.tpl'   => 'vt/GoogleTagManager/Application/views/ga4/select_content.tpl',
-        'ga4_select_item.tpl'      => 'vt/GoogleTagManager/Application/views/ga4/select_item.tpl',
-        'ga4_select_promotion.tpl' => 'vt/GoogleTagManager/Application/views/ga4/select_promotion.tpl',
-        'ga4_sign_up.tpl'          => 'vt/GoogleTagManager/Application/views/ga4/sign_up.tpl',
-        'ga4_view_cart.tpl'        => 'vt/GoogleTagManager/Application/views/ga4/view_cart.tpl',
-        'ga4_view_item.tpl'        => 'vt/GoogleTagManager/Application/views/ga4/view_item.tpl',
-        'ga4_view_item_list.tpl'   => 'vt/GoogleTagManager/Application/views/ga4/view_item_list.tpl',
-        'ga4_view_promotion.tpl'   => 'vt/GoogleTagManager/Application/views/ga4/view_promotion.tpl',
+        'ga4_add_payment_info.tpl'  => 'vt/GoogleTagManager/Application/views/ga4/add_payment_info.tpl',
+        'ga4_add_shipping_info.tpl' => 'vt/GoogleTagManager/Application/views/ga4/add_shipping_info.tpl',
+        'ga4_add_to_cart.tpl'       => 'vt/GoogleTagManager/Application/views/ga4/add_to_cart.tpl',
+        'ga4_begin_checkout.tpl'    => 'vt/GoogleTagManager/Application/views/ga4/begin_checkout.tpl',
+        'ga4_generate_lead.tpl'     => 'vt/GoogleTagManager/Application/views/ga4/generate_lead.tpl',
+        'ga4_login.tpl'             => 'vt/GoogleTagManager/Application/views/ga4/login.tpl',
+        'ga4_purchase.tpl'          => 'vt/GoogleTagManager/Application/views/ga4/purchase.tpl',
+        'ga4_remove_from_cart.tpl'  => 'vt/GoogleTagManager/Application/views/ga4/remove_from_cart.tpl',
+        'ga4_search.tpl'            => 'vt/GoogleTagManager/Application/views/ga4/search.tpl',
+        'ga4_select_content.tpl'    => 'vt/GoogleTagManager/Application/views/ga4/select_content.tpl',
+        'ga4_select_item.tpl'       => 'vt/GoogleTagManager/Application/views/ga4/select_item.tpl',
+        'ga4_select_promotion.tpl'  => 'vt/GoogleTagManager/Application/views/ga4/select_promotion.tpl',
+        'ga4_sign_up.tpl'           => 'vt/GoogleTagManager/Application/views/ga4/sign_up.tpl',
+        'ga4_view_cart.tpl'         => 'vt/GoogleTagManager/Application/views/ga4/view_cart.tpl',
+        'ga4_view_item.tpl'         => 'vt/GoogleTagManager/Application/views/ga4/view_item.tpl',
+        'ga4_view_item_list.tpl'    => 'vt/GoogleTagManager/Application/views/ga4/view_item_list.tpl',
+        'ga4_view_promotion.tpl'    => 'vt/GoogleTagManager/Application/views/ga4/view_promotion.tpl',
         /*
         'gtm_ua_impression' => 'vt/GoogleTagManager/Application/views/ua/impression.tpl'
         'gtm_view_promotion.tpl'   => 'vt/GoogleTagManager/Application/views/view_promotion.tpl',
@@ -66,7 +68,14 @@ $aModule          = [
             'block'    => 'theme_svg_icons',
             'file'     => '/Application/views/blocks/_gtm_nojs.tpl'
         ],
+        // details_productmain_title - view_item
+        [
+            'template' => 'page/details/inc/productmain.tpl',
+            'block'    => 'details_productmain_title',
+            'file'     => '/Application/views/blocks/details_productmain_title.tpl'
+        ],
         // add to cart
+        /*
         [
             'template' => 'layout/header.tpl',
             'block'    => 'header_main',
@@ -77,12 +86,6 @@ $aModule          = [
             'template' => 'widget/product/list.tpl',
             'block'    => 'widget_product_list',
             'file'     => '/Application/views/blocks/widget_product_list.tpl'
-        ],
-        // details
-        [
-            'template' => 'page/details/inc/productmain.tpl',
-            'block'    => 'details_productmain_title',
-            'file'     => '/Application/views/blocks/detail.tpl'
         ],
         // checkout
         [
@@ -120,6 +123,7 @@ $aModule          = [
             'block'    => 'checkout_thankyou_main',
             'file'     => '/Application/views/blocks/checkout_s5.tpl'
         ]
+        */
     ],
     'settings'    => [
         [
