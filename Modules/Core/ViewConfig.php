@@ -13,7 +13,7 @@
  * You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses/>
  */
 
-namespace D3\GoogleAnalytics4\Modules\Core;
+namespace VanillaThunder\GoogleTagManager\Application\Extend;
 
 use OxidEsales\Eshop\Application\Controller\FrontendController;
 use OxidEsales\Eshop\Core\Registry;
