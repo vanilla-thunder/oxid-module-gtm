@@ -30,10 +30,7 @@ class ViewConfig extends ViewConfig_parent
     {
         if ($this->sContainerId === null)
         {
-            $this->sContainerId = ContainerFactory::getInstance()
-                                                  ->getContainer()
-                                                  ->get(ModuleSettingBridgeInterface::class)
-                                                  ->get('vt_gtm_sContainerID', 'vt-gtm');
+            $this->sContainerId = $this->getConfig()->getConfigParam('vt_gtm_sContainerID');
         }
         return $this->sContainerId;
     }
@@ -44,10 +41,7 @@ class ViewConfig extends ViewConfig_parent
     {
         if ($this->blGA4enabled === null)
         {
-            $this->sContainerId = ContainerFactory::getInstance()
-                                                  ->getContainer()
-                                                  ->get(ModuleSettingBridgeInterface::class)
-                                                  ->get('vt_gtm_blEnableGA4', 'vt-gtm');
+            $this->sContainerId = $this->getConfig()->getConfigParam('vt_gtm_blEnableGA4');
         }
 
         return $this->blGA4enabled;
@@ -87,7 +81,7 @@ class ViewConfig extends ViewConfig_parent
             //'httpref'   => $_SERVER["HTTP_REFERER"] ?? "unknown"
         ];
 
-        return json_encode([$dataLayer], JSON_PRETTY_PRINT);
+        #return json_encode([$dataLayer], JSON_PRETTY_PRINT);
 
         unset($dataLayer["user"]["http"]); // das brauchen wir hier nicht
 
