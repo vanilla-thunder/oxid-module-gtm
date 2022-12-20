@@ -24,8 +24,12 @@ input.confinput {position:fixed;top:20px;right:70px;background:#008B2D;padding:1
 input.confinput:hover {outline:3px solid #ff3600;}
 </style>';
 $aLang = [
-    'charset'                             => 'UTF-8',
-    'SHOP_MODULE_GROUP_vt_gtm_settings'   => $style . 'Einstellungen',
+    'charset'                               => 'UTF-8',
     'SHOP_MODULE_vt_gtm_sContainerID'      => 'Container ID',
-    'SHOP_MODULE_vt_gtm_promotionlistids' => 'Promotion Produktlisten IDs <div>Weitere Infos zu dieser Einstellung: <b><u><a href="https://github.com/vanilla-thunder/oxid-module-gtm/wiki/Promotion-Produktlisten" target="_blank">Modui-Wiki</a></u></b></div>',
+    'SHOP_MODULE_GROUP_vt_gtm_settings'     => 'Einstellungen',
+    'SHOP_MODULE_vt_gtm_blGA4enab'          => 'GA4 Aktivieren',
+    'SHOP_MODULE_vt_gtm_blUAenabled'        => 'UA Aktivieren',
+    'SHOP_MODULE_vt_gtm_sMpapisecret'       => 'Map ist Geheim??',
+    'SHOP_MODULE_vt_gtm_aPromotionlistIDs'  => 'Promotion Produktlisten IDs <div>Weitere Infos zu dieser Einstellung: <b><u><a href="https://github.com/vanilla-thunder/oxid-module-gtm/wiki/Promotion-Produktlisten" target="_blank">Modui-Wiki</a></u></b></div>',
+    'SHOP_MODULE_vt_gtm_blEnableDebug'      => 'Debug-Modus aktivieren',
 ];

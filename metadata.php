@@ -129,7 +129,7 @@ $aModule          = [
         ],
         [
             'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_blGA4enabled',
+            'name'     => 'vt_gtm_blGA4enab',
             'type'     => 'bool',
             'value'    => true,
             'position' => 1
@@ -141,13 +141,14 @@ $aModule          = [
             'value'    => true,
             'position' => 2
         ],
-        [
+        /*[
+            I have no idea what this is
             'group'    => 'vt_gtm_settings',
             'name'     => 'vt_gtm_sMpapisecret',
             'type'     => 'str',
             'value'    => '',
             'position' => 3
-        ],
+        ],*/
         [
             'group'    => 'vt_gtm_settings',
             'name'     => 'vt_gtm_aPromotionlistIDs',
