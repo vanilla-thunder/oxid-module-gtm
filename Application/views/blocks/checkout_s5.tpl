@@ -14,8 +14,8 @@
                     'affiliation':'[{$oxcmp_shop->oxshops__oxname->value}]',
                     'revenue':'[{$_gtmOrder->oxorder__oxtotalordersum->value}]',
                     'tax':'[{math equation="x+y" x=$_gtmOrder->oxorder__oxartvatprice1->value y=$_gtmOrder->oxorder__oxartvatprice2->value }]',
-                    'shipping':'[{$_gtmOrder->oxorder__oxdelcost->value}]'
-                    /*'coupon':'CANO25' //if a coupon code was used for this order*/
+                    'shipping':'[{$_gtmOrder->oxorder__oxdelcost->value}]',
+                    'currency': "[{$_gtmOrder->getFieldData('oxcurrency')}]"
                 },
                 'products':[
                     [{foreach from=$_gtmArticles item="_gtmArticle" name="gtmArticles"}]
