@@ -3,7 +3,7 @@
     <script>
         dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
         dataLayer.push({
-            'event': 'ee.checkout',
+            'event': 'view_cart',
             'eventLabel':'Checkout Step 1',
             'ecommerce': {
                 'checkout': {

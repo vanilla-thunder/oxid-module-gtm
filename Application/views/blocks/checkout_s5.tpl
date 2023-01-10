@@ -5,7 +5,7 @@
     [{assign var="_gtmArticles" value=$_gtmOrder->getOrderArticles()}]
     
     dataLayer.push({
-        'event': 'ee.transaction',
+        'event': 'purchase',
         'eventLabel':'Checkout Step 5',
         'ecommerce': {
             'purchase': {

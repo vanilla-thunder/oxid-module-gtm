@@ -6,7 +6,7 @@
 <script>
     dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
     dataLayer.push({
-        'event': 'ee.detail',
+        'event': 'view_item',
         'eventLabel':'Product View',
         'ecommerce': {
             'currencyCode': '[{$currency->name}]',
