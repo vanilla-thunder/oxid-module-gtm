@@ -124,6 +124,12 @@ $aModule          = [
             'template' => 'widget/product/list.tpl',
             'block'    => 'd3Ga4_view_item_list',
             'file'     => '/Application/views/ga4/view_item_list.tpl'
+        ],
+        // view_search_result
+        [
+            'template' => 'page/search/search.tpl',
+            'block'    => 'search_results',
+            'file'     => '/Application/views/ga4/search.tpl'
         ]
     ],
     'settings'    => [
