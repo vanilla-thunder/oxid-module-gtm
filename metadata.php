@@ -117,6 +117,13 @@ $aModule          = [
             'template' => 'page/checkout/thankyou.tpl',
             'block'    => 'checkout_thankyou_main',
             'file'     => '/Application/views/blocks/checkout_s5.tpl'
+        ],
+        // Lists
+        // view_item_list
+        [
+            'template' => 'widget/product/list.tpl',
+            'block'    => 'd3Ga4_view_item_list',
+            'file'     => '/Application/views/ga4/view_item_list.tpl'
         ]
     ],
     'settings'    => [
