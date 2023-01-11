@@ -130,6 +130,12 @@ $aModule          = [
             'template' => 'page/search/search.tpl',
             'block'    => 'search_results',
             'file'     => '/Application/views/ga4/search.tpl'
+        ],
+        // add_to_cart
+        [
+            'template' => 'page/details/inc/productmain.tpl',
+            'block'    => 'details_productmain_tobasket',
+            'file'     => '/Application/views/ga4/add_to_cart.tpl'
         ]
     ],
     'settings'    => [

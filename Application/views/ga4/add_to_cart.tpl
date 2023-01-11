@@ -1,41 +1,58 @@
-[{strip}]
-    [{$gtmProduct|@var_dump}]
-    [{* variable $gtmProduct is passed from parent tempalte *}]
-    [{*
-    [{assign var="gtmCurrency" value=$oView->getActCurrency()}]
-    [{assign var="gtmManufacturer" value=$gtmProduct->getManufacturer()}]
-    [{assign var="gtmCategory" value=$gtmProduct->getCategory()}]
-    <script type="text/javascript">
+[{$smarty.block.parent}]
 
-        var itemCategories = '[{if $gtmCategory}][{$gtmCategory->getLink()|parse_url:5|ltrim:"/"|rtrim:"/"}][{else}]no category[{/if}]'.split('/');
-        //console.log(itemCategories);
-        var _gtmProduct = {
-            'item_name': '[{$gtmProduct->oxarticles__oxtitle->value}]',
-            'item_id': '[{$gtmProduct->oxarticles__oxartnum->value}]',
-            'price': '[{$gtmProduct->oxarticles__oxprice->value}]',
-            'item_brand': '[{if $gtmManufacturer}][{$gtmManufacturer->oxmanufacturers__oxtitle->value}][{/if}]',
-            'item_variant': '[{if $gtmProduct->oxarticles__oxvarselect->value}][{$gtmProduct->oxarticles__oxvarselect->value}][{/if}]',
-            'item_category': itemCategories[0] || 'no category',
-            'item_category_2': itemCategories[1] || '',
-            'item_category_3': itemCategories[2] || '',
-            'item_category_4': itemCategories[3] || '',
+[{*$gtmProduct|get_class_methods|dumpvar*}]
+
+[{capture assign=d3_ga4_add_to_cart}]
+  $("#toBasket").click(function(event) {
+    [{*event.preventDefault();*}]
+
+    let iArtQuantity = $("#amountToBasket").val();
+
+    dataLayer.push({
+        'isAddToBasket': true,
+      'event':'add_to_cart',
+      'eventLabel': 'add_to_cart',
+      'ecommerce': {
+        'currency':   "[{$currency->name}]",
+        'value':      iArtQuantity*[{$gtmProduct->getFieldData('oxprice')}],
+        'items':      [
+          {
+            'item_id':        '[{$gtmProduct->getFieldData('oxartnum')}]',
+            'item_name':      '[{$gtmProduct->getFieldData('oxtitle')}]',
+            'price':          '[{$gtmProduct->getFieldData('oxprice')}]',
+            'item_brand':     '[{if $gtmManufacturer}][{$gtmManufacturer->oxmanufacturers__oxtitle->value}][{/if}]',
+            'item_variant':   '[{if $gtmProduct->getFieldData('oxvarselect')}][{$gtmProduct->getFieldData('oxvarselect')}][{/if}]',
+            'item_category':  itemCategories[0] || 'no category',
+            'item_category_2':itemCategories[1] || '',
+            'item_category_3':itemCategories[2] || '',
+            'item_category_4':itemCategories[3] || '',
             [{if false}]
+            [{* ??? what *}]
             'item_list_name': 'Search Results',  // If associated with a list selection.
             'item_list_id': 'SR123',  // If associated with a list selection.
             'index': 1,  // If associated with a list selection.
             [{/if}]
-            'quantity': '1'
-        };
+            'quantity': iArtQuantity
+          }
+        ]
+      }
+    });
+  });
 
-        console.log(_gtmProduct);
-        dataLayer.push({
-            'event':'ecommerce',
-            'ga4event': 'add_to_cart',
-            'ecommerce': {
-                'items': [ _gtmProduct ]
-            }
-        });
+[{/capture}]
+[{oxscript add=$d3_ga4_add_to_cart}]
+
+[{strip}]
+    [{* variable $gtmProduct is passed from parent tempalte *}]
+
+    [{assign var="gtmCurrency" value=$oView->getActCurrency()}]
+    [{assign var="gtmManufacturer" value=$gtmProduct->getManufacturer()}]
+    [{assign var="gtmCategory" value=$gtmProduct->getCategory()}]
+
+    <script>
+      dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
+
+      let itemCategories = '[{if $gtmCategory}][{$gtmCategory->getLink()|parse_url:5|ltrim:"/"|rtrim:"/"}][{else}]no category[{/if}]'.split('/');
 
     </script>
-    *}]
 [{/strip}]
