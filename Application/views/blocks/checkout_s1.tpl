@@ -1,57 +1,31 @@
-[{strip}]
-    [{assign var='gtmCartArticles' value=$oView->getBasketArticles()}]
-    <script>
-        dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
-        dataLayer.push({
-            'event': 'view_cart',
-            'eventLabel':'Checkout Step 1',
-            'ecommerce': {
-                'checkout': {
-                    'actionField': {'step': 1},
-                    'products': [
-                        [{foreach from=$oxcmp_basket->getContents() item=basketitem name=gtmCartContents  key=basketindex}]
-                        [{assign var='_price' value=$basketitem->getUnitPrice()}]
-                        {
-                            'id': '[{$gtmCartArticles[$basketindex]->oxarticles__oxartnum->value}]',
-                            'name': '[{$gtmCartArticles[$basketindex]->oxarticles__oxtitle->value}]',
-                            'variant': '[{$gtmCartArticles[$basketindex]->oxarticles__oxvarselect->value}]',
-                            'price': [{$_price->getPrice()}],
-                            'quantity':[{$basketitem->getAmount()}],
-                            'position':[{$smarty.foreach.gtmCartContents.index}]
-                        }[{if !$smarty.foreach.gtmCartContents.last}],[{/if}]
-                        [{/foreach}]
-                    ]
-                }
-            }
-        });
-        [{*
-        var gtmCartContents = {[{foreach key=basketindex from=$oxcmp_basket->getContents() item=basketitem name=gtmCartContents}]
-            '[{$basketindex}]':{ 'id':'[{$gtmCartArticles[$basketindex]->oxarticles__oxartnum->value}]' }[{if !$smarty.foreach.gtmCartContents.last}],[{/if}][{/foreach}]
-        };
-
-                [{capture name='removeFromBasket'}]
-                $('#basketRemove').on('click', function() {
-                    var _checked = [],
-                        _products = [];
-
-                    $('input:checkbox:checked[name^="aproducts"][name*="remove"]').each(function() { _checked.push($(this).attr('name').replace('aproducts[','').replace('][remove]','')); });
-                    if(_checked.length == 0) return;
-                    _checked.forEach(function(_oxid) { _products.push({ 'id':gtmCartContents[_oxid].id}) });
-
-                    dataLayer.push({
-                        'event':'ee.removeFromCart',
-                        'ecommerce': {
-                            'currencyCode': '[{$currency->name}]',
-                            'remove': {
-                                'products': _products
-                            }
-                        }
-
-                    });
-                });
-                [{/capture }]
-        [{oxscript add=$smarty.capture.removeFromBasket}]
-        *}]
-    </script>
-[{/strip}]
 [{$smarty.block.parent}]
+
+[{$oxcmp_basket|get_class_methods|dumpvar}]
+
+[{assign var='gtmCartArticles' value=$oView->getBasketArticles()}]
+[{strip}][{capture assign=d3_ga4_view_cart}]
+    dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
+    dataLayer.push({
+        'event': 'view_cart',
+        'eventLabel':'Checkout Step 1',
+        'ecommerce': {
+            'actionField': "step: 1",
+            'currency': "[{$currency->name}]",
+            'value': [{$oxcmp_basket->getBruttoSum()}],
+            'items': [
+                [{foreach from=$oxcmp_basket->getContents() item=basketitem name=gtmCartContents  key=basketindex}]
+                [{assign var='_price' value=$basketitem->getUnitPrice()}]
+                {
+                    'item_id': '[{$gtmCartArticles[$basketindex]->oxarticles__oxartnum->value}]',
+                    'item_name': '[{$gtmCartArticles[$basketindex]->oxarticles__oxtitle->value}]',
+                    'item_variant': '[{$gtmCartArticles[$basketindex]->oxarticles__oxvarselect->value}]',
+                    'price': [{$_price->getPrice()}],
+                    'quantity':[{$basketitem->getAmount()}],
+                    'position':[{$smarty.foreach.gtmCartContents.index}]
+                }[{if !$smarty.foreach.gtmCartContents.last}],[{/if}]
+                [{/foreach}]
+                ]
+        }
+    });
+[{/capture}][{/strip}]
+[{oxscript add=$d3_ga4_view_cart}]
