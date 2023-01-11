@@ -9,6 +9,8 @@
             'event':'view_item_list',
             'event_name': 'view_item_list',
             'ecommerce': {
+              'item_list_id': 'test',
+              'item_list_name': 'test',
                 'items': [
                     [{foreach from=$gtmProducts name="gtmProducts" item="gtmProduct"}]
                     [{assign var="gtmManufacturer" value=$gtmProduct->getManufacturer()}]
