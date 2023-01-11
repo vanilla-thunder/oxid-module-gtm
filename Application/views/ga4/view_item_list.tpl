@@ -1,5 +1,13 @@
 [{assign var="gtmProducts" value=$products}]
 
+[{assign var="breadCrumb" value=''}]
+
+[{foreach from=$oView->getBreadCrumb() item=sCrum}]
+    [{if $sCrum.title }]
+            [{$breadCrumb|cat:$sCrum.title|cat:" > "}]
+    [{/if}]
+[{/foreach}]
+
 [{if $gtmProducts|@count}]
 [{strip}]
     <script>
@@ -9,8 +17,8 @@
             'event':'view_item_list',
             'event_name': 'view_item_list',
             'ecommerce': {
-              'item_list_id': 'test',
-              'item_list_name': 'test',
+              'item_list_id': '[{$oView->getCategoryId()}]',
+              'item_list_name': '[{$breadCrumb}]',
                 'items': [
                     [{foreach from=$gtmProducts name="gtmProducts" item="gtmProduct"}]
                     [{assign var="gtmManufacturer" value=$gtmProduct->getManufacturer()}]
