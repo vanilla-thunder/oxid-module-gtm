@@ -1,6 +1,6 @@
 [{$smarty.block.parent}]
 
-[{$oxcmp_basket|get_class_methods|dumpvar}]
+[{*$oxcmp_basket|get_class_methods|dumpvar*}]
 
 [{assign var='gtmCartArticles' value=$oView->getBasketArticles()}]
 [{strip}][{capture assign=d3_ga4_view_cart}]
