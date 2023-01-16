@@ -80,7 +80,8 @@ $aModule          = [
         [
             'template' => 'page/details/inc/productmain.tpl',
             'block'    => 'details_productmain_title',
-            'file'     => '/Application/views/blocks/detail.tpl'
+            'file'     => '/Application/views/blocks/detail.tpl',
+            'position' => 150
         ],
         // checkout
         [
