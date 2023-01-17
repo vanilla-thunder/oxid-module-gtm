@@ -32,4 +32,17 @@ $aLang = [
     'SHOP_MODULE_vt_gtm_sMpapisecret'       => 'Map ist Geheim??',
     'SHOP_MODULE_vt_gtm_aPromotionlistIDs'  => 'Promotion Produktlisten IDs <div>Weitere Infos zu dieser Einstellung: <b><u><a href="https://github.com/vanilla-thunder/oxid-module-gtm/wiki/Promotion-Produktlisten" target="_blank">Modui-Wiki</a></u></b></div>',
     'SHOP_MODULE_vt_gtm_blEnableDebug'      => 'Debug-Modus aktivieren',
+
+    // for cookie manager settings
+    'SHOP_MODULE_GROUP_vt_gtm_settings_cookiemanager'   => 'Cookie Manager Einstellungen',
+    'SHOP_MODULE_vt_gtm_settings_hasOwnCookieManager'   => 'Eigenen Cookie Manager nutzen?
+                                                            <strong style="color: red">Hinweis (Fragezeichen) lesen!</strong>',
+    'HELP_SHOP_MODULE_vt_gtm_settings_hasOwnCookieManager'   => 'Stellen Sie sicher, dass Sie ein Modul installiert haben,
+    dass die Methode "blAcceptedCookie" implementiert.<br> Sollten Sie sich nicht sicher sein, kontaktieren Sie Ihren
+    technischen Ansprechpartner.<br><br>
+    
+    Diese Möglichkeit zu aktivieren, <u>ohne dem nötigen technischen Wissen</u> kann den Shop-Ablauf (Frontend) stören.<hr>
+    Diese Möglichkeit kann vernachlässigt werden, sofern die Cookies beispielsweise direkt via Google handhabt werden.
+    Bei Fragen <u>kontaktieren Sie bitte</u> auch hier einen entsprechenden technischen Ansprechpartner.',
+    'SHOP_MODULE_vt_gtm_settings_cookieName'            => 'Cookie-Name',
 ];

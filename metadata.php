@@ -182,7 +182,20 @@ $aModule          = [
             'type'     => 'bool',
             'value'    => false,
             'position' => 999
-        ]
-
+        ],
+        [
+            'group'    => 'vt_gtm_settings_cookiemanager',
+            'name'     => 'vt_gtm_settings_hasOwnCookieManager',
+            'type'     => 'bool',
+            'value'    => false,
+            'position' => 999
+        ],
+        [
+            'group'    => 'vt_gtm_settings_cookiemanager',
+            'name'     => 'vt_gtm_settings_cookieName',
+            'type'     => 'str',
+            'value'    => 'example',
+            'position' => 999
+        ],
     ]
 ];
