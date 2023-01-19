@@ -15,6 +15,14 @@ module version 0.5.0 ( 2021-12-10 )
 für alle implementierten GA4 Events existieren Templates unter `source/modules/GoogleTagManager/Application/views/ga4/`, dabei entspricht der Dateiname dem Eventnamen in GA4. 
 Die Einbindung dieser Event-Templates erfolgt über TPL-Blöcke unter `source/modules/GoogleTagManager/Application/views/blocks/`.   
 
+### aktuell zu beachtende Blöcke
+- Suchergebnisse: search_results  
+- (muss hinzugefügt werden) aList: d3Ga4_view_item_list
+- Detailseite: details_productmain_title
+- add_to_basket-button: details_productmain_tobasket
+- Warenkorb: checkout_basket_main
+- Purchase | abgeschlossener Kauf: checkout_thankyou_main
+
 ## Universal Analytics Events
 
 **"EE-Trigger" für Ecomemrce-Tags (Beispiel für Google Tag Manager):**
