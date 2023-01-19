@@ -1,8 +1,20 @@
 {
-  "name": "vanilla-thunder/oxid-module-gtm",
-  "description": "Google Tag Manager with new Google Analytics 4 for OXID eShop v6.2+<br/>more about GA4: <a href='https://developers.google.com/tag-manager/ecommerce-ga4' target='_blank'>Ecommerce (GA4) Developer Guide</a>",
+  "name": "d3/google-analytics4",
+  "description": "Google Tag Manager with new Google Analytics 4 for OXID eShop 6.x",
   "type": "oxideshop-module",
-  "homepage": "https://github.com/vanilla-thunder/oxid-module-gtm",
+  "keywords": [
+    "oxid",
+    "modules",
+    "eShop",
+    "d3",
+    "google",
+    "ga4",
+    "googleanalytics",
+    "gtm",
+    "configuration",
+    "license"
+  ],
+  "homepage": "https://www.d3data.de",
   "license": [
     "GPL-3.0"
   ],
@@ -10,11 +22,19 @@
     {
       "name": "Marat Bedoev",
       "email": "hello@mb-dev.pro"
+    },
+    {
+      "name": "D3 Data Development (Inh. Thomas Dartsch)",
+      "email": "info@shopmodule.com",
+      "homepage": "https://www.d3data.de"
     }
   ],
+  "support": {
+    "email": "support@shopmodule.com"
+  },
   "extra": {
     "oxideshop": {
-      "target-directory": "vt/GoogleTagManager"
+      "target-directory": "d3/googleanalytics"
     }
   },
   "require": {
@@ -24,7 +44,7 @@
   },
   "autoload": {
     "psr-4": {
-      "VanillaThunder\\": "../../../source/modules/vt"
+      "D3\\GoogleAnalytics4": "../../../source/modules/d3/googleanalytics"
     }
   }
 }
