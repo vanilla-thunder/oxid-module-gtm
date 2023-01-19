@@ -26,6 +26,10 @@
 
         [{/if}]
         [{/strip}][{/if}]
+    [{else}]
+    <script>
+      var dataLayer = [{$oViewConf->getGtmDataLayer()}] || [];
+    </script>
     [{/if}]
 [{else}]
     [{if $oViewConf->getGtmContainerId()}][{strip}]
