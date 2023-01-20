@@ -45,7 +45,7 @@
   },
   "require": {
     "php": ">=7.1",
-    "oxid-esales/oxideshop-ce": "v6.0 - 6.3",
+    "oxid-esales/oxideshop-ce": "^6.5",
     "google/apiclient":" ^2.0"
   },
   "autoload": {
