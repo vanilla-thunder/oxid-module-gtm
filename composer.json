@@ -51,7 +51,7 @@
   },
   "autoload": {
     "psr-4": {
-      "D3\\GoogleAnalytics4": "../../../source/modules/d3/googleanalytics"
+      "D3\\GoogleAnalytics4\\": "../../../source/modules/d3/googleanalytics"
     }
   }
 }
