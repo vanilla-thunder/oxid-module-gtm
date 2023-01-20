@@ -2,7 +2,10 @@
 
 # ![D3 Logo](https://logos.oxidmodule.com/d3logo_24x24.svg) Google-Analytics 4 für OXID eShop
 
-Google-Analytics 4 integration via 'Google Tag Manager' für den OXID eShop 6.x
+Dieses Modul bietet die Möglichkeit in Ihrem OXID eShop (6.x) die neue 'Property' Google Analytics 4 (GA4) von Google
+zu integrieren.
+Hierfür stehen Ihnen verschiedene 'templates' zur verfügung, mit denen Sie bestimmte Events tracken können.
+Beispiele dafür sind: view_item, add_to_basket, purchase, ...
 
 ## Inhaltsverzeichnis
 
@@ -19,7 +22,15 @@ Bitte tragen Sie den folgenden Abschnitt in die `composer.json` Ihres Projektes 
 
 ```
   "extra": {
-    ...
+    "oxideshop": {
+      "blacklist-filter": [
+        "*.md",
+        "composer.json",
+        ".php-cs-fixer.php",
+        "*.xml",
+        "*.neon"
+      ],
+      "target-directory": "d3/googleanalytics"
   }
 ```
 
@@ -27,7 +38,7 @@ Bitte tragen Sie den folgenden Abschnitt in die `composer.json` Ihres Projektes 
 
 
 ```bash
-php composer require d3/modulename:^2.0
+php composer require d3/google-analytics4:^1
 ```
 
 Sofern nötig, bestätigen Sie bitte, dass Sie `package-name` erlauben, Code auszuführen.
@@ -36,7 +47,20 @@ Aktivieren Sie das Modul im Shopadmin unter "Erweiterungen -> Module".
 
 ## Verwendung
 
-...
+Nach erfolgreicher Installation finden Sie in Ihrem Shop-Admin unter "Erweiterungen > Module" 
+den Eintrag 'Google Analytics 4'.
+Aktivieren Sie dieses Modul, um die Funktionalitäten nutzen zu können.
+
+Navigieren Sie danach zum Reiter 'Einstell.'.
+Tragen Sie die nötige sog. 'Container ID' ein. Diese sieht in etwa so aus: 'GTM-W34LLOP'.
+
+Aktivieren Sie GA4 selbst, indem Sie dieses direkt darunter anhaken.
+
+---
+
+Sie nutzen einen eigenen, als Modul im Shop installierten, Cookie-manager? Dann tragen Sie in den Folgeeinstellungen 
+unter "Cookie Manager Einstellungen", die Cookie-ID des zugehörigen Cookies ein. Und aktivieren Sie diese Weiche,
+indem Sie den Haken bei "Eigenen Cookie Manager nutzen?" setzen.
 
 ## Changelog
 
@@ -44,7 +68,7 @@ Siehe [CHANGELOG](CHANGELOG.md) für weitere Informationen.
 
 ## Beitragen
 
-Wenn Sie eine Verbesserungsvorschlag haben, legen Sie einen Fork des Repositories an und erstellen Sie einen Pull Request. Alternativ können Sie einfach ein Issue erstellen. Fügen Sie das Projekt zu Ihren Favoriten hinzu. Vielen Dank.
+Wenn Sie einen Verbesserungsvorschlag haben, legen Sie einen Fork des Repositories an und erstellen Sie einen Pull Request. Alternativ können Sie einfach ein Issue erstellen. Fügen Sie das Projekt zu Ihren Favoriten hinzu. Vielen Dank.
 
 - Erstellen Sie einen Fork des Projekts
 - Erstellen Sie einen Feature Branch (git checkout -b feature/AmazingFeature)

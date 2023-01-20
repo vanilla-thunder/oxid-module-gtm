@@ -8,7 +8,13 @@ $sMetadataVersion = '2.1';
 $aModule          = [
     'id'          => 'd3googleanalytics4',
     'title'       => 'Google Analytics 4',
-    'description' => 'Integration erfolgt via GoogleTagmanager und gtags.',
+    'description' => "Dieses Modul bietet die Möglichkeit in Ihrem OXID eShop (6.x) die neue 'Property' 
+                      Google Analytics 4 (GA4) von Google zu integrieren.<br>
+                      Hierfür stehen Ihnen verschiedene 'templates' zur verfügung, 
+                      mit denen Sie bestimmte Events tracken können.<br>
+                      Beispiele dafür sind: view_item, add_to_basket, purchase, ...<br>
+                      Die Integration und Verbindung zu Google wird mti Hilfe des gtag (Google Tag Manager) erstellt.
+                      ",
     'thumbnail'   => 'thumbnail.png',
     'version'     => '1.0.0.0',
     'author'      => 'Data Development (Inh.: Thomas Dartsch)',
