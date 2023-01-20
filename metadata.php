@@ -13,7 +13,8 @@ $aModule          = [
                       Hierfür stehen Ihnen verschiedene 'templates' zur verfügung, 
                       mit denen Sie bestimmte Events tracken können.<br>
                       Beispiele dafür sind: view_item, add_to_basket, purchase, ...<br>
-                      Die Integration und Verbindung zu Google wird mti Hilfe des gtag (Google Tag Manager) erstellt.
+                      Die Integration und Verbindung zu Google wird mti Hilfe des gtag (Google Tag Manager) erstellt.<hr>
+                      Ursprüngliche Entwicklung: Marat Bedoev - <a href='https://github.com/vanilla-thunder/oxid-module-gtm'>Github-Link</a>
                       ",
     'thumbnail'   => 'thumbnail.png',
     'version'     => '1.0.0.0',
@@ -25,23 +26,23 @@ $aModule          = [
     ],
     'templates'   => [
         // GA4 events
-        'ga4_add_payment_info.tpl' => 'vt/GoogleTagManager/Application/views/ga4/add_payment_info.tpl',
-        'add_shipping_info.tpl'    => 'vt/GoogleTagManager/Application/views/ga4/add_shipping_info.tpl',
-        'ga4_add_to_cart.tpl'      => 'vt/GoogleTagManager/Application/views/ga4/add_to_cart.tpl',
-        'ga4_begin_checkout.tpl'   => 'vt/GoogleTagManager/Application/views/ga4/begin_checkout.tpl',
-        'ga4_generate_lead.tpl'    => 'vt/GoogleTagManager/Application/views/ga4/generate_lead.tpl',
-        'ga4_login.tpl'            => 'vt/GoogleTagManager/Application/views/ga4/login.tpl',
-        'ga4_purchase.tpl'         => 'vt/GoogleTagManager/Application/views/ga4/purchase.tpl',
-        'ga4_remove_from_cart.tpl' => 'vt/GoogleTagManager/Application/views/ga4/remove_from_cart.tpl',
-        'ga4_search.tpl'           => 'vt/GoogleTagManager/Application/views/ga4/search.tpl',
-        'ga4_select_content.tpl'   => 'vt/GoogleTagManager/Application/views/ga4/select_content.tpl',
-        'ga4_select_item.tpl'      => 'vt/GoogleTagManager/Application/views/ga4/select_item.tpl',
-        'ga4_select_promotion.tpl' => 'vt/GoogleTagManager/Application/views/ga4/select_promotion.tpl',
-        'ga4_sign_up.tpl'          => 'vt/GoogleTagManager/Application/views/ga4/sign_up.tpl',
-        'ga4_view_cart.tpl'        => 'vt/GoogleTagManager/Application/views/ga4/view_cart.tpl',
-        'ga4_view_item.tpl'        => 'vt/GoogleTagManager/Application/views/ga4/view_item.tpl',
-        'ga4_view_item_list.tpl'   => 'vt/GoogleTagManager/Application/views/ga4/view_item_list.tpl',
-        'ga4_view_promotion.tpl'   => 'vt/GoogleTagManager/Application/views/ga4/view_promotion.tpl',
+        'ga4_add_payment_info.tpl' => 'd3/googleanalytics4/Application/views/ga4/add_payment_info.tpl',
+        'add_shipping_info.tpl'    => 'd3/googleanalytics4/Application/views/ga4/add_shipping_info.tpl',
+        'ga4_add_to_cart.tpl'      => 'd3/googleanalytics4/Application/views/ga4/add_to_cart.tpl',
+        'ga4_begin_checkout.tpl'   => 'd3/googleanalytics4/Application/views/ga4/begin_checkout.tpl',
+        'ga4_generate_lead.tpl'    => 'd3/googleanalytics4/Application/views/ga4/generate_lead.tpl',
+        'ga4_login.tpl'            => 'd3/googleanalytics4/Application/views/ga4/login.tpl',
+        'ga4_purchase.tpl'         => 'd3/googleanalytics4/Application/views/ga4/purchase.tpl',
+        'ga4_remove_from_cart.tpl' => 'd3/googleanalytics4/Application/views/ga4/remove_from_cart.tpl',
+        'ga4_search.tpl'           => 'd3/googleanalytics4/Application/views/ga4/search.tpl',
+        'ga4_select_content.tpl'   => 'd3/googleanalytics4/Application/views/ga4/select_content.tpl',
+        'ga4_select_item.tpl'      => 'd3/googleanalytics4/Application/views/ga4/select_item.tpl',
+        'ga4_select_promotion.tpl' => 'd3/googleanalytics4/Application/views/ga4/select_promotion.tpl',
+        'ga4_sign_up.tpl'          => 'd3/googleanalytics4/Application/views/ga4/sign_up.tpl',
+        'ga4_view_cart.tpl'        => 'd3/googleanalytics4/Application/views/ga4/view_cart.tpl',
+        'ga4_view_item.tpl'        => 'd3/googleanalytics4/Application/views/ga4/view_item.tpl',
+        'ga4_view_item_list.tpl'   => 'd3/googleanalytics4/Application/views/ga4/view_item_list.tpl',
+        'ga4_view_promotion.tpl'   => 'd3/googleanalytics4/Application/views/ga4/view_promotion.tpl',
         /*
         'gtm_ua_impression' => 'vt/GoogleTagManager/Application/views/ua/impression.tpl'
         'gtm_view_promotion.tpl'   => 'vt/GoogleTagManager/Application/views/view_promotion.tpl',
@@ -152,21 +153,6 @@ $aModule          = [
             'value'    => true,
             'position' => 1
         ],
-        [
-            'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_blUAenabled',
-            'type'     => 'bool',
-            'value'    => true,
-            'position' => 2
-        ],
-        /*[
-            I have no idea what this is
-            'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_sMpapisecret',
-            'type'     => 'str',
-            'value'    => '',
-            'position' => 3
-        ],*/
         [
             'group'    => 'vt_gtm_settings',
             'name'     => 'vt_gtm_aPromotionlistIDs',
