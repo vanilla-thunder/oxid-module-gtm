@@ -48,7 +48,7 @@ Sofern nötig, bestätigen Sie bitte, dass Sie `package-name` erlauben, Code aus
 Aktivieren Sie das Modul im Shopadmin unter "Erweiterungen -> Module".
 
 ## Verwendung
-
+### Grundfunktionalität
 Nach erfolgreicher Installation finden Sie in Ihrem Shop-Admin unter "Erweiterungen > Module" 
 den Eintrag 'Google Analytics 4'.
 Aktivieren Sie dieses Modul, um die Funktionalitäten nutzen zu können.
@@ -57,6 +57,33 @@ Navigieren Sie danach zum Reiter 'Einstell.'.
 Tragen Sie die nötige sog. 'Container ID' ein. Diese sieht in etwa so aus: 'GTM-W34LLOP'.
 
 Aktivieren Sie GA4 selbst, indem Sie dieses direkt darunter anhaken.
+
+### Blöcke
+Für den geregelten Ablauf sind folgende Blöcke nötig:
+- Suchergebnisse
+  - Blockname: search_results 
+  - Datei: page/search/search.tpl
+  - GA4 Event: view_search_results
+- Artikelliste
+  - Blockname: d3Ga4_view_item_list (muss hinzugefügt werden) 
+  - Datei: widget/product/list.tpl
+  - GA4 Event: view_item_list
+- Detailseite
+  - Blockname: details_productmain_title
+  - Datei: page/details/inc/productmain.tpl
+  - GA4 Event: view_item
+- dem WK hinzufügen (button)
+  - Blockname: details_productmain_tobasket
+  - Datei: page/details/inc/productmain.tpl
+  - GA4 Event: add_to_cart
+- Warenkorb
+  - Blockname: checkout_basket_main
+  - Datei: page/checkout/basket.tpl
+  - GA4 Event: view_cart
+- abgeschlossener Kauf
+  - Blockname: checkout_thankyou_main
+  - Datei: page/checkout/thankyou.tpl
+  - GA4 Event: purchase
 
 ---
 
