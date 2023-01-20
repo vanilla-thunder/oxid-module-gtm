@@ -1,12 +1,18 @@
+[{assign var="gtmProducts" value=$products}]
+
+[{assign var="breadCrumb" value=''}]
+
 [{if $gtmProducts|@count}]
 [{strip}]
     <script>
         /* ga4 */
         dataLayer.push({ecommerce: null});
         dataLayer.push({
-            'event':'GA4_event',
+            'event':'view_item_list',
             'event_name': 'view_item_list',
             'ecommerce': {
+              'item_list_id': '[{$oView->getCategoryId()}]',
+              'item_list_name': '[{foreach from=$oView->getBreadCrumb() item=sCrum}][{if $sCrum.title }][{$breadCrumb|cat:$sCrum.title|cat:" > "}][{/if}][{/foreach}]',
                 'items': [
                     [{foreach from=$gtmProducts name="gtmProducts" item="gtmProduct"}]
                     [{assign var="gtmManufacturer" value=$gtmProduct->getManufacturer()}]
@@ -18,29 +24,6 @@
                         'item_brand': '[{if $gtmManufacturer}][{$gtmManufacturer->oxmanufacturers__oxtitle->value}][{/if}]',
                         'item_category': '[{if $gtmCategory}][{$gtmCategory->getLink()|parse_url:5|ltrim:"/"|rtrim:"/"}][{else}]-[{/if}]',
                         'quantity': 1
-                    }[{if !$smarty.foreach.gtmProducts.last}],[{/if}]
-                    [{/foreach}]
-                ]
-            }
-        });
-        /* ua */
-        dataLayer.push({ecommerce: null});
-        dataLayer.push({
-            'event':'UA_event',
-            'event_name': 'view_item_list',
-            'ecommerce': {
-                'currencyCode':'EUR',
-                'impressions': [
-                    [{foreach from=$gtmProducts name="gtmProducts" item="gtmProduct"}]
-                    [{assign var="gtmManufacturer" value=$gtmProduct->getManufacturer()}]
-                    [{if !$gtmCategory}][{assign var="gtmCategory" value=$gtmProduct->getCategory()}][{/if}]
-                    {
-                        'id': '[{$gtmProduct->getFieldData("oxartnum")}]',
-                        'name': '[{$gtmProduct->getFieldData("oxtitle")}]',
-                        'price': [{$gtmProduct->oxarticles__oxprice->value|default:'0'}],
-                        'brand': '[{if $gtmManufacturer}][{$gtmManufacturer->oxmanufacturers__oxtitle->value}][{/if}]',
-                        'category': '[{if $gtmCategory}][{$gtmCategory->getLink()|parse_url:5|ltrim:"/"|rtrim:"/"}][{else}]-[{/if}]',
-                        'position': [{$smarty.foreach.gtmProducts.iterator|default:1}]
                     }[{if !$smarty.foreach.gtmProducts.last}],[{/if}]
                     [{/foreach}]
                 ]

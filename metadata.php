@@ -1,49 +1,50 @@
 <?php
-/**
- * vanilla-thunder/oxid-module-gtm
- * Google Tag Manager Integration for OXID eShop v6.2+
- *
- * This program is free software;
- * you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation;
- * either version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses/>
- **/
+
+
+use D3\GoogleAnalytics4\Modules\Core\ViewConfig;
+use OxidEsales\Eshop\Core\ViewConfig as OEViewConfig;
 
 $sMetadataVersion = '2.1';
 $aModule          = [
-    'id'          => 'vt-gtm',
-    'title'       => '[vt] Google Tag Manager',
-    'description' => 'Google Tag Manager Integration for OXID eShop v6.2+',
+    'id'          => 'd3googleanalytics4',
+    'title'       => 'Google Analytics 4',
+    'description' => "Dieses Modul bietet die Möglichkeit in Ihrem OXID eShop (6.x) die neue 'Property' 
+                      Google Analytics 4 (GA4) von Google zu integrieren.<br>
+                      Hierfür stehen Ihnen verschiedene 'templates' zur verfügung, 
+                      mit denen Sie bestimmte Events tracken können.<br>
+                      Beispiele dafür sind: view_item, add_to_basket, purchase, ...<br><br>
+                      Die Integration und Verbindung zu Google wird mithilfe des gtag (Google Tag Manager) realisiert.<br><br>
+                      Weiterführende Informationen: https://developers.google.com/analytics/devguides/collection/ga4<br>
+                      <hr>
+                      Die Entwicklung basiert auf einem Fork von Marat Bedoev - <a href='https://github.com/vanilla-thunder/oxid-module-gtm'>Github-Link</a>
+                      ",
     'thumbnail'   => 'thumbnail.png',
-    'version'     => '0.5.0 ( 2021-07-17 )',
-    'author'      => 'Marat Bedoev',
-    'email'       => openssl_decrypt("Az6pE7kPbtnTzjHlPhPCa4ktJLphZ/w9gKgo5vA//p4=", str_rot13("nrf-128-pop"), str_rot13("gvalzpr")),
-    'url'         => 'https://github.com/vanilla-thunder/oxid-module-gtm',
+    'version'     => '1.0.0.0',
+    'author'      => 'Data Development (Inh.: Thomas Dartsch)',
+    'email'       => 'support@shopmodule.com',
+    'url'         => 'https://www.oxidmodule.com/',
     'extend'      => [
-        \OxidEsales\Eshop\Core\ViewConfig::class => VanillaThunder\GoogleTagManager\Application\Extend\ViewConfig::class
+        OEViewConfig::class => ViewConfig::class
     ],
     'templates'   => [
         // GA4 events
-        'ga4_add_payment_info.tpl' => 'vt/GoogleTagManager/Application/views/ga4/add_payment_info.tpl',
-        'add_shipping_info.tpl'    => 'vt/GoogleTagManager/Application/views/ga4/add_shipping_info.tpl',
-        'ga4_add_to_cart.tpl'      => 'vt/GoogleTagManager/Application/views/ga4/add_to_cart.tpl',
-        'ga4_begin_checkout.tpl'   => 'vt/GoogleTagManager/Application/views/ga4/begin_checkout.tpl',
-        'ga4_generate_lead.tpl'    => 'vt/GoogleTagManager/Application/views/ga4/generate_lead.tpl',
-        'ga4_login.tpl'            => 'vt/GoogleTagManager/Application/views/ga4/login.tpl',
-        'ga4_purchase.tpl'         => 'vt/GoogleTagManager/Application/views/ga4/purchase.tpl',
-        'ga4_remove_from_cart.tpl' => 'vt/GoogleTagManager/Application/views/ga4/remove_from_cart.tpl',
-        'ga4_search.tpl'           => 'vt/GoogleTagManager/Application/views/ga4/search.tpl',
-        'ga4_select_content.tpl'   => 'vt/GoogleTagManager/Application/views/ga4/select_content.tpl',
-        'ga4_select_item.tpl'      => 'vt/GoogleTagManager/Application/views/ga4/select_item.tpl',
-        'ga4_select_promotion.tpl' => 'vt/GoogleTagManager/Application/views/ga4/select_promotion.tpl',
-        'ga4_sign_up.tpl'          => 'vt/GoogleTagManager/Application/views/ga4/sign_up.tpl',
-        'ga4_view_cart.tpl'        => 'vt/GoogleTagManager/Application/views/ga4/view_cart.tpl',
-        'ga4_view_item.tpl'        => 'vt/GoogleTagManager/Application/views/ga4/view_item.tpl',
-        'ga4_view_item_list.tpl'   => 'vt/GoogleTagManager/Application/views/ga4/view_item_list.tpl',
-        'ga4_view_promotion.tpl'   => 'vt/GoogleTagManager/Application/views/ga4/view_promotion.tpl',
+        'ga4_add_payment_info.tpl' => 'd3/googleanalytics4/Application/views/ga4/add_payment_info.tpl',
+        'add_shipping_info.tpl'    => 'd3/googleanalytics4/Application/views/ga4/add_shipping_info.tpl',
+        'ga4_add_to_cart.tpl'      => 'd3/googleanalytics4/Application/views/ga4/add_to_cart.tpl',
+        'ga4_begin_checkout.tpl'   => 'd3/googleanalytics4/Application/views/ga4/begin_checkout.tpl',
+        'ga4_generate_lead.tpl'    => 'd3/googleanalytics4/Application/views/ga4/generate_lead.tpl',
+        'ga4_login.tpl'            => 'd3/googleanalytics4/Application/views/ga4/login.tpl',
+        'ga4_purchase.tpl'         => 'd3/googleanalytics4/Application/views/ga4/purchase.tpl',
+        'ga4_remove_from_cart.tpl' => 'd3/googleanalytics4/Application/views/ga4/remove_from_cart.tpl',
+        'ga4_search.tpl'           => 'd3/googleanalytics4/Application/views/ga4/search.tpl',
+        'ga4_select_content.tpl'   => 'd3/googleanalytics4/Application/views/ga4/select_content.tpl',
+        'ga4_select_item.tpl'      => 'd3/googleanalytics4/Application/views/ga4/select_item.tpl',
+        'ga4_select_promotion.tpl' => 'd3/googleanalytics4/Application/views/ga4/select_promotion.tpl',
+        'ga4_sign_up.tpl'          => 'd3/googleanalytics4/Application/views/ga4/sign_up.tpl',
+        'ga4_view_cart.tpl'        => 'd3/googleanalytics4/Application/views/ga4/view_cart.tpl',
+        'ga4_view_item.tpl'        => 'd3/googleanalytics4/Application/views/ga4/view_item.tpl',
+        'ga4_view_item_list.tpl'   => 'd3/googleanalytics4/Application/views/ga4/view_item_list.tpl',
+        'ga4_view_promotion.tpl'   => 'd3/googleanalytics4/Application/views/ga4/view_promotion.tpl',
         /*
         'gtm_ua_impression' => 'vt/GoogleTagManager/Application/views/ua/impression.tpl'
         'gtm_view_promotion.tpl'   => 'vt/GoogleTagManager/Application/views/view_promotion.tpl',
@@ -80,7 +81,8 @@ $aModule          = [
         [
             'template' => 'page/details/inc/productmain.tpl',
             'block'    => 'details_productmain_title',
-            'file'     => '/Application/views/blocks/detail.tpl'
+            'file'     => '/Application/views/blocks/detail.tpl',
+            'position' => 150
         ],
         // checkout
         [
@@ -117,6 +119,25 @@ $aModule          = [
             'template' => 'page/checkout/thankyou.tpl',
             'block'    => 'checkout_thankyou_main',
             'file'     => '/Application/views/blocks/checkout_s5.tpl'
+        ],
+        // Lists
+        // view_item_list
+        [
+            'template' => 'widget/product/list.tpl',
+            'block'    => 'd3Ga4_view_item_list',
+            'file'     => '/Application/views/ga4/view_item_list.tpl'
+        ],
+        // view_search_result
+        [
+            'template' => 'page/search/search.tpl',
+            'block'    => 'search_results',
+            'file'     => '/Application/views/ga4/search.tpl'
+        ],
+        // add_to_cart
+        [
+            'template' => 'page/details/inc/productmain.tpl',
+            'block'    => 'details_productmain_tobasket',
+            'file'     => '/Application/views/ga4/add_to_cart.tpl'
         ]
     ],
     'settings'    => [
@@ -129,31 +150,10 @@ $aModule          = [
         ],
         [
             'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_blGA4enabled',
+            'name'     => 'vt_gtm_blGA4enab',
             'type'     => 'bool',
             'value'    => true,
             'position' => 1
-        ],
-        [
-            'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_blUAenabled',
-            'type'     => 'bool',
-            'value'    => true,
-            'position' => 2
-        ],
-        [
-            'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_sMpapisecret',
-            'type'     => 'str',
-            'value'    => '',
-            'position' => 3
-        ],
-        [
-            'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_aPromotionlistIDs',
-            'type'     => 'arr',
-            'value'    => [],
-            'position' => 4
         ],
         [
             'group'    => 'vt_gtm_settings',
@@ -161,7 +161,20 @@ $aModule          = [
             'type'     => 'bool',
             'value'    => false,
             'position' => 999
-        ]
-
+        ],
+        [
+            'group'    => 'vt_gtm_settings_cookiemanager',
+            'name'     => 'vt_gtm_settings_hasOwnCookieManager',
+            'type'     => 'bool',
+            'value'    => false,
+            'position' => 999
+        ],
+        [
+            'group'    => 'vt_gtm_settings_cookiemanager',
+            'name'     => 'vt_gtm_settings_cookieName',
+            'type'     => 'str',
+            'value'    => 'example',
+            'position' => 999
+        ],
     ]
 ];

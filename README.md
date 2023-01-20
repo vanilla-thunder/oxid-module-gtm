@@ -1,60 +1,96 @@
-# [vt] Google Tag Manager  
-Google Tag Manager integration for OXID eShop v6.2 und höher  
-module version 0.5.0 ( 2021-12-10 )
+[![deutsche Version](https://logos.oxidmodule.com/de2_xs.svg)](README.md)
+
+# ![D3 Logo](https://logos.oxidmodule.com/d3logo_24x24.svg) Google-Analytics 4 für OXID eShop
+
+Dieses Modul bietet die Möglichkeit in Ihrem OXID eShop (6.x) die neue 'Property' Google Analytics 4 (GA4) von Google
+zu integrieren.  
+Hierfür stehen Ihnen verschiedene 'templates' zur verfügung, mit denen Sie bestimmte Events tracken können.  
+Beispiele dafür sind: view_item, add_to_basket, purchase, ...
+
+Weiterführende Informationen: https://developers.google.com/analytics/devguides/collection/ga4
+
+## Inhaltsverzeichnis
+
+- [Installation](#installation)
+- [Verwendung](#verwendung)
+- [Changelog](#changelog)
+- [Lizenz](#lizenz)
 
 ## Installation
-* ``composer require vanilla-thunder/oxid-module-gtm --no-update``
-* Modul aktivieren und Moduleinstellungen konfigurieren
 
-## Tag Manager konfigurieren:
-+ https://support.google.com/tagmanager/answer/9442095
+Dieses Paket erfordert einen mit Composer installierten OXID eShop in einer in der [composer.json](composer.json) definierten Version.
 
-## Google Analytics 4 Einrichtung
+Bitte tragen Sie den folgenden Abschnitt in die `composer.json` Ihres Projektes ein:
 
-## GA4 Events / Customizing
-für alle implementierten GA4 Events existieren Templates unter `source/modules/GoogleTagManager/Application/views/ga4/`, dabei entspricht der Dateiname dem Eventnamen in GA4. 
-Die Einbindung dieser Event-Templates erfolgt über TPL-Blöcke unter `source/modules/GoogleTagManager/Application/views/blocks/`.   
+```
+  "extra": {
+    "oxideshop": {
+      "blacklist-filter": [
+        "*.md",
+        "composer.json",
+        ".php-cs-fixer.php",
+        "*.xml",
+        "*.neon"
+      ],
+      "target-directory": "d3/googleanalytics"
+  }
+```
 
-## Universal Analytics Events
-
-**"EE-Trigger" für Ecomemrce-Tags (Beispiel für Google Tag Manager):**
-+ Triggertyp: Benutzerdefiniertes Ereignis
-+ Ereignisname: ``ee\..*``
-+ Übereinstimmung mit regulärem Ausdruck verwenden
-+ Diesen Trigger auslösen bei: Alle benutzerdefinierten Ereignisse
-
-**"EE-Tag" für Google Analytics Enhanced Ecommerce:**
-+ Tag-Typ: Google Analytics - Universal Analytics
-+ Tracking-Typ: Ereignis
-+ Aktion: {{Event}}
-+ Label: {{Event Label}}
-+ Trigger : EE-Trigger
-
-## Verfügbare Datalayer Variablen 
-Für die einfachste Übersicht der enthaltenen Daten empfehle ich den Vorschau-Modus vom Google Tag Manager.
-
-Bei jedem Seitenaufruf wird die Datenschicht mit einigen wenigen Infos erstellt, die man zum reinen Erfassen der Seitenaufrufe benötigt:
- + **page.type** - Seitentyp: default / cms / product / listing / checkout (an google analytics angelehnt) 
- + **page.title** - Seitentitel (außer Startseite, sie hat keinen Titel. Danke OXID...)
- + **page.cl** - OXID Controller Klasse (start, search, etc)
- + **userid** - oxID vom Benutzer bzw `false` falls nicht eingeloggt
- + **sessionid** - session iD
- 
-Alle für Ecommerce Tracking releavanten Daten werden mit speziellen Ecommerce Events in die Datenschicht eingefügt.
-Hier ist ein Beispiel für die Einrichtung von Enhanced Ecomemrce Tracking über Google Tag Manager:
+Öffnen Sie eine Kommandozeile und navigieren Sie zum Stammverzeichnis des Shops (Elternverzeichnis von source und vendor). Führen Sie den folgenden Befehl aus. Passen Sie die Pfadangaben an Ihre Installationsumgebung an.
 
 
+```bash
+php composer require d3/google-analytics4:^1
+```
 
+Sofern nötig, bestätigen Sie bitte, dass Sie `package-name` erlauben, Code auszuführen.
 
-### LICENSE AGREEMENT
-   [vt] google-tag-manager  
-   Copyright (C) 2021 Marat Bedoev  
-   info:  info@mb-dev.pro oder so /** @todo: überarbeiten, wenn ich wieder nüchtern bin */  
-  
-   This program is free software;  
-   you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation;
-   either version 3 of the License, or (at your option) any later version.
-  
-   This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;  
-   without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-   You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses/>
+Aktivieren Sie das Modul im Shopadmin unter "Erweiterungen -> Module".
+
+## Verwendung
+
+Nach erfolgreicher Installation finden Sie in Ihrem Shop-Admin unter "Erweiterungen > Module" 
+den Eintrag 'Google Analytics 4'.
+Aktivieren Sie dieses Modul, um die Funktionalitäten nutzen zu können.
+
+Navigieren Sie danach zum Reiter 'Einstell.'.
+Tragen Sie die nötige sog. 'Container ID' ein. Diese sieht in etwa so aus: 'GTM-W34LLOP'.
+
+Aktivieren Sie GA4 selbst, indem Sie dieses direkt darunter anhaken.
+
+---
+
+Sie nutzen einen eigenen, als Modul im Shop installierten, Cookie-manager? Dann tragen Sie in den Folgeeinstellungen 
+unter "Cookie Manager Einstellungen", die Cookie-ID des zugehörigen Cookies ein. Und aktivieren Sie diese Weiche,
+indem Sie den Haken bei "Eigenen Cookie Manager nutzen?" setzen.
+
+## Changelog
+
+Siehe [CHANGELOG](CHANGELOG.md) für weitere Informationen.
+
+## Beitragen
+
+Wenn Sie einen Verbesserungsvorschlag haben, legen Sie einen Fork des Repositories an und erstellen Sie einen Pull Request. Alternativ können Sie einfach ein Issue erstellen. Fügen Sie das Projekt zu Ihren Favoriten hinzu. Vielen Dank.
+
+- Erstellen Sie einen Fork des Projekts
+- Erstellen Sie einen Feature Branch (git checkout -b feature/AmazingFeature)
+- Fügen Sie Ihre Änderungen hinzu (git commit -m 'Add some AmazingFeature')
+- Übertragen Sie den Branch (git push origin feature/AmazingFeature)
+- Öffnen Sie einen Pull Request
+
+## Lizenz
+(Stand: 06.05.2021)
+
+Vertrieben unter der GPLv3 Lizenz.
+
+```
+Copyright (c) D3 Data Development (Inh. Thomas Dartsch)
+
+Diese Software wird unter der GNU GENERAL PUBLIC LICENSE Version 3 vertrieben.
+```
+
+Die vollständigen Copyright- und Lizenzinformationen entnehmen Sie bitte der [LICENSE](LICENSE.md)-Datei, die mit diesem Quellcode verteilt wurde.
+
+## weitere Lizenzen und Nutzungsbedingungen
+
+...
