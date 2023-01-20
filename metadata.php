@@ -12,9 +12,11 @@ $aModule          = [
                       Google Analytics 4 (GA4) von Google zu integrieren.<br>
                       Hierfür stehen Ihnen verschiedene 'templates' zur verfügung, 
                       mit denen Sie bestimmte Events tracken können.<br>
-                      Beispiele dafür sind: view_item, add_to_basket, purchase, ...<br>
-                      Die Integration und Verbindung zu Google wird mti Hilfe des gtag (Google Tag Manager) erstellt.<hr>
-                      Ursprüngliche Entwicklung: Marat Bedoev - <a href='https://github.com/vanilla-thunder/oxid-module-gtm'>Github-Link</a>
+                      Beispiele dafür sind: view_item, add_to_basket, purchase, ...<br><br>
+                      Die Integration und Verbindung zu Google wird mithilfe des gtag (Google Tag Manager) realisiert.<br><br>
+                      Weiterführende Informationen: https://developers.google.com/analytics/devguides/collection/ga4<br>
+                      <hr>
+                      Die Entwicklung basiert auf einem Fork von Marat Bedoev - <a href='https://github.com/vanilla-thunder/oxid-module-gtm'>Github-Link</a>
                       ",
     'thumbnail'   => 'thumbnail.png',
     'version'     => '1.0.0.0',
@@ -152,13 +154,6 @@ $aModule          = [
             'type'     => 'bool',
             'value'    => true,
             'position' => 1
-        ],
-        [
-            'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_aPromotionlistIDs',
-            'type'     => 'arr',
-            'value'    => [],
-            'position' => 4
         ],
         [
             'group'    => 'vt_gtm_settings',

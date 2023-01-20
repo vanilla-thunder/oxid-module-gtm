@@ -3,9 +3,11 @@
 # ![D3 Logo](https://logos.oxidmodule.com/d3logo_24x24.svg) Google-Analytics 4 für OXID eShop
 
 Dieses Modul bietet die Möglichkeit in Ihrem OXID eShop (6.x) die neue 'Property' Google Analytics 4 (GA4) von Google
-zu integrieren.
-Hierfür stehen Ihnen verschiedene 'templates' zur verfügung, mit denen Sie bestimmte Events tracken können.
+zu integrieren.  
+Hierfür stehen Ihnen verschiedene 'templates' zur verfügung, mit denen Sie bestimmte Events tracken können.  
 Beispiele dafür sind: view_item, add_to_basket, purchase, ...
+
+Weiterführende Informationen: https://developers.google.com/analytics/devguides/collection/ga4
 
 ## Inhaltsverzeichnis
 
