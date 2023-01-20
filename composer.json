@@ -1,6 +1,6 @@
 {
   "name": "d3/google-analytics4",
-  "description": "Google Tag Manager with new Google Analytics 4 for OXID eShop 6.x",
+  "description": "Google Tag Manager with new Google Analytics 4 for OXID eShop v6",
   "type": "oxideshop-module",
   "keywords": [
     "oxid",
@@ -11,8 +11,7 @@
     "ga4",
     "googleanalytics",
     "gtm",
-    "configuration",
-    "license"
+    "configuration"
   ],
   "homepage": "https://www.d3data.de",
   "license": [
