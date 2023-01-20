@@ -13,7 +13,7 @@
  * You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses/>
  */
 
-namespace VanillaThunder\GoogleTagManager\Application\Extend;
+namespace D3\GoogleAnalytics4\Modules\Core;
 
 use OxidEsales\Eshop\Application\Controller\FrontendController;
 use OxidEsales\Eshop\Core\Registry;
@@ -30,7 +30,10 @@ class ViewConfig extends ViewConfig_parent
     {
         if ($this->sContainerId === null)
         {
-            $this->sContainerId = $this->getConfig()->getConfigParam('vt_gtm_sContainerID');
+            $this->sContainerId = ContainerFactory::getInstance()
+                                                  ->getContainer()
+                                                  ->get(ModuleSettingBridgeInterface::class)
+                                                  ->get('vt_gtm_sContainerID', 'vt-gtm');
         }
         return $this->sContainerId;
     }
@@ -41,7 +44,10 @@ class ViewConfig extends ViewConfig_parent
     {
         if ($this->blGA4enabled === null)
         {
-            $this->sContainerId = $this->getConfig()->getConfigParam('vt_gtm_blEnableGA4');
+            $this->sContainerId = ContainerFactory::getInstance()
+                                                  ->getContainer()
+                                                  ->get(ModuleSettingBridgeInterface::class)
+                                                  ->get('vt_gtm_blEnableGA4', 'vt-gtm');
         }
 
         return $this->blGA4enabled;
@@ -81,7 +87,7 @@ class ViewConfig extends ViewConfig_parent
             //'httpref'   => $_SERVER["HTTP_REFERER"] ?? "unknown"
         ];
 
-        #return json_encode([$dataLayer], JSON_PRETTY_PRINT);
+        return json_encode([$dataLayer], JSON_PRETTY_PRINT);
 
         unset($dataLayer["user"]["http"]); // das brauchen wir hier nicht
 
