@@ -58,6 +58,12 @@ Tragen Sie die nötige sog. 'Container ID' ein. Diese sieht in etwa so aus: 'GTM
 
 Aktivieren Sie GA4 selbst, indem Sie dieses direkt darunter anhaken.
 
+### GA4 Events / Customizing
+Für alle implementierten GA4 Events existieren Templates unter `source/modules/d3/googleanalytics4/Application/views/ga4/`, dabei entspricht der Dateiname dem Eventnamen in GA4.
+Die Einbindung dieser Event-Templates erfolgt über TPL-Blöcke unter `source/modules/d3/googleanalytics4/Application/views/blocks/`.  
+*Hinweis: nicht alle templates sind bereits gefüllt. Wünschen Sie die Implementierung eines unausgefüllten templates?
+Kommen Sie auf uns zu unter https://www.d3data.de/
+
 ### Blöcke
 Für den geregelten Ablauf sind folgende Blöcke nötig:
 - Suchergebnisse
@@ -84,6 +90,18 @@ Für den geregelten Ablauf sind folgende Blöcke nötig:
   - Blockname: checkout_thankyou_main
   - Datei: page/checkout/thankyou.tpl
   - GA4 Event: purchase
+
+### Verfügbare Datalayer Variablen
+Für die einfachste Übersicht der enthaltenen Daten empfehle ich den Vorschau-Modus vom Google Tag Manager.
+
+Bei jedem Seitenaufruf wird die Datenschicht mit einigen wenigen Infos erstellt, die man zum reinen Erfassen der Seitenaufrufe benötigt:
++ **page.type** - Seitentyp: default / cms / product / listing / checkout (an google analytics angelehnt)
++ **page.title** - Seitentitel (außer Startseite, sie hat keinen Titel)
++ **page.cl** - OXID Controller Klasse (start, search, etc)
++ **userid** - oxId vom Benutzer bzw `false` falls nicht eingeloggt
++ **sessionid** - session iD
+
+Alle für Ecommerce Tracking relevanten Daten werden mit speziellen Ecommerce Events in die Datenschicht eingefügt.
 
 ---
 
