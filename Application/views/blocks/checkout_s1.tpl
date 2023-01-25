@@ -11,7 +11,7 @@
         'ecommerce': {
             'actionField': "step: 1",
             'currency': "[{$currency->name}]",
-            'value': [{$oxcmp_basket->getBruttoSum()}],
+            'value': [{oxprice price=$oxcmp_basket->getPrice()}],
             'items': [
                 [{foreach from=$oxcmp_basket->getContents() item=basketitem name=gtmCartContents  key=basketindex}]
                 [{assign var='_price' value=$basketitem->getUnitPrice()}]
