@@ -3,6 +3,7 @@
 [{*$gtmProduct|get_class_methods|dumpvar*}]
 
 [{capture assign=d3_ga4_add_to_cart}]
+[{block name="d3_ga4_add_to_basket"}]
   $("#toBasket").click(function(event) {
     [{*event.preventDefault();*}]
 
@@ -38,7 +39,7 @@
       }
     });
   });
-
+[{/block}]
 [{/capture}]
 [{oxscript add=$d3_ga4_add_to_cart}]
 
