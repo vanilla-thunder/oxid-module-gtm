@@ -7,3 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.0...2.0) - 2023-01-20
 ### Added
 - publication of app features
+
+## [1.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.0...1.0) - 2023-01-20
+### Added
+- publication of app features
