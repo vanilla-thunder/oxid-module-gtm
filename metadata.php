@@ -125,13 +125,15 @@ $aModule          = [
         [
             'template' => 'widget/product/list.tpl',
             'block'    => 'd3Ga4_view_item_list',
-            'file'     => '/Application/views/ga4/view_item_list.tpl'
+            'file'     => '/Application/views/ga4/view_item_list.tpl',
+            'position' => 150
         ],
         // view_search_result
         [
             'template' => 'page/search/search.tpl',
             'block'    => 'search_results',
-            'file'     => '/Application/views/ga4/search.tpl'
+            'file'     => '/Application/views/ga4/search.tpl',
+            'position' => 150
         ],
         // add_to_cart
         [
