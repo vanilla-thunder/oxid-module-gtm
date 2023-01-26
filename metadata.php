@@ -137,7 +137,8 @@ $aModule          = [
         [
             'template' => 'page/details/inc/productmain.tpl',
             'block'    => 'details_productmain_tobasket',
-            'file'     => '/Application/views/ga4/add_to_cart.tpl'
+            'file'     => '/Application/views/ga4/add_to_cart.tpl',
+            'position' => 150
         ]
     ],
     'settings'    => [
