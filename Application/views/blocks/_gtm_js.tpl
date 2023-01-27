@@ -16,7 +16,6 @@
           })(window, document, 'script', 'dataLayer', '[{$oViewConf->getGtmContainerId()}]');
         </script>
         <!-- End Google Tag Manager -->
-        [{$oViewConf->triggerGA4events()}]
         [{if $oViewConf->getTopActionClassName() === "alist" }]
         [{* include file="ga4_view_item_list.tpl" gtmCategory=$oView->getActiveCategory() gtmProducts=$oView->getArticleList() listtype=$oView->getListType() *}]
         [{elseif $oViewConf->getTopActionClassName() === "details" }]
@@ -46,7 +45,6 @@
       })(window, document, 'script', 'dataLayer', '[{$oViewConf->getGtmContainerId()}]');
     </script>
     <!-- End Google Tag Manager -->
-    [{$oViewConf->triggerGA4events()}]
     [{if $oViewConf->getTopActionClassName() === "alist" }]
     [{* include file="ga4_view_item_list.tpl" gtmCategory=$oView->getActiveCategory() gtmProducts=$oView->getArticleList() listtype=$oView->getListType() *}]
     [{elseif $oViewConf->getTopActionClassName() === "details" }]
