@@ -1,6 +1,6 @@
 [{assign var="d3VtConfigObject" value=$oViewConf->getConfig()}]
-[{if $d3VtConfigObject->getConfigParam('vt_gtm_settings_hasOwnCookieManager')}]
-    [{if $oViewConf->blAcceptedCookie($d3VtConfigObject->getConfigParam('vt_gtm_settings_cookieName'))}]
+[{if $d3VtConfigObject->getConfigParam('d3_gtm_settings_hasOwnCookieManager')}]
+    [{if $oViewConf->blAcceptedCookie($d3VtConfigObject->getConfigParam('d3_gtm_settings_cookieName'))}]
 
         [{if $oViewConf->getGtmContainerId()}][{strip}]
         <!-- Google Tag Manager -->

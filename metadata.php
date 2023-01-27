@@ -46,10 +46,10 @@ $aModule          = [
         'ga4_view_item_list.tpl'   => 'd3/googleanalytics4/Application/views/ga4/view_item_list.tpl',
         'ga4_view_promotion.tpl'   => 'd3/googleanalytics4/Application/views/ga4/view_promotion.tpl',
         /*
-        'gtm_ua_impression' => 'vt/GoogleTagManager/Application/views/ua/impression.tpl'
-        'gtm_view_promotion.tpl'   => 'vt/GoogleTagManager/Application/views/view_promotion.tpl',
-        'gtm_select_promotion.tpl' => 'vt/GoogleTagManager/Application/views/select_promotion.tpl',
-        'gtm_begin_checkout.tpl'   => 'vt/GoogleTagManager/Application/views/begin_checkout.tpl',
+        'gtm_ua_impression' => 'd3/GoogleTagManager/Application/views/ua/impression.tpl'
+        'gtm_view_promotion.tpl'   => 'd3/GoogleTagManager/Application/views/view_promotion.tpl',
+        'gtm_select_promotion.tpl' => 'd3/GoogleTagManager/Application/views/select_promotion.tpl',
+        'gtm_begin_checkout.tpl'   => 'd3/GoogleTagManager/Application/views/begin_checkout.tpl',
         */
     ],
     'blocks'      => [
@@ -143,36 +143,36 @@ $aModule          = [
     ],
     'settings'    => [
         [
-            'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_sContainerID',
+            'group'    => 'd3_gtm_settings',
+            'name'     => 'd3_gtm_sContainerID',
             'type'     => 'str',
             'value'    => 'GTM-',
             'position' => 0
         ],
         [
-            'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_blGA4enab',
+            'group'    => 'd3_gtm_settings',
+            'name'     => 'd3_gtm_sContainerID',
             'type'     => 'bool',
             'value'    => true,
             'position' => 1
         ],
         [
-            'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_blEnableDebug',
+            'group'    => 'd3_gtm_settings',
+            'name'     => 'd3_gtm_blEnableDebug',
             'type'     => 'bool',
             'value'    => false,
             'position' => 999
         ],
         [
-            'group'    => 'vt_gtm_settings_cookiemanager',
-            'name'     => 'vt_gtm_settings_hasOwnCookieManager',
+            'group'    => 'd3_gtm_settings_cookiemanager',
+            'name'     => 'd3_gtm_settings_hasOwnCookieManager',
             'type'     => 'bool',
             'value'    => false,
             'position' => 999
         ],
         [
-            'group'    => 'vt_gtm_settings_cookiemanager',
-            'name'     => 'vt_gtm_settings_cookieName',
+            'group'    => 'd3_gtm_settings_cookiemanager',
+            'name'     => 'd3_gtm_settings_cookieName',
             'type'     => 'str',
             'value'    => 'example',
             'position' => 999

@@ -33,7 +33,7 @@ class ViewConfig extends ViewConfig_parent
             $this->sContainerId = ContainerFactory::getInstance()
                                                   ->getContainer()
                                                   ->get(ModuleSettingBridgeInterface::class)
-                                                  ->get('vt_gtm_sContainerID', 'vt-gtm');
+                                                  ->get('d3_gtm_sContainerID', 'd3googleanalytics4');
         }
         return $this->sContainerId;
     }
@@ -47,7 +47,7 @@ class ViewConfig extends ViewConfig_parent
             $this->sContainerId = ContainerFactory::getInstance()
                                                   ->getContainer()
                                                   ->get(ModuleSettingBridgeInterface::class)
-                                                  ->get('vt_gtm_blEnableGA4', 'vt-gtm');
+                                                  ->get('d3_gtm_blEnableGA4', 'd3googleanalytics4');
         }
 
         return $this->blGA4enabled;

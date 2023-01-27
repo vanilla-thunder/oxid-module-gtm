@@ -25,22 +25,22 @@ input.confinput:hover {outline:3px solid #ff3600;}
 </style>';
 $aLang = [
     'charset'                               => 'UTF-8',
-    'SHOP_MODULE_vt_gtm_sContainerID'      => 'Container ID',
-    'SHOP_MODULE_GROUP_vt_gtm_settings'     => 'Einstellungen',
-    'SHOP_MODULE_vt_gtm_blGA4enab'          => 'GA4 Aktivieren',
-    'SHOP_MODULE_vt_gtm_blUAenabled'        => 'UA Aktivieren',
-    'SHOP_MODULE_vt_gtm_blEnableDebug'      => 'Debug-Modus aktivieren',
+    'SHOP_MODULE_d3_gtm_sContainerID'      => 'Container ID',
+    'SHOP_MODULE_GROUP_d3_gtm_settings'     => 'Einstellungen',
+    'SHOP_MODULE_d3_gtm_blGA4enab'          => 'GA4 Aktivieren',
+    'SHOP_MODULE_d3_gtm_blUAenabled'        => 'UA Aktivieren',
+    'SHOP_MODULE_d3_gtm_blEnableDebug'      => 'Debug-Modus aktivieren',
 
     // for cookie manager settings
-    'SHOP_MODULE_GROUP_vt_gtm_settings_cookiemanager'   => 'Cookie Manager Einstellungen',
-    'SHOP_MODULE_vt_gtm_settings_hasOwnCookieManager'   => 'Eigenen Cookie Manager nutzen?
+    'SHOP_MODULE_GROUP_d3_gtm_settings_cookiemanager'   => 'Cookie Manager Einstellungen',
+    'SHOP_MODULE_d3_gtm_settings_hasOwnCookieManager'   => 'Eigenen Cookie Manager nutzen?
                                                             <strong style="color: red">Hinweis (Fragezeichen) lesen!</strong>',
-    'HELP_SHOP_MODULE_vt_gtm_settings_hasOwnCookieManager'   => 'Stellen Sie sicher, dass Sie ein Modul installiert haben,
+    'HELP_SHOP_MODULE_d3_gtm_settings_hasOwnCookieManager'   => 'Stellen Sie sicher, dass Sie ein Modul installiert haben,
     dass die Methode "blAcceptedCookie" implementiert.<br> Sollten Sie sich nicht sicher sein kontaktieren Sie Ihren
     technischen Ansprechpartner.<br><br>
     
     <strong>Wichtig!</strong> Das Aktivieren dieser Checkbox kann <u>ohne dem nötigen technischen Wissen</u> den Shop-Ablauf im Frontend stören!<hr>
     Die Checkbox muss nicht aktiviert werden, sofern die Cookies beispielsweise direkt via Google Cookie-Banner integriert werden.
     Bei Fragen <u>kontaktieren Sie bitte</u> auch hier einen entsprechenden technischen Ansprechpartner.',
-    'SHOP_MODULE_vt_gtm_settings_cookieName'            => 'Cookie-Name',
+    'SHOP_MODULE_d3_gtm_settings_cookieName'            => 'Cookie-Name',
 ];
