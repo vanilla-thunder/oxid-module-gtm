@@ -15,8 +15,6 @@ namespace D3\GoogleAnalytics4\Modules\Core;
 
 use OxidEsales\Eshop\Application\Controller\FrontendController;
 use OxidEsales\Eshop\Core\Registry;
-use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
-use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ModuleSettingBridgeInterface;
 
 class ViewConfig extends ViewConfig_parent
 {
