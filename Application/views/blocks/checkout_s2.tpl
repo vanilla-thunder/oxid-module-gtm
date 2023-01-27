@@ -8,7 +8,7 @@
             'checkout': {
                 'actionField': {
                     'step': 2,
-                    'option':'[{oxmultilang ident="VT_GTM_EE_LOGINOPTION"|cat:$oView->getLoginOption()}]'
+                    'option':'[{oxmultilang ident="vt_GTM_EE_LOGINOPTION"|cat:$oView->getLoginOption()}]'
                 }
             }
         }

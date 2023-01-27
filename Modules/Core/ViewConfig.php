@@ -30,7 +30,7 @@ class ViewConfig extends ViewConfig_parent
     {
         if ($this->sContainerId === null)
         {
-            $this->sContainerId = $this->getConfig()->getConfigParam('vt_gtm_sContainerID');
+            $this->sContainerId = $this->getConfig()->getConfigParam('d3_gtm_sContainerID');
         }
         return $this->sContainerId;
     }
@@ -41,7 +41,7 @@ class ViewConfig extends ViewConfig_parent
     {
         if ($this->blGA4enabled === null)
         {
-            $this->sContainerId = $this->getConfig()->getConfigParam('vt_gtm_blEnableGA4');
+            $this->sContainerId = $this->getConfig()->getConfigParam('d3_gtm_blEnableGA4');
         }
 
         return $this->blGA4enabled;
@@ -81,39 +81,10 @@ class ViewConfig extends ViewConfig_parent
             //'httpref'   => $_SERVER["HTTP_REFERER"] ?? "unknown"
         ];
 
-        #return json_encode([$dataLayer], JSON_PRETTY_PRINT);
+        return json_encode([$dataLayer], JSON_PRETTY_PRINT);
 
         unset($dataLayer["user"]["http"]); // das brauchen wir hier nicht
 
-
-        return json_encode([$dataLayer], JSON_PRETTY_PRINT);
-        /*
-                // --- Produktdaten ---
-                $transactionProducts = [];
-                foreach($oOrder->getOrderArticles() as $_prod ) $transactionProducts[] = [
-                    'name' => '', // (erforderlich)	Produktname	String
-                    'sku' => '', // (erforderlich)	Produkt-SKU	String
-                    'category' => '', // (optional)	Produktkategorie	String
-                    'price' => '', // (erforderlich)	Preis pro Einheit	Numerischer Wert
-                    'quantity' => '' // (erforderlich)	Anzahl der Artikel	Numerischer Wert
-                ];
-
-                // --- Transaktionsdaten ---
-
-                $dataLayer['transactionId'] = $oOrder->oxorder__oxordernr->value; // (erforderlich)	Eindeutige Transaktionskennung	String
-                $dataLayer['transactionAffiliation'] = $oShop->oxshops__oxname->value; // (optional)	Partner oder Geschäft	String
-                $dataLayer['transactionTotal'] = $oOrder->oxorder__oxtotalordersum->value; // (erforderlich)	Gesamtwert der Transaktion	Numerischer Wert
-                $dataLayer['transactionShipping'] = $oOrder->oxorder__oxdelcost->value; // (optional)	Versandkosten für die Transaktion	Numerischer Wert
-                $dataLayer['transactionTax'] = ''; // (optional)	Steuerbetrag für die Transaktion	Numerischer Wert
-                $dataLayer['transactionProducts'] = $transactionProducts; // (optional)	Liste der bei der Transaktion erworbenen Artikel	Array von Produktobjekten
-        */
-    }
-
-    public function triggerGA4events()
-    {
-        // general events
-
-    }
 
     public function isPromotionList($listId)
     {
