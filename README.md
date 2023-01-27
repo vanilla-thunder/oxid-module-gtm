@@ -23,7 +23,7 @@ Dieses Paket erfordert einen mit Composer installierten OXID eShop in einer in d
 Öffnen Sie eine Kommandozeile und navigieren Sie zum Stammverzeichnis des Shops (Elternverzeichnis von source und vendor). Führen Sie den folgenden Befehl aus. Passen Sie die Pfadangaben an Ihre Installationsumgebung an.
 
 ```bash
-php composer require d3/google-analytics4:^1
+php composer require d3/google-analytics4:^2
 ```
 
 Sofern nötig, bestätigen Sie bitte, dass Sie `package-name` erlauben, Code auszuführen.
