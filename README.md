@@ -20,16 +20,7 @@ Weiterführende Informationen: https://developers.google.com/analytics/devguides
 
 Dieses Paket erfordert einen mit Composer installierten OXID eShop in einer in der [composer.json](composer.json) definierten Version.
 
-Bitte tragen Sie den folgenden Abschnitt in die `composer.json` Ihres Projektes ein:
-
-```
-  "extra": {
-    optionale Anweisungen von 3rd-Party-Packages (z.B. Patch- oder Symlink-Anweisungen)
-  }
-```
-
 Öffnen Sie eine Kommandozeile und navigieren Sie zum Stammverzeichnis des Shops (Elternverzeichnis von source und vendor). Führen Sie den folgenden Befehl aus. Passen Sie die Pfadangaben an Ihre Installationsumgebung an.
-
 
 ```bash
 php composer require d3/google-analytics4:^1
