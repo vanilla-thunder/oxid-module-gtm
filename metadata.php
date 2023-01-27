@@ -1,6 +1,4 @@
 <?php
-
-
 use D3\GoogleAnalytics4\Modules\Core\ViewConfig;
 use OxidEsales\Eshop\Core\ViewConfig as OEViewConfig;
 
@@ -45,12 +43,6 @@ $aModule          = [
         'ga4_view_item.tpl'        => 'd3/googleanalytics4/Application/views/ga4/view_item.tpl',
         'ga4_view_item_list.tpl'   => 'd3/googleanalytics4/Application/views/ga4/view_item_list.tpl',
         'ga4_view_promotion.tpl'   => 'd3/googleanalytics4/Application/views/ga4/view_promotion.tpl',
-        /*
-        'gtm_ua_impression' => 'd3/GoogleTagManager/Application/views/ua/impression.tpl'
-        'gtm_view_promotion.tpl'   => 'd3/GoogleTagManager/Application/views/view_promotion.tpl',
-        'gtm_select_promotion.tpl' => 'd3/GoogleTagManager/Application/views/select_promotion.tpl',
-        'gtm_begin_checkout.tpl'   => 'd3/GoogleTagManager/Application/views/begin_checkout.tpl',
-        */
     ],
     'blocks'      => [
         // tag manager js
@@ -64,12 +56,6 @@ $aModule          = [
             'template' => 'layout/base.tpl',
             'block'    => 'theme_svg_icons',
             'file'     => '/Application/views/blocks/_gtm_nojs.tpl'
-        ],
-        // add to cart
-        [
-            'template' => 'layout/header.tpl',
-            'block'    => 'header_main',
-            'file'     => '/Application/views/blocks/add_to_cart.tpl'
         ],
         // widget_product_list
         [
@@ -153,7 +139,7 @@ $aModule          = [
         ],
         [
             'group'    => 'd3_gtm_settings',
-            'name'     => 'd3_gtm_sContainerID',
+            'name'     => 'd3_gtm_blGA4enab',
             'type'     => 'bool',
             'value'    => true,
             'position' => 1
