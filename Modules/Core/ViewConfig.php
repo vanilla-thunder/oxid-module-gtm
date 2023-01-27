@@ -1,16 +1,16 @@
 <?php
 
-/*
- * vanilla-thunder/oxid-module-gtm
- * Google Tag Manager Integration for OXID eShop v6.2+
+/**
+ * This Software is the property of Data Development and is protected
+ * by copyright law - it is NOT Freeware.
+ * Any unauthorized use of this software without a valid license
+ * is a violation of the license agreement and will be prosecuted by
+ * civil and criminal law.
+ * http://www.shopmodule.com
  *
- * This program is free software;
- * you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation;
- * either version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
- *  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses/>
+ * @copyright (C) D3 Data Development (Inh. Thomas Dartsch)
+ * @author        D3 Data Development - Daniel Seifert <support@shopmodule.com>
+ * @link          http://www.oxidmodule.com
  */
 
 namespace D3\GoogleAnalytics4\Modules\Core;
@@ -60,7 +60,6 @@ class ViewConfig extends ViewConfig_parent
         $oConfig = Registry::getConfig();
         $oView   = $oConfig->getTopActiveView();
         /** @var FrontendController $oShop */
-        //$oShop = oxRegistry::getConfig()->getActiveShop(); /** @var oxShop $oShop */
         $oUser = $oConfig->getUser();
 
         $cl         = $this->getTopActionClassName();
@@ -88,37 +87,6 @@ class ViewConfig extends ViewConfig_parent
         ];
 
         return json_encode([$dataLayer], JSON_PRETTY_PRINT);
-
-        unset($dataLayer["user"]["http"]); // das brauchen wir hier nicht
-
-
-        return json_encode([$dataLayer], JSON_PRETTY_PRINT);
-        /*
-                // --- Produktdaten ---
-                $transactionProducts = [];
-                foreach($oOrder->getOrderArticles() as $_prod ) $transactionProducts[] = [
-                    'name' => '', // (erforderlich)	Produktname	String
-                    'sku' => '', // (erforderlich)	Produkt-SKU	String
-                    'category' => '', // (optional)	Produktkategorie	String
-                    'price' => '', // (erforderlich)	Preis pro Einheit	Numerischer Wert
-                    'quantity' => '' // (erforderlich)	Anzahl der Artikel	Numerischer Wert
-                ];
-
-                // --- Transaktionsdaten ---
-
-                $dataLayer['transactionId'] = $oOrder->oxorder__oxordernr->value; // (erforderlich)	Eindeutige Transaktionskennung	String
-                $dataLayer['transactionAffiliation'] = $oShop->oxshops__oxname->value; // (optional)	Partner oder Geschäft	String
-                $dataLayer['transactionTotal'] = $oOrder->oxorder__oxtotalordersum->value; // (erforderlich)	Gesamtwert der Transaktion	Numerischer Wert
-                $dataLayer['transactionShipping'] = $oOrder->oxorder__oxdelcost->value; // (optional)	Versandkosten für die Transaktion	Numerischer Wert
-                $dataLayer['transactionTax'] = ''; // (optional)	Steuerbetrag für die Transaktion	Numerischer Wert
-                $dataLayer['transactionProducts'] = $transactionProducts; // (optional)	Liste der bei der Transaktion erworbenen Artikel	Array von Produktobjekten
-        */
-    }
-
-    public function triggerGA4events()
-    {
-        // general events
-
     }
 
     public function isPromotionList($listId)
