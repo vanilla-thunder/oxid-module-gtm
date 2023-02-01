@@ -32,6 +32,22 @@ class ViewConfig extends ViewConfig_parent
         return $this->sContainerId;
     }
 
+    /**
+     * @param $sCookieID
+     * @return bool
+     */
+    public function D3blAcceptedCookie($sCookieID)
+    {
+        $oSession = Registry::getSession();
+        $aCookies = $oSession->getVariable("aCookieSel");
+
+        if (!is_null($aCookies) && is_array($aCookies) && array_key_exists($sCookieID, $aCookies) && $aCookies[$sCookieID] == "1") {
+            return true;
+        }
+
+        return false;
+    }
+
     private $blGA4enabled = null;
 
     public function isGA4enabled()
