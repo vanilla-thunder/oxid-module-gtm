@@ -33,7 +33,6 @@ $aLang = [
 
     // for cookie manager settings
     'SHOP_MODULE_GROUP_d3_gtm_settings_cookiemanager'   => 'Cookie Manager Einstellungen',
-    'SHOP_MODULE_d3_gtm_settings_hasOwnCookieManager'   => 'Eigenen Cookie Manager nutzen?
-                                                            <strong style="color: red">Hinweis (Fragezeichen) lesen!</strong>',
+    'SHOP_MODULE_d3_gtm_settings_hasOwnCookieManager'   => 'Eigenen Cookie Manager nutzen?',
     'SHOP_MODULE_d3_gtm_settings_cookieName'            => 'Cookie-Name',
 ];
