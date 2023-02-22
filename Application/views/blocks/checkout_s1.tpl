@@ -4,6 +4,8 @@
 
 [{assign var='gtmCartArticles' value=$oView->getBasketArticles()}]
 [{strip}][{capture assign=d3_ga4_view_cart}]
+    let iPrice = "[{oxprice price=$oxcmp_basket->getPrice()}]";
+
     dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
     dataLayer.push({
         'event': 'view_cart',
@@ -11,7 +13,7 @@
         'ecommerce': {
             'actionField': "step: 1",
             'currency': "[{$currency->name}]",
-            'value': [{oxprice price=$oxcmp_basket->getPrice()}],
+            'value': iPrice.replace("€", ""),
             'items': [
                 [{foreach from=$oxcmp_basket->getContents() item=basketitem name=gtmCartContents  key=basketindex}]
                 [{assign var='_price' value=$basketitem->getUnitPrice()}]
