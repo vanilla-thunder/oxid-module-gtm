@@ -26,23 +26,9 @@ $aModule          = [
     ],
     'templates'   => [
         // GA4 events
-        'ga4_add_payment_info.tpl' => 'd3/googleanalytics4/Application/views/ga4/add_payment_info.tpl',
-        'add_shipping_info.tpl'    => 'd3/googleanalytics4/Application/views/ga4/add_shipping_info.tpl',
         'ga4_add_to_cart.tpl'      => 'd3/googleanalytics4/Application/views/ga4/add_to_cart.tpl',
-        'ga4_begin_checkout.tpl'   => 'd3/googleanalytics4/Application/views/ga4/begin_checkout.tpl',
-        'ga4_generate_lead.tpl'    => 'd3/googleanalytics4/Application/views/ga4/generate_lead.tpl',
-        'ga4_login.tpl'            => 'd3/googleanalytics4/Application/views/ga4/login.tpl',
-        'ga4_purchase.tpl'         => 'd3/googleanalytics4/Application/views/ga4/purchase.tpl',
-        'ga4_remove_from_cart.tpl' => 'd3/googleanalytics4/Application/views/ga4/remove_from_cart.tpl',
         'ga4_search.tpl'           => 'd3/googleanalytics4/Application/views/ga4/search.tpl',
-        'ga4_select_content.tpl'   => 'd3/googleanalytics4/Application/views/ga4/select_content.tpl',
-        'ga4_select_item.tpl'      => 'd3/googleanalytics4/Application/views/ga4/select_item.tpl',
-        'ga4_select_promotion.tpl' => 'd3/googleanalytics4/Application/views/ga4/select_promotion.tpl',
-        'ga4_sign_up.tpl'          => 'd3/googleanalytics4/Application/views/ga4/sign_up.tpl',
-        'ga4_view_cart.tpl'        => 'd3/googleanalytics4/Application/views/ga4/view_cart.tpl',
-        'ga4_view_item.tpl'        => 'd3/googleanalytics4/Application/views/ga4/view_item.tpl',
         'ga4_view_item_list.tpl'   => 'd3/googleanalytics4/Application/views/ga4/view_item_list.tpl',
-        'ga4_view_promotion.tpl'   => 'd3/googleanalytics4/Application/views/ga4/view_promotion.tpl',
     ],
     'blocks'      => [
         // tag manager js
@@ -75,31 +61,6 @@ $aModule          = [
             'template' => 'page/checkout/basket.tpl',
             'block'    => 'checkout_basket_main',
             'file'     => '/Application/views/blocks/checkout_s1.tpl'
-        ],
-        [
-            'template' => 'form/user_checkout_change.tpl',
-            'block'    => 'user_checkout_change',
-            'file'     => '/Application/views/blocks/checkout_s2.tpl'
-        ],
-        [
-            'template' => 'form/user_checkout_register.tpl',
-            'block'    => 'user_checkout_register',
-            'file'     => '/Application/views/blocks/checkout_s2.tpl'
-        ],
-        [
-            'template' => 'form/user_checkout_noregister.tpl',
-            'block'    => 'user_checkout_noregister',
-            'file'     => '/Application/views/blocks/checkout_s2.tpl'
-        ],
-        [
-            'template' => 'page/checkout/payment.tpl',
-            'block'    => 'checkout_payment_main',
-            'file'     => '/Application/views/blocks/checkout_s3.tpl'
-        ],
-        [
-            'template' => 'page/checkout/order.tpl',
-            'block'    => 'checkout_order_main',
-            'file'     => '/Application/views/blocks/checkout_s4.tpl'
         ],
         [
             'template' => 'page/checkout/thankyou.tpl',
