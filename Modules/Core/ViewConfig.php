@@ -48,6 +48,11 @@ class ViewConfig extends ViewConfig_parent
             return true;
         }
 
+        // Aggrosoft Cookie Consent
+        if (method_exists($this, "isCookieCategoryEnabled")) {
+            return $this->isCookieCategoryEnabled($sCookieID);
+        }
+
         return false;
     }
 
@@ -75,7 +80,7 @@ class ViewConfig extends ViewConfig_parent
         /** @var FrontendController $oShop */
         $oUser = $oConfig->getUser();
 
-        $cl         = $this->getTopActionClassName();
+        $cl         = $this->getTopActiveClassName();
         $aPageTypes = [
             "content"  => "cms",
             "details"  => "product",
@@ -86,6 +91,7 @@ class ViewConfig extends ViewConfig_parent
             "payment"  => "checkout",
             "order"    => "checkout",
             "thankyou" => "checkout",
+            "start"    => "start",
         ];
 
         $dataLayer = [
