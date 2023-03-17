@@ -70,7 +70,7 @@ class ViewConfig extends ViewConfig_parent
 
         $oUser = $oConfig->getUser();
 
-        $cl         = $this->getTopActionClassName();
+        $cl         = $this->getTopActiveClassName();
         $aPageTypes = [
             "content"  => "cms",
             "details"  => "product",
@@ -81,6 +81,7 @@ class ViewConfig extends ViewConfig_parent
             "payment"  => "checkout",
             "order"    => "checkout",
             "thankyou" => "checkout",
+            "start"    => "start",
         ];
 
         $dataLayer = [
