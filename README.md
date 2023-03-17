@@ -77,5 +77,6 @@ Die vollständigen Copyright- und Lizenzinformationen entnehmen Sie bitte der [L
 Zu diesem Modul haben beigetragen:
 
 - [Marat Bedoev](https://github.com/vanilla-thunder)
+- [Christoph Stäblein [gn2]](https://github.com/reyneke-vosz)
 
 Vielen Dank.

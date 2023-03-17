@@ -1,11 +1,11 @@
-## Technische Doku
-### GA4 Events / Customizing
+# Technische Doku
+## GA4 Events / Customizing
 Für alle implementierten GA4 Events existieren Templates unter `source/modules/d3/googleanalytics4/Application/views/ga4/`, dabei entspricht der Dateiname dem Eventnamen in GA4.
 Die Einbindung dieser Event-Templates erfolgt über TPL-Blöcke unter `source/modules/d3/googleanalytics4/Application/views/blocks/`.  
 *Hinweis: nicht alle templates sind bereits gefüllt. Wünschen Sie die Implementierung eines unausgefüllten templates?
 Kommen Sie auf uns zu unter https://www.d3data.de/
 
-### Blöcke
+## Blöcke
 Für den geregelten Ablauf sind folgende Blöcke nötig:
 - Suchergebnisse
     - Blockname: search_results
@@ -32,7 +32,7 @@ Für den geregelten Ablauf sind folgende Blöcke nötig:
     - Datei: page/checkout/thankyou.tpl
     - GA4 Event: purchase
 
-### Verfügbare Datalayer Variablen
+## Verfügbare Datalayer Variablen
 Für die einfachste Übersicht der enthaltenen Daten empfehle ich den Vorschau-Modus vom Google Tag Manager.
 
 Bei jedem Seitenaufruf wird die Datenschicht mit einigen wenigen Infos erstellt, die man zum reinen Erfassen der Seitenaufrufe benötigt:
@@ -44,8 +44,22 @@ Bei jedem Seitenaufruf wird die Datenschicht mit einigen wenigen Infos erstellt,
 
 Alle für Ecommerce Tracking relevanten Daten werden mit speziellen Ecommerce Events in die Datenschicht eingefügt.
 
-### Cookie-Handling
+## Cookie-Handling
 Sie nutzen einen eigenen, als Modul im Shop installierten, Cookie-manager?  
 Dann tragen Sie in den Folgeeinstellungen unter "Cookie Manager Einstellungen", 
-die Cookie-ID des zugehörigen Cookies ein. Und aktivieren Sie diese Weiche, 
-indem Sie den Haken bei "Eigenen Cookie Manager nutzen?" setzen.
+die Cookie-ID des zugehörigen Cookies ein.  
+Aktivieren Sie anschließend diese Weiche. Setzen Sie den Haken bei "Eigenen Cookie Manager nutzen?".
+
+### Unterstützung für
+- [aggrosoft - oxid-cookie-compliance](https://github.com/aggrosoft/oxid-cookie-compliance)
+  - https://github.com/aggrosoft/oxid-cookie-compliance
+  - die entsprechend gewählte Kategorie in den Moduleinstellungen des 'Google Analytics 4' unter
+  ```Einstell. > Cookie Manager Einstellungen > Cookie-ID``` eintragen
+
+- [Netensio - Cookie Consent Manager](https://www.netensio.de/oxid-eshop-module/cookie-consent-manager-fuer-oxid-eshop.html)
+  - Modul entsprechend konfigurieren
+  - CookieID des angelegten Cookies in den Moduleinstellungen des 'Google Analytics 4' unter
+    ```Einstell. > Cookie Manager Einstellungen > Cookie-ID``` eintragen
+  
+- [OXID Cookie Management powered by usercentrics](https://docs.oxid-esales.com/modules/usercentrics/de/latest/einfuehrung.html)
+  - soweit ich weiß nichts weiter?
