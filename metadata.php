@@ -17,7 +17,7 @@ $aModule          = [
                       Die Entwicklung basiert auf einem Fork von Marat Bedoev - <a href='https://github.com/vanilla-thunder/oxid-module-gtm'>Github-Link</a>
                       ",
     'thumbnail'   => 'thumbnail.png',
-    'version'     => '2.3.2',
+    'version'     => '2.3.3',
     'author'      => 'Data Development (Inh.: Thomas Dartsch)',
     'email'       => 'support@shopmodule.com',
     'url'         => 'https://www.oxidmodule.com/',
@@ -43,19 +43,6 @@ $aModule          = [
             'block'    => 'theme_svg_icons',
             'file'     => '/Application/views/blocks/_gtm_nojs.tpl'
         ],
-        // widget_product_list
-        [
-            'template' => 'widget/product/list.tpl',
-            'block'    => 'widget_product_list',
-            'file'     => '/Application/views/blocks/widget_product_list.tpl'
-        ],
-        // details
-        [
-            'template' => 'page/details/inc/productmain.tpl',
-            'block'    => 'details_productmain_title',
-            'file'     => '/Application/views/blocks/detail.tpl',
-            'position' => 150
-        ],
         // checkout
         // view_cart
         [
@@ -67,6 +54,13 @@ $aModule          = [
             'template' => 'page/checkout/thankyou.tpl',
             'block'    => 'checkout_thankyou_main',
             'file'     => '/Application/views/blocks/checkout_s5.tpl'
+        ],
+        // details
+        [
+            'template' => 'page/details/inc/productmain.tpl',
+            'block'    => 'details_productmain_title',
+            'file'     => '/Application/views/blocks/view_item.tpl',
+            'position' => 150
         ],
         // Lists
         // view_item_list
