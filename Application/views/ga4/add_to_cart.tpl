@@ -5,6 +5,8 @@
 [{capture assign=d3_ga4_add_to_cart}]
 [{block name="d3_ga4_add_to_basket"}]
   $("#toBasket").click(function(event) {
+
+    [{*** Debug cases ***}]
     [{*event.preventDefault();*}]
 
     let iArtQuantity = $("#amountToBasket").val();
@@ -28,7 +30,6 @@
             'item_category_3':itemCategories[2] || '',
             'item_category_4':itemCategories[3] || '',
             [{if false}]
-            [{* ??? what *}]
             'item_list_name': 'Search Results',  // If associated with a list selection.
             'item_list_id': 'SR123',  // If associated with a list selection.
             'index': 1,  // If associated with a list selection.
