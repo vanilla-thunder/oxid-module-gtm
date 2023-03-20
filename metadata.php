@@ -65,6 +65,13 @@ $aModule          = [
             'file'     => '/Application/views/ga4/add_to_cart.tpl',
             'position' => 150
         ],
+        // details
+        [
+            'template' => 'page/details/inc/productmain.tpl',
+            'block'    => 'details_productmain_title',
+            'file'     => '/Application/views/blocks/view_item.tpl',
+            'position' => 150
+        ],
         // Lists
         // view_item_list
         [
