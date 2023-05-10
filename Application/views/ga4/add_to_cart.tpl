@@ -1,6 +1,6 @@
 [{$smarty.block.parent}]
 
-[{*$gtmProduct|get_class_methods|dumpvar*}]
+[{assign var="d3PriceObject" value=$gtmProduct->getPrice()}]
 
 [{capture assign=d3_ga4_add_to_cart}]
 [{block name="d3_ga4_add_to_basket"}]
@@ -17,23 +17,18 @@
       'eventLabel': 'add_to_cart',
       'ecommerce': {
         'currency':   "[{$currency->name}]",
-        'value':      iArtQuantity*[{$gtmProduct->getFieldData('oxprice')}],
+        'value':      iArtQuantity*[{$d3PriceObject->getPrice()}],
         'items':      [
           {
             'item_id':        '[{$gtmProduct->getFieldData('oxartnum')}]',
             'item_name':      '[{$gtmProduct->getFieldData('oxtitle')}]',
-            'price':          '[{$gtmProduct->getFieldData('oxprice')}]',
+            'price':          '[{$d3PriceObject->getPrice()}]',
             'item_brand':     '[{if $gtmManufacturer}][{$gtmManufacturer->oxmanufacturers__oxtitle->value}][{/if}]',
             'item_variant':   '[{if $gtmProduct->getFieldData('oxvarselect')}][{$gtmProduct->getFieldData('oxvarselect')}][{/if}]',
             'item_category':  itemCategories[0] || 'no category',
             'item_category_2':itemCategories[1] || '',
             'item_category_3':itemCategories[2] || '',
             'item_category_4':itemCategories[3] || '',
-            [{if false}]
-            'item_list_name': 'Search Results',  // If associated with a list selection.
-            'item_list_id': 'SR123',  // If associated with a list selection.
-            'index': 1,  // If associated with a list selection.
-            [{/if}]
             'quantity': iArtQuantity
           }
         ]

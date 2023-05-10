@@ -13,12 +13,13 @@
           'search_term': '[{$searchparamforhtml}]',
           'items': [
             [{foreach from=$gtmProducts name="gtmProducts" item="gtmProduct"}]
+            [{assign var="d3PriceObject" value=$gtmProduct->getPrice()}]
             [{assign var="gtmManufacturer" value=$gtmProduct->getManufacturer()}]
             [{if !$gtmCategory}][{assign var="gtmCategory" value=$gtmProduct->getCategory()}][{/if}]
             {
               'item_id': '[{$gtmProduct->getFieldData("oxartnum")}]',
               'item_name': '[{$gtmProduct->getFieldData("oxtitle")}]',
-              'price': [{$gtmProduct->oxarticles__oxprice->value|default:'0'}],
+              'price': [{$d3PriceObject->getPrice()}],
               'item_brand': '[{if $gtmManufacturer}][{$gtmManufacturer->oxmanufacturers__oxtitle->value}][{/if}]',
               'item_category': '[{if $gtmCategory}][{$gtmCategory->getLink()|parse_url:5|ltrim:"/"|rtrim:"/"}][{else}]-[{/if}]',
               'quantity': 1
