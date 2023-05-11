@@ -1,4 +1,5 @@
 [{assign var="gtmProducts" value=$products}]
+[{assign var="d3PriceObject" value=$gtmProducts->getPrice()}]
 
 [{assign var="breadCrumb" value=''}]
 
@@ -20,7 +21,7 @@
                     {
                         'item_id': '[{$gtmProduct->getFieldData("oxartnum")}]',
                         'item_name': '[{$gtmProduct->getFieldData("oxtitle")}]',
-                        'price': [{$gtmProduct->oxarticles__oxprice->value|default:'0'}],
+                        'price': [{$d3PriceObject->getPrice()}],
                         'item_brand': '[{if $gtmManufacturer}][{$gtmManufacturer->oxmanufacturers__oxtitle->value}][{/if}]',
                         'item_category': '[{if $gtmCategory}][{$gtmCategory->getLink()|parse_url:5|ltrim:"/"|rtrim:"/"}][{else}]-[{/if}]',
                         'quantity': 1

@@ -12,12 +12,13 @@
       'currency': '[{$currency->name}]',
       'items': [
         {
-          'item_name': '[{$gtmProduct->oxarticles__oxtitle->value}]',
-          'item_id': '[{$gtmProduct->oxarticles__oxartnum->value}]',
+          'item_name': '[{$gtmProduct->getFieldData("oxtitle")}]',
+          'item_id': '[{$gtmProduct->getFieldData("oxartnum")}]',
           'item_brand': '[{if $gtmManufacturer}][{$gtmManufacturer->oxmanufacturers__oxtitle->value}][{/if}]',
           'item_category': '[{if $gtmCategory}][{$gtmCategory->getLink()|parse_url:5|ltrim:"/"|rtrim:"/"}][{else}]-[{/if}]',
-          'item_variant': '[{if $gtmProduct->oxarticles__oxvarselect->value}][{$gtmProduct->oxarticles__oxvarselect->value}][{/if}]',
-          'price': [{$gtmProduct->oxarticles__oxprice->value}]
+          'item_variant': '[{if $gtmProduct->getFieldData("oxvarselect")}][{$gtmProduct->getFieldData("oxvarselect")}][{/if}]',
+          [{assign var="d3PriceObject" value=$gtmProduct->getPrice()}]
+          'price': [{$d3PriceObject->getPrice()}]
         }
       ]
     }

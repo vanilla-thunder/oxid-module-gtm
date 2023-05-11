@@ -2,10 +2,10 @@
 
 [{*$oxcmp_basket|get_class_methods|dumpvar*}]
 
+[{assign var="d3BasketPrice" value=$oxcmp_basket->getPrice()}]
+
 [{assign var='gtmCartArticles' value=$oView->getBasketArticles()}]
 [{strip}][{capture assign=d3_ga4_view_cart}]
-    let iPrice = "[{oxprice price=$oxcmp_basket->getPrice()}]";
-
     dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
     dataLayer.push({
         'event': 'view_cart',
@@ -13,15 +13,15 @@
         'ecommerce': {
             'actionField': "step: 1",
             'currency': "[{$currency->name}]",
-            'value': iPrice.replace("€", ""),
+            'value': [{$d3BasketPrice->getPrice()}],
             'items': [
                 [{foreach from=$oxcmp_basket->getContents() item=basketitem name=gtmCartContents  key=basketindex}]
-                [{assign var='_price' value=$basketitem->getUnitPrice()}]
+                [{assign var="d3oItemPrice" value=$basketitem->getPrice()}]
                 {
-                    'item_id': '[{$gtmCartArticles[$basketindex]->oxarticles__oxartnum->value}]',
-                    'item_name': '[{$gtmCartArticles[$basketindex]->oxarticles__oxtitle->value}]',
-                    'item_variant': '[{$gtmCartArticles[$basketindex]->oxarticles__oxvarselect->value}]',
-                    'price': [{$_price->getPrice()}],
+                    'item_id': '[{$gtmCartArticles[$basketindex]->getFieldData('oxartnum')}]',
+                    'item_name': '[{$gtmCartArticles[$basketindex]->getFieldData('oxtitle')}]',
+                    'item_variant': '[{$gtmCartArticles[$basketindex]->getFieldData('oxvarselect')}]',
+                    'price': [{$d3oItemPrice->getPrice()}],
                     'quantity':[{$basketitem->getAmount()}],
                     'position':[{$smarty.foreach.gtmCartContents.index}]
                 }[{if !$smarty.foreach.gtmCartContents.last}],[{/if}]
