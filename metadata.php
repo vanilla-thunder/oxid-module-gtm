@@ -43,24 +43,29 @@ $aModule          = [
             'block'    => 'theme_svg_icons',
             'file'     => '/Application/views/blocks/_gtm_nojs.tpl'
         ],
-        // checkout
-        // view_cart
+        // widget_product_list
         [
-            'template' => 'page/checkout/basket.tpl',
-            'block'    => 'checkout_basket_main',
-            'file'     => '/Application/views/blocks/checkout_s1.tpl'
-        ],        
-        [
-            'template' => 'page/checkout/thankyou.tpl',
-            'block'    => 'checkout_thankyou_main',
-            'file'     => '/Application/views/blocks/checkout_s5.tpl'
+            'template' => 'widget/product/list.tpl',
+            'block'    => 'widget_product_list',
+            'file'     => '/Application/views/blocks/widget_product_list.tpl'
         ],
         // details
         [
             'template' => 'page/details/inc/productmain.tpl',
             'block'    => 'details_productmain_title',
-            'file'     => '/Application/views/blocks/view_item.tpl',
+            'file'     => '/Application/views/blocks/detail.tpl',
             'position' => 150
+        ],
+        // checkout
+        [
+            'template' => 'page/checkout/basket.tpl',
+            'block'    => 'checkout_basket_main',
+            'file'     => '/Application/views/blocks/checkout_s1.tpl'
+        ],
+        [
+            'template' => 'page/checkout/thankyou.tpl',
+            'block'    => 'checkout_thankyou_main',
+            'file'     => '/Application/views/blocks/checkout_s5.tpl'
         ],
         // Lists
         // view_item_list

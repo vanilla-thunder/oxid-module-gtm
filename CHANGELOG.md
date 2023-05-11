@@ -37,6 +37,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - using of ContainerFactory in ViewConfig
 
+## [1.4.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.3.1...1.4.0) - 2023-05-02
+### Added
+- "OXID Cookie Management powered by usercentrics" compatibility
+- usercentrics defined script attributes
+- cookie-manager evaluation
+### Changed
+- genuine clean up of base-js-files
+
 ## [1.3.1](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.2.1...1.3.1) - 2023-03-17
 ### Added
 - Aggrosoft-Cookie-Consent compatibility
@@ -45,7 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.1](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.2...1.2.1) - 2023-02-22
 ### Fixed
-- price formatting view_cart
+- price formatting in view_cart
 
 ## [1.2](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.1...1.2) - 2023-02-01
 ### Added
@@ -59,7 +67,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - switched price formatting
 
-
-## [1.0](https://git.d3data.de/D3Public/GoogleAnalytics4/releases/tag/1.0) - 2023-01-20
+## [1.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.0...1.0) - 2023-01-20
 ### Added
 - publication of app features
