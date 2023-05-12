@@ -12,9 +12,9 @@
         'ecommerce': {
           'transaction_id': '[{$_gtmOrder->getFieldData("oxordernr")}]',
           'affiliation':    '[{$oxcmp_shop->getFieldData("oxname")}]',
-          'value':          '[{$_gtmOrder->getTotalOrderSum()}]',
-          'tax':            '[{math equation="x+y" x=$_gtmOrder->getFieldData("oxartvatprice1") y=$_gtmOrder->getFieldData("oxartvatprice2") }]',
-          'shipping':       '[{$_gtmOrder->getFieldData("oxdelcost")}]',
+          'value':          [{$_gtmOrder->getTotalOrderSum()}],
+          'tax':            [{math equation="x+y" x=$_gtmOrder->getFieldData("oxartvatprice1") y=$_gtmOrder->getFieldData("oxartvatprice2") }],
+          'shipping':       [{$_gtmOrder->getFieldData("oxdelcost")}],
           'currency':       '[{$_gtmOrder->getFieldData('oxcurrency')}]',
           'items':
               [
