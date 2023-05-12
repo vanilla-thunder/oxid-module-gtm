@@ -20,7 +20,7 @@
           {
             'item_id':        '[{$gtmProduct->getFieldData('oxartnum')}]',
             'item_name':      '[{$gtmProduct->getFieldData('oxtitle')}]',
-            'price':          '[{$d3PriceObject->getPrice()}]',
+            'price':          [{$d3PriceObject->getPrice()}],
             'item_brand':     '[{if $gtmManufacturer}][{$gtmManufacturer->oxmanufacturers__oxtitle->value}][{/if}]',
             'item_variant':   '[{if $gtmProduct->getFieldData('oxvarselect')}][{$gtmProduct->getFieldData('oxvarselect')}][{/if}]',
             'item_category':  itemCategories[0] || 'no category',
