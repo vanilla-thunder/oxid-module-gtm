@@ -126,5 +126,12 @@ $aModule          = [
             'value'    => 'example',
             'position' => 999
         ],
+        [
+            'group' => 'd3_gtm_settings_cookiemanager',
+            'name' => 'd3_gtm_settings_HAS_CONSENTMANAGER',
+            'type' => 'select',
+            'value' => 'none',
+            'constraints' => 'NO|YES',
+        ],
     ]
 ];
