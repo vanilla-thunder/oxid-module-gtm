@@ -14,6 +14,7 @@
 namespace D3\GoogleAnalytics4\Modules\Core;
 
 use OxidEsales\Eshop\Application\Controller\FrontendController;
+use OxidEsales\Eshop\Core\Config;
 use OxidEsales\Eshop\Core\Registry;
 
 class ViewConfig extends ViewConfig_parent
@@ -31,6 +32,11 @@ class ViewConfig extends ViewConfig_parent
             $this->sContainerId = $this->getConfig()->getConfigParam('d3_gtm_sContainerID');
         }
         return $this->sContainerId;
+    }
+
+    public function getModuleConsentmanagerSettingSelectValue() :bool
+    {
+        return Registry::getConfig()->getConfigParam('d3_gtm_settings_HAS_CONSENTMANAGER') === 'YES';
     }
 
     public function getCookieManagerType()
@@ -52,6 +58,11 @@ class ViewConfig extends ViewConfig_parent
                 }
             }
         }
+
+        if ($this->sCookieManagerType === false and $this->getModuleConsentmanagerSettingSelectValue()){
+            return "consentmanager";
+        }
+
         return $this->sCookieManagerType;
     }
 
@@ -60,7 +71,8 @@ class ViewConfig extends ViewConfig_parent
      */
     public function D3blShowGtmScript()
     {
-        $oConfig = $this->getConfig();
+        /** @var Config $oConfig */
+        $oConfig = Registry::getConfig();
 
         // No Cookie Manager in use
         if (!$oConfig->getConfigParam('d3_gtm_settings_hasOwnCookieManager')) {
@@ -85,7 +97,7 @@ class ViewConfig extends ViewConfig_parent
         }
 
         // UserCentrics
-        if ($this->getCookieManagerType() == "oxps_usercentrics") {
+        if ($this->getCookieManagerType() === "oxps_usercentrics" or $this->getCookieManagerType() === 'consentmanager') {
             // Always needs the script-tags delivered to the DOM.
             return true;
         }
@@ -101,12 +113,26 @@ class ViewConfig extends ViewConfig_parent
      */
     public function getGtmScriptAttributes()
     {
+        $oConfig = Registry::getConfig();
+
         if ($this->getCookieManagerType() == "oxps_usercentrics") {
-            $oConfig = $this->getConfig();
             $sCookieId = $oConfig->getConfigParam('d3_gtm_settings_cookieName');
 
             if ($sCookieId) {
                 return 'type="text/plain" data-usercentrics="' . $sCookieId . '"';
+            }
+        }
+
+        if ($this->getCookieManagerType() == "consentmanager") {
+            $sCookieId = $oConfig->getConfigParam('d3_gtm_settings_cookieName');
+
+            if ($sCookieId) {
+                return 'async 
+                        type="text/plain"
+                        data-cmp-src="https://www.googletagmanager.com/gtm.js?id='.$this->getGtmContainerId().'"
+                        class="cmplazyload"
+                        data-cmp-vendor="s905"
+                        ';
             }
         }
 
