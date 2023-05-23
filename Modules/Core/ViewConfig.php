@@ -37,9 +37,21 @@ class ViewConfig extends ViewConfig_parent
         return $this->sContainerId;
     }
 
-    public function getModuleConsentmanagerSettingSelectValue() :bool
+    /**
+     * @return mixed
+     */
+    public function getModuleSettingExplicitManagerSelectValue()
     {
-        return Registry::getConfig()->getConfigParam('d3_gtm_settings_HAS_CONSENTMANAGER') === 'YES';
+        return Registry::getConfig()->getConfigParam('d3_gtm_settings_HAS_STD_MANAGER');
+    }
+
+    /**
+     * @return false|mixed
+     */
+    public function getExplicitManager()
+    {
+        $sManagerName = $this->getModuleSettingExplicitManagerSelectValue();
+        return $sManagerName === "---" ? false : $sManagerName;
     }
 
     public function getCookieManagerType()
@@ -62,8 +74,8 @@ class ViewConfig extends ViewConfig_parent
             }
         }
 
-        if ($this->sCookieManagerType === false and $this->getModuleConsentmanagerSettingSelectValue()){
-            return "consentmanager";
+        if ($this->sCookieManagerType === false and $this->getExplicitManager()){
+            return "externalService";
         }
 
         return $this->sCookieManagerType;
@@ -100,7 +112,7 @@ class ViewConfig extends ViewConfig_parent
         }
 
         // UserCentrics
-        if ($this->getCookieManagerType() === "oxps_usercentrics" or $this->getCookieManagerType() === 'consentmanager') {
+        if ($this->getCookieManagerType() === "oxps_usercentrics" or $this->getCookieManagerType() === 'externalService') {
             // Always needs the script-tags delivered to the DOM.
             return true;
         }
@@ -118,7 +130,7 @@ class ViewConfig extends ViewConfig_parent
     {
         $oConfig = Registry::getConfig();
 
-        if ($this->getCookieManagerType() == "oxps_usercentrics") {
+        if ($this->getCookieManagerType() === "oxps_usercentrics" or $this->getExplicitManager() === 'usercentrics') {
             $sCookieId = $oConfig->getConfigParam('d3_gtm_settings_cookieName');
 
             if ($sCookieId) {
@@ -126,7 +138,7 @@ class ViewConfig extends ViewConfig_parent
             }
         }
 
-        if ($this->getCookieManagerType() == "consentmanager") {
+        if ($this->getCookieManagerType() === "externalService" and $this->getExplicitManager() === 'consentmanager') {
             $sCookieId = $oConfig->getConfigParam('d3_gtm_settings_cookieName');
 
             if ($sCookieId) {
