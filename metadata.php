@@ -122,10 +122,10 @@ $aModule          = [
         ],
         [
             'group' => 'd3_gtm_settings_cookiemanager',
-            'name' => 'd3_gtm_settings_HAS_CONSENTMANAGER',
+            'name' => 'd3_gtm_settings_HAS_STD_MANAGER',
             'type' => 'select',
             'value' => 'none',
-            'constraints' => 'NO|YES',
+            'constraints' => 'NONE|CONSENTMANAGER|USERCENTRICS',
         ],
     ]
 ];

@@ -31,8 +31,10 @@ $aLang = [
     // for cookie manager settings
     'SHOP_MODULE_GROUP_d3_gtm_settings_cookiemanager'   => 'Cookie Manager Einstellungen',
     'SHOP_MODULE_d3_gtm_settings_hasOwnCookieManager'   => 'Cookie Manager nutzen?',
-    'SHOP_MODULE_d3_gtm_settings_HAS_CONSENTMANAGER'      => 'Nutzen Sie die Consentmanager-Einbindung?',
-    'SHOP_MODULE_d3_gtm_settings_HAS_CONSENTMANAGER_NO'   => 'Nein',
-    'SHOP_MODULE_d3_gtm_settings_HAS_CONSENTMANAGER_YES'  => 'Ja',
+    'SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER'                   => 'Nutzen Sie eine der folgenden Einbindungen?<br>
+                                                                        Dann wählen Sie bitte die zutreffende aus.',
+    'SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER_NONE'              => '---',
+    'SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER_CONSENTMANAGER'    => 'consentmanager',
+    'SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER_USERCENTRICS'      => 'usercentrics',
     'SHOP_MODULE_d3_gtm_settings_cookieName'  => 'CookieID',
 ];
