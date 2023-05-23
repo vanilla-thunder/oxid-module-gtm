@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/2.4.0...2.5.0) - 2023-05-23
+### Added
+- additional settings to explicitly indicate that consentmanager is used
+### Fixed
+- unnecessary converting of int to str
+- missing PriceObject-bug
+### Changed
+- genuine code cleanup
+
 ## [2.4.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/2.3.3...2.4.0) - 2023-05-02
 ### Added
 - "OXID Cookie Management powered by usercentrics" compatibility
