@@ -1,10 +1,13 @@
 [{$smarty.block.parent}]
 
-[{assign var="d3PriceObject" value=$gtmProduct->getPrice()}]
+[{assign var="d3ProductObject" value=$oView->getProduct()}]
+[{assign var="d3PriceObject" value=$d3ProductObject->getPrice()}]
 
 [{capture assign=d3_ga4_add_to_cart}]
 [{block name="d3_ga4_add_to_basket"}]
   $("#toBasket").click(function(event) {
+
+    [{*** Debug cases ***}]
     [{*event.preventDefault();*}]
 
     let iArtQuantity = $("#amountToBasket").val();
