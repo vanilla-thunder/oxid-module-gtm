@@ -1,5 +1,5 @@
+[{$smarty.block.parent}]
 [{assign var="gtmProducts" value=$products}]
-[{assign var="d3PriceObject" value=$gtmProducts->getPrice()}]
 
 [{assign var="breadCrumb" value=''}]
 
@@ -16,6 +16,7 @@
               'item_list_name': '[{foreach from=$oView->getBreadCrumb() item=sCrum}][{if $sCrum.title }][{$breadCrumb|cat:$sCrum.title|cat:" > "}][{/if}][{/foreach}]',
                 'items': [
                     [{foreach from=$gtmProducts name="gtmProducts" item="gtmProduct"}]
+                    [{assign var="d3PriceObject" value=$gtmProduct->getPrice()}]
                     [{assign var="gtmManufacturer" value=$gtmProduct->getManufacturer()}]
                     [{if !$gtmCategory}][{assign var="gtmCategory" value=$gtmProduct->getCategory()}][{/if}]
                     {

@@ -43,17 +43,11 @@ $aModule          = [
             'block'    => 'theme_svg_icons',
             'file'     => '/Application/views/blocks/_gtm_nojs.tpl'
         ],
-        // widget_product_list
-        [
-            'template' => 'widget/product/list.tpl',
-            'block'    => 'widget_product_list',
-            'file'     => '/Application/views/blocks/widget_product_list.tpl'
-        ],
         // details
         [
             'template' => 'page/details/inc/productmain.tpl',
             'block'    => 'details_productmain_title',
-            'file'     => '/Application/views/blocks/detail.tpl',
+            'file'     => '/Application/views/blocks/view_item.tpl',
             'position' => 150
         ],
         // checkout
@@ -71,7 +65,7 @@ $aModule          = [
         // view_item_list
         [
             'template' => 'widget/product/list.tpl',
-            'block'    => 'd3Ga4_view_item_list',
+            'block'    => 'widget_product_list',
             'file'     => '/Application/views/ga4/view_item_list.tpl',
             'position' => 150
         ],
