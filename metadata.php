@@ -35,7 +35,8 @@ $aModule          = [
         [
             'template' => 'layout/base.tpl',
             'block'    => 'head_meta_robots',
-            'file'     => '/Application/views/blocks/_gtm_js.tpl'
+            'file'     => '/Application/views/blocks/_gtm_js.tpl',
+            'position' => 150
         ],
         // tag manager nojs
         [
