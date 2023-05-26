@@ -134,7 +134,7 @@ class ViewConfig extends ViewConfig_parent
             $sCookieId = $oConfig->getConfigParam('d3_gtm_settings_cookieName');
 
             if ($sCookieId) {
-                return 'type="text/plain" data-usercentrics="' . $sCookieId . '"';
+                return 'data-usercentrics="' . $sCookieId . '" type="text/plain" async=""';
             }
         }
 
