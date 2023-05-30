@@ -65,8 +65,8 @@ $aModule          = [
         // Lists
         // view_item_list
         [
-            'template' => 'widget/product/list.tpl',
-            'block'    => 'widget_product_list',
+            'template' => 'page/list/list.tpl',
+            'block'    => 'page_list_productlist',
             'file'     => '/Application/views/ga4/view_item_list.tpl',
             'position' => 150
         ],

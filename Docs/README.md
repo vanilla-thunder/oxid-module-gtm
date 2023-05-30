@@ -12,8 +12,8 @@ Für den geregelten Ablauf sind folgende Blöcke nötig:
     - Datei: page/search/search.tpl
     - GA4 Event: view_search_results
 - Artikelliste
-    - Blockname: d3Ga4_view_item_list (muss hinzugefügt werden)
-    - Datei: widget/product/list.tpl
+    - Blockname: page_list_productlist (muss hinzugefügt werden)
+    - Datei: page/list/list.tpl
     - GA4 Event: view_item_list
 - Detailseite
     - Blockname: details_productmain_title
@@ -63,6 +63,6 @@ Aktivieren Sie anschließend diese Weiche. Setzen Sie den Haken bei "Eigenen Coo
     ```Einstell. > Cookie Manager Einstellungen > Cookie-ID``` eintragen
 
 - [OXID Cookie Management powered by usercentrics](https://docs.oxid-esales.com/modules/usercentrics/de/latest/einfuehrung.html)
-  - In der Usercentrics-Verwaltung einen Service für Google Analytics anlegen
-  - Den Service-Namen in den Moduleinstellungen des 'Google Analytics 4' unter
+  - In der Usercentrics-Verwaltung die Services "Google Analytics" und "Google Tag Manager" anlegen
+  - Den Service ```Google Tag Manager``` in den Moduleinstellungen des 'Google Analytics 4' unter
     ```Einstell. > Cookie Manager Einstellungen > Cookie-ID``` eintragen
