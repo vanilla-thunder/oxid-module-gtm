@@ -30,6 +30,10 @@ Sofern nötig, bestätigen Sie bitte, dass Sie `package-name` erlauben, Code aus
 
 Aktivieren Sie das Modul im Shopadmin unter "Erweiterungen -> Module".
 
+> ### Wichtig!
+> Bitte stellen Sie sicher, dass die nötigen Blöcke im OXID-Shop zur Verfügung stehen.
+> Lesen Sie mehr in der [technischen Doku](./Docs/README.md) unter "Blöcke"!
+
 ## Verwendung
 ### Grundfunktionalität
 Nach erfolgreicher Installation finden Sie in Ihrem Shop-Admin unter "Erweiterungen > Module" 
