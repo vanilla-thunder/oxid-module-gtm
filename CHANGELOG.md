@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.5.0...1.6.0) - 2023-05-30
+### Added
+- possibility to choose between consentmanager && usercentrics
+- position to block extension
+### Changed
+- genuine code cleanup
+- usercentrics includation script
+
 ## [1.5.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.4.0...1.5.0) - 2023-05-23
 ### Added
 - additional settings to explicitly indicate that consentmanager is used
