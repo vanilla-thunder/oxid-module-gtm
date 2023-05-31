@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/2.5.0...2.6.0) - 2023-05-31
+### Added
+- add settings to explicit choose an external service (usercentrics/ consentmanager)
+- position to block-extension
+- extended instructions to check for in readme
+### Fixed
+- usercentrics script
+- missing right articleList-getter
+### Changed
+- view_item_list-template block extension
+- cookieManager handling
+### Removed
+- additional check for cookieManagerType
+
 ## [2.5.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/2.4.0...2.5.0) - 2023-05-23
 ### Added
 - additional settings to explicitly indicate that consentmanager is used
