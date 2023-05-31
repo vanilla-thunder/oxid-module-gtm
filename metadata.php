@@ -17,7 +17,7 @@ $aModule          = [
                       Die Entwicklung basiert auf einem Fork von Marat Bedoev - <a href='https://github.com/vanilla-thunder/oxid-module-gtm'>Github-Link</a>
                       ",
     'thumbnail'   => 'thumbnail.png',
-    'version'     => '2.5.0',
+    'version'     => '1.8.0',
     'author'      => 'Data Development (Inh.: Thomas Dartsch)',
     'email'       => 'support@shopmodule.com',
     'url'         => 'https://www.oxidmodule.com/',
@@ -35,7 +35,8 @@ $aModule          = [
         [
             'template' => 'layout/base.tpl',
             'block'    => 'head_meta_robots',
-            'file'     => '/Application/views/blocks/_gtm_js.tpl'
+            'file'     => '/Application/views/blocks/_gtm_js.tpl',
+            'position' => 150
         ],
         // tag manager nojs
         [
@@ -64,8 +65,8 @@ $aModule          = [
         // Lists
         // view_item_list
         [
-            'template' => 'widget/product/list.tpl',
-            'block'    => 'widget_product_list',
+            'template' => 'page/list/list.tpl',
+            'block'    => 'page_list_productlist',
             'file'     => '/Application/views/ga4/view_item_list.tpl',
             'position' => 150
         ],
@@ -122,10 +123,10 @@ $aModule          = [
         ],
         [
             'group' => 'd3_gtm_settings_cookiemanager',
-            'name' => 'd3_gtm_settings_HAS_CONSENTMANAGER',
+            'name' => 'd3_gtm_settings_HAS_STD_MANAGER',
             'type' => 'select',
             'value' => 'none',
-            'constraints' => 'NO|YES',
+            'constraints' => 'NONE|CONSENTMANAGER|USERCENTRICS',
         ],
     ]
 ];
