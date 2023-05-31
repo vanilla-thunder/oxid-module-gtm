@@ -27,7 +27,6 @@ class ViewConfig extends ViewConfig_parent
     {
         if ($this->sContainerId === null)
         {
-
             $this->sContainerId = $this->getConfig()->getConfigParam('d3_gtm_sContainerID');
         }
         return $this->sContainerId;
@@ -80,13 +79,21 @@ class ViewConfig extends ViewConfig_parent
     /**
      * @return bool
      */
+    public function shallUseOwnCookieManager()
+    {
+        return (bool) Registry::getConfig()->getConfigParam('d3_gtm_settings_hasOwnCookieManager');
+    }
+
+    /**
+     * @return bool
+     */
     public function D3blShowGtmScript()
     {
         /** @var Config $oConfig */
         $oConfig = Registry::getConfig();
 
         // No Cookie Manager in use
-        if (!$oConfig->getConfigParam('d3_gtm_settings_hasOwnCookieManager')) {
+        if (false === $this->shallUseOwnCookieManager()) {
             return true;
         }
 
@@ -113,7 +120,6 @@ class ViewConfig extends ViewConfig_parent
             return true;
         }
 
-        // Cookie Manager not (yet) supported
         return false;
     }
 
@@ -125,6 +131,10 @@ class ViewConfig extends ViewConfig_parent
     public function getGtmScriptAttributes()
     {
         $oConfig = Registry::getConfig();
+
+        if (false === $this->shallUseOwnCookieManager()){
+            return "";
+        }
 
         if ($this->getCookieManagerType() === "oxps_usercentrics" or $this->getExplicitManager() === 'USERCENTRICS') {
             $sCookieId = $oConfig->getConfigParam('d3_gtm_settings_cookieName');

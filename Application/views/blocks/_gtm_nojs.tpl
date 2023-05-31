@@ -1,4 +1,4 @@
-[{if $oViewConf->D3blShowGtmScript() && !$oViewConf->getCookieManagerType()}]
+[{if $oViewConf->D3blShowGtmScript()}]
     [{if $oViewConf->getGtmContainerId()}][{strip}]
     <!-- Google Tag Manager (noscript) -->
     <noscript>
