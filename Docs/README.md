@@ -12,7 +12,7 @@ Für den geregelten Ablauf sind folgende Blöcke nötig:
     - Datei: page/search/search.tpl
     - GA4 Event: view_search_results
 - Artikelliste
-    - Blockname: page_list_productlist (muss hinzugefügt werden)
+    - Blockname: page_list_productlist
     - Datei: page/list/list.tpl
     - GA4 Event: view_item_list
 - Detailseite
