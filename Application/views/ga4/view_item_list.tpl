@@ -1,5 +1,5 @@
 [{$smarty.block.parent}]
-[{assign var="gtmProducts" value=$products}]
+[{assign var="gtmProducts" value=$oView->getArticleList()}]
 
 [{assign var="breadCrumb" value=''}]
 
