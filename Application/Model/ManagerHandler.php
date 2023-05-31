@@ -48,6 +48,6 @@ class ManagerHandler
         $oManagerTypes = oxNew(ManagerTypes::class);
         return $oManagerTypes->isManagerInList($sPotentialManagerName)
             ? $sPotentialManagerName
-            : ManagerTypes::EXTERNAL_SERVICE;
+            : "NONE";
     }
 }
