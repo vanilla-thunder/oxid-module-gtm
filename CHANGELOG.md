@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/2.5.0...2.6.0) - 2023-05-31
+### Added
+- add settings to explicit choose an external service (usercentrics/ consentmanager)
+- position to block-extension
+- extended instructions to check for in readme
+### Fixed
+- usercentrics script
+- missing right articleList-getter
+### Changed
+- view_item_list-template block extension
+- cookieManager handling
+### Removed
+- additional check for cookieManagerType
+
 ## [2.5.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/2.4.0...2.5.0) - 2023-05-23
 ### Added
 - additional settings to explicitly indicate that consentmanager is used
@@ -53,6 +67,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.1...2.0) - 2023-01-20
 ### Added
 - using of ContainerFactory in ViewConfig
+## [1.8.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.7.0...1.8.0) - 2023-05-31
+### Fixed
+- bug in explicit manager selection
+
+## [1.7.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.6.0...1.7.0) - 2023-05-31
+### Added
+- extended call to read the technical documentation
+### Changed
+- block-extension for view_item_list
+- way of getting list-articles in view_item_list
+
+## [1.6.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.5.0...1.6.0) - 2023-05-30
+### Added
+- possibility to choose between consentmanager && usercentrics
+- position to block extension
+### Changed
+- genuine code cleanup
+- usercentrics includation script
+
 ## [1.8.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.7.0...1.8.0) - 2023-05-31
 ### Fixed
 - bug in explicit manager selection
