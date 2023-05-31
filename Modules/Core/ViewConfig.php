@@ -12,6 +12,8 @@
 
 namespace D3\GoogleAnalytics4\Modules\Core;
 
+use D3\GoogleAnalytics4\Application\Model\ManagerHandler;
+use D3\GoogleAnalytics4\Application\Model\ManagerTypes;
 use OxidEsales\Eshop\Application\Controller\FrontendController;
 use OxidEsales\Eshop\Core\Config;
 use OxidEsales\Eshop\Core\Registry;
@@ -38,47 +40,24 @@ class ViewConfig extends ViewConfig_parent
     }
 
     /**
-     * @return mixed
+     * @return void
      */
-    public function getModuleSettingExplicitManagerSelectValue()
-    {
-        return Registry::getConfig()->getConfigParam('d3_gtm_settings_HAS_STD_MANAGER');
-    }
-
-    /**
-     * @return false|mixed
-     */
-    public function getExplicitManager()
-    {
-        $sManagerName = $this->getModuleSettingExplicitManagerSelectValue();
-        return $sManagerName === "NONE" ? false : $sManagerName;
-    }
-
-    public function getCookieManagerType()
+    public function defineCookieManagerType() :void
     {
         if ($this->sCookieManagerType === null)
         {
-            $this->sCookieManagerType = false;
-
-            $allowedManagerTypes = [
-                'net_cookie_manager',
-                'agcookiecompliance',
-                'oxps_usercentrics'
-            ];
-
-            foreach ($allowedManagerTypes as $type) {
-                if ($this->isModuleActive($type)) {
-                    $this->sCookieManagerType = $type;
-                    break;
-                }
-            }
+            /** @var ManagerHandler $oManagerHandler */
+            $oManagerHandler = oxNew(ManagerHandler::class);
+            $this->sCookieManagerType = $oManagerHandler->getCurrManager();
         }
+    }
 
-        if ($this->sCookieManagerType === false and $this->getExplicitManager()){
-            return "externalService";
-        }
-
-        return $this->sCookieManagerType;
+    /**
+     * @return bool
+     */
+    public function shallUseOwnCookieManager() :bool
+    {
+        return (bool) Registry::getConfig()->getConfigParam('d3_gtm_settings_hasOwnCookieManager');
     }
 
     /**
@@ -90,29 +69,37 @@ class ViewConfig extends ViewConfig_parent
         $oConfig = Registry::getConfig();
 
         // No Cookie Manager in use
-        if (!$oConfig->getConfigParam('d3_gtm_settings_hasOwnCookieManager')) {
+        if (!$this->shallUseOwnCookieManager()) {
             return true;
         }
+
+        $this->defineCookieManagerType();
 
         $sCookieID = $oConfig->getConfigParam('d3_gtm_settings_cookieName');
 
         // Netensio Cookie Manager
-        if ($this->getCookieManagerType() == "net_cookie_manager") {
+        if ($this->sCookieManagerType === ManagerTypes::NET_COOKIE_MANAGER) {
             $oSession = Registry::getSession();
             $aCookies = $oSession->getVariable("aCookieSel");
 
-            return (!is_null($aCookies) && is_array($aCookies) && array_key_exists($sCookieID, $aCookies) && $aCookies[$sCookieID] == "1");
+            return (is_array($aCookies) && array_key_exists($sCookieID, $aCookies) && $aCookies[$sCookieID] == "1");
         }
 
         // Aggrosoft Cookie Consent
-        if ($this->getCookieManagerType() == "agcookiecompliance") {
+        if ($this->sCookieManagerType === ManagerTypes::AGCOOKIECOMPLIANCE) {
             if (method_exists($this, "isCookieCategoryEnabled")) {
                 return $this->isCookieCategoryEnabled($sCookieID);
             }
         }
 
         // UserCentrics or consentmanager
-        if ($this->getCookieManagerType() === "oxps_usercentrics" or $this->getCookieManagerType() === 'externalService') {
+        if (
+            $this->sCookieManagerType       === ManagerTypes::USERCENTRICS_MODULE
+            or $this->sCookieManagerType    === ManagerTypes::USERCENTRICS_MANUALLY
+            or $this->sCookieManagerType    === ManagerTypes::CONSENTMANAGER
+            or $this->sCookieManagerType    === ManagerTypes::EXTERNAL_SERVICE
+        )
+        {
             // Always needs the script-tags delivered to the DOM.
             return true;
         }
@@ -126,21 +113,27 @@ class ViewConfig extends ViewConfig_parent
      * This is especially important for UserCentrics.
      * @return string
      */
-    public function getGtmScriptAttributes()
+    public function getGtmScriptAttributes() :string
     {
         $oConfig = Registry::getConfig();
+        $sCookieId = $oConfig->getConfigParam('d3_gtm_settings_cookieName');
 
-        if ($this->getCookieManagerType() === "oxps_usercentrics" or $this->getExplicitManager() === 'USERCENTRICS') {
-            $sCookieId = $oConfig->getConfigParam('d3_gtm_settings_cookieName');
+        if (false === $this->shallUseOwnCookieManager()){
+            return "";
+        }
 
+        if (
+            $this->sCookieManagerType === ManagerTypes::USERCENTRICS_MODULE
+            or $this->sCookieManagerType === ManagerTypes::USERCENTRICS_MANUALLY
+        )
+        {
             if ($sCookieId) {
                 return 'data-usercentrics="' . $sCookieId . '" type="text/plain" async=""';
             }
         }
 
-        if ($this->getCookieManagerType() === "externalService" and $this->getExplicitManager() === 'CONSENTMANAGER') {
-            $sCookieId = $oConfig->getConfigParam('d3_gtm_settings_cookieName');
-
+        if ($this->sCookieManagerType === ManagerTypes::CONSENTMANAGER)
+        {
             if ($sCookieId) {
                 return 'async 
                         type="text/plain"
