@@ -67,24 +67,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.1...2.0) - 2023-01-20
 ### Added
 - using of ContainerFactory in ViewConfig
-## [1.8.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.7.0...1.8.0) - 2023-05-31
-### Fixed
-- bug in explicit manager selection
 
-## [1.7.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.6.0...1.7.0) - 2023-05-31
-### Added
-- extended call to read the technical documentation
+## [1.9.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.8.0...1.9.0) - 2023-06-19
 ### Changed
-- block-extension for view_item_list
-- way of getting list-articles in view_item_list
-
-## [1.6.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.5.0...1.6.0) - 2023-05-30
-### Added
-- possibility to choose between consentmanager && usercentrics
-- position to block extension
-### Changed
-- genuine code cleanup
-- usercentrics includation script
+- add_to_cart event template-structure
 
 ## [1.8.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.7.0...1.8.0) - 2023-05-31
 ### Fixed
