@@ -27,6 +27,7 @@
                         'item_category_2':'[{$gtmBasketItemCategory->getSplitCategoryArray(1)}]',
                         'item_category_3':'[{$gtmBasketItemCategory->getSplitCategoryArray(2)}]',
                         'item_category_4':'[{$gtmBasketItemCategory->getSplitCategoryArray(3)}]',
+                        'item_list_name':'[{$gtmCategory->getSplitCategoryArray()}]',
                         'price': [{$d3oItemPrice->getPrice()}],
                         'quantity':[{$basketitem->getAmount()}],
                         'position':[{$smarty.foreach.gtmCartContents.index}]

@@ -34,6 +34,7 @@
         'item_category_2':'[{$gtmCategory->getSplitCategoryArray(1)}]',
         'item_category_3':'[{$gtmCategory->getSplitCategoryArray(2)}]',
         'item_category_4':'[{$gtmCategory->getSplitCategoryArray(3)}]',
+        'item_list_name':'[{$gtmCategory->getSplitCategoryArray()}]',
         'quantity': iArtQuantity
         }
       ]
