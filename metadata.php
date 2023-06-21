@@ -63,7 +63,7 @@ $aModule          = [
         [
             'template' => 'page/checkout/thankyou.tpl',
             'block'    => 'checkout_thankyou_main',
-            'file'     => '/Application/views/blocks/checkout_s5.tpl'
+            'file'     => '/Application/views/blocks/purchase.tpl'
         ],
         // Lists
         // view_item_list
