@@ -1,5 +1,8 @@
 <?php
+
+use D3\GoogleAnalytics4\Modules\Application\Model\Category as Category;
 use D3\GoogleAnalytics4\Modules\Core\ViewConfig;
+use OxidEsales\Eshop\Application\Model\Category as OECategory;
 use OxidEsales\Eshop\Core\ViewConfig as OEViewConfig;
 
 $sMetadataVersion = '2.1';
@@ -22,7 +25,8 @@ $aModule          = [
     'email'       => 'support@shopmodule.com',
     'url'         => 'https://www.oxidmodule.com/',
     'extend'      => [
-        OEViewConfig::class => ViewConfig::class
+        OEViewConfig::class => ViewConfig::class,
+        OECategory::class => Category::class
     ],
     'templates'   => [
         // GA4 events
@@ -55,7 +59,7 @@ $aModule          = [
         [
             'template' => 'page/checkout/basket.tpl',
             'block'    => 'checkout_basket_main',
-            'file'     => '/Application/views/blocks/checkout_s1.tpl'
+            'file'     => '/Application/views/blocks/view_cart.tpl'
         ],
         [
             'template' => 'page/checkout/thankyou.tpl',

@@ -16,3 +16,7 @@
 namespace D3\GoogleAnalytics4\Modules\Core{
     class ViewConfig_parent extends \OxidEsales\Eshop\Core\ViewConfig{}
 }
+
+namespace D3\GoogleAnalytics4\Modules\Application\Model{
+    class Category_parent extends \OxidEsales\Eshop\Application\Model\Category {}
+}
