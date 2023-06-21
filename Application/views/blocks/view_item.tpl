@@ -5,6 +5,9 @@
 
 <script>
   dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
+
+  let itemCategories = '[{if $gtmCategory}][{$gtmCategory->getLink()|parse_url:5|ltrim:"/"|rtrim:"/"}][{else}]no category[{/if}]'.split('/');
+
   dataLayer.push({
     'event': 'view_item',
     'eventLabel':'Product View',
@@ -15,8 +18,11 @@
           'item_name': '[{$gtmProduct->getFieldData("oxtitle")}]',
           'item_id': '[{$gtmProduct->getFieldData("oxartnum")}]',
           'item_brand': '[{if $gtmManufacturer}][{$gtmManufacturer->oxmanufacturers__oxtitle->value}][{/if}]',
-          'item_category': '[{if $gtmCategory}][{$gtmCategory->getLink()|parse_url:5|ltrim:"/"|rtrim:"/"}][{else}]-[{/if}]',
           'item_variant': '[{if $gtmProduct->getFieldData("oxvarselect")}][{$gtmProduct->getFieldData("oxvarselect")}][{/if}]',
+          'item_category':  itemCategories[0] || 'no category',
+          'item_category_2':itemCategories[1] || '',
+          'item_category_3':itemCategories[2] || '',
+          'item_category_4':itemCategories[3] || '',
           [{assign var="d3PriceObject" value=$gtmProduct->getPrice()}]
           'price': [{$d3PriceObject->getPrice()}]
         }
