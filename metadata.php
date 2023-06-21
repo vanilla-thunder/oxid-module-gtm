@@ -31,7 +31,6 @@ $aModule          = [
     'templates'   => [
         // GA4 events
         'ga4_add_to_cart.tpl'      => 'd3/googleanalytics4/Application/views/ga4/add_to_cart.tpl',
-        'ga4_search.tpl'           => 'd3/googleanalytics4/Application/views/ga4/search.tpl',
         'ga4_view_item_list.tpl'   => 'd3/googleanalytics4/Application/views/ga4/view_item_list.tpl',
     ],
     'blocks'      => [
@@ -78,7 +77,7 @@ $aModule          = [
         [
             'template' => 'page/search/search.tpl',
             'block'    => 'search_results',
-            'file'     => '/Application/views/ga4/search.tpl',
+            'file'     => '/Application/views/ga4/view_search_result.tpl',
             'position' => 150
         ],
         // add_to_cart
