@@ -20,7 +20,9 @@
               [
                 [{foreach from=$gtmArticles item="gtmBasketItem" name="gtmArticles"}]
                     [{assign var="gtmPurchaseItemPriceObject"   value=$gtmBasketItem->getPrice()}]
-                    [{assign var="gtmPurchaseItemCategory"      value=$gtmBasketItem->getCategory()}]
+                    [{assign var="gtmPurchaseItem"              value=$gtmBasketItem->getArticle()}]
+                    [{assign var="gtmPurchaseItemCategory"      value=$gtmPurchaseItem->getCategory()}]
+
                     {
                         'item_id':          '[{$gtmBasketItem->getFieldData("oxartnum")}]',
                         'item_name':        '[{$gtmBasketItem->getFieldData("oxtitle")}]',
