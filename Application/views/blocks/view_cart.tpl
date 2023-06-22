@@ -14,6 +14,7 @@
             'actionField': "step: 1",
             'currency': "[{$currency->name}]",
             'value': [{$d3BasketPrice->getPrice()}],
+            'coupon':         '[{foreach from=$oxcmp_basket->getVouchers() item=sVoucher key=key name=Voucher}][{$sVoucher->sVoucherNr}][{if !$smarty.foreach.Voucher.last}], [{/if}][{/foreach}]',
             'items': [
                 [{foreach from=$oxcmp_basket->getContents() item=basketitem name=gtmCartContents  key=basketindex}]
                     [{assign var="d3oItemPrice" value=$basketitem->getPrice()}]
@@ -29,6 +30,7 @@
                         'item_category_4':  '[{$gtmBasketItemCategory->getSplitCategoryArray(3)}]',
                         'item_list_name':   '[{$gtmBasketItemCategory->getSplitCategoryArray()}]',
                         'price':            [{$d3oItemPrice->getPrice()}],
+                        'coupon':           '[{foreach from=$oxcmp_basket->getVouchers() item=sVoucher key=key name=Voucher}][{$sVoucher->sVoucherNr}][{if !$smarty.foreach.Voucher.last}], [{/if}][{/foreach}]',
                         'quantity':         [{$basketitem->getAmount()}],
                         'position':         [{$smarty.foreach.gtmCartContents.index}]
                     }[{if !$smarty.foreach.gtmCartContents.last}],[{/if}]
