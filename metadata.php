@@ -1,7 +1,9 @@
 <?php
 
+use D3\GoogleAnalytics4\Modules\Application\Model\Basket as Basket;
 use D3\GoogleAnalytics4\Modules\Application\Model\Category as Category;
 use D3\GoogleAnalytics4\Modules\Core\ViewConfig;
+use OxidEsales\Eshop\Application\Model\Basket as OEBasket;
 use OxidEsales\Eshop\Application\Model\Category as OECategory;
 use OxidEsales\Eshop\Core\ViewConfig as OEViewConfig;
 
@@ -26,7 +28,8 @@ $aModule          = [
     'url'         => 'https://www.oxidmodule.com/',
     'extend'      => [
         OEViewConfig::class => ViewConfig::class,
-        OECategory::class => Category::class
+        OECategory::class => Category::class,
+        OEBasket::class => Basket::class
     ],
     'templates'   => [
         // GA4 events
