@@ -22,7 +22,7 @@ $aModule          = [
                       Die Entwicklung basiert auf einem Fork von Marat Bedoev - <a href='https://github.com/vanilla-thunder/oxid-module-gtm'>Github-Link</a>
                       ",
     'thumbnail'   => 'thumbnail.png',
-    'version'     => '2.7.0',
+    'version'     => '2.8.0',
     'author'      => 'Data Development (Inh.: Thomas Dartsch)',
     'email'       => 'support@shopmodule.com',
     'url'         => 'https://www.oxidmodule.com/',
@@ -31,11 +31,7 @@ $aModule          = [
         OECategory::class => Category::class,
         OEBasket::class => Basket::class
     ],
-    'templates'   => [
-        // GA4 events
-        'ga4_add_to_cart.tpl'      => 'd3/googleanalytics4/Application/views/ga4/add_to_cart.tpl',
-        'ga4_view_item_list.tpl'   => 'd3/googleanalytics4/Application/views/ga4/view_item_list.tpl',
-    ],
+    'templates'   => [],
     'blocks'      => [
         // tag manager js
         [
