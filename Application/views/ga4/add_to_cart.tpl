@@ -11,8 +11,6 @@
   $("#toBasket").click(function(event) {
   dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
 
-  let itemCategories = '[{if $gtmCategory}][{$gtmCategory->getLink()|parse_url:5|ltrim:"/"|rtrim:"/"}][{else}]no category[{/if}]'.split('/');
-
   [{*** Debug cases ***}]
   [{*event.preventDefault();*}]
 
@@ -32,10 +30,11 @@
         'price':          [{$d3PriceObject->getPrice()}],
         'item_brand':     '[{if $gtmManufacturer}][{$gtmManufacturer->oxmanufacturers__oxtitle->value}][{/if}]',
         'item_variant':   '[{if $gtmProduct->getFieldData('oxvarselect')}][{$gtmProduct->getFieldData('oxvarselect')}][{/if}]',
-        'item_category':  itemCategories[0] || 'no category',
-        'item_category_2':itemCategories[1] || '',
-        'item_category_3':itemCategories[2] || '',
-        'item_category_4':itemCategories[3] || '',
+        'item_category':  '[{$gtmCategory->getSplitCategoryArray(0)}]',
+        'item_category_2':'[{$gtmCategory->getSplitCategoryArray(1)}]',
+        'item_category_3':'[{$gtmCategory->getSplitCategoryArray(2)}]',
+        'item_category_4':'[{$gtmCategory->getSplitCategoryArray(3)}]',
+        'item_list_name':'[{$gtmCategory->getSplitCategoryArray()}]',
         'quantity': iArtQuantity
         }
       ]
