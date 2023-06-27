@@ -115,8 +115,7 @@ class ViewConfig extends ViewConfig_parent
      */
     public function getGtmScriptAttributes() :string
     {
-        $oConfig = Registry::getConfig();
-        $sCookieId = $oConfig->getConfigParam('d3_gtm_settings_cookieName');
+        $sCookieId = trim(Registry::getConfig()->getConfigParam('d3_gtm_settings_cookieName'));
 
         if (false === $this->shallUseOwnCookieManager()){
             return "";
@@ -142,6 +141,10 @@ class ViewConfig extends ViewConfig_parent
                         data-cmp-vendor="s905"
                         ';
             }
+        }
+
+        if ($this->sCookieManagerType === ManagerTypes::COOKIEFIRST){
+            return 'type="text/plain" data-cookiefirst-category="' . $sCookieId .'"';
         }
 
         return "";
