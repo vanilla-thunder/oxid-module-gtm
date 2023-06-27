@@ -75,7 +75,7 @@ class ViewConfig extends ViewConfig_parent
 
         $this->defineCookieManagerType();
 
-        $sCookieID = $oConfig->getConfigParam('d3_gtm_settings_cookieName');
+        $sCookieID = trim($oConfig->getConfigParam('d3_gtm_settings_cookieName'));
 
         // Netensio Cookie Manager
         if ($this->sCookieManagerType === ManagerTypes::NET_COOKIE_MANAGER) {
@@ -97,6 +97,7 @@ class ViewConfig extends ViewConfig_parent
             $this->sCookieManagerType       === ManagerTypes::USERCENTRICS_MODULE
             or $this->sCookieManagerType    === ManagerTypes::USERCENTRICS_MANUALLY
             or $this->sCookieManagerType    === ManagerTypes::CONSENTMANAGER
+            or $this->sCookieManagerType    === ManagerTypes::COOKIEFIRST
             or $this->sCookieManagerType    === ManagerTypes::EXTERNAL_SERVICE
         )
         {
