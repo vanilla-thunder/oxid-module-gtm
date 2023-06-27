@@ -82,7 +82,7 @@ class ViewConfig extends ViewConfig_parent
 
         $this->defineCookieManagerType();
 
-        $sCookieID = $oConfig->getConfigParam('d3_gtm_settings_cookieName');
+        $sCookieID = trim($oConfig->getConfigParam('d3_gtm_settings_cookieName'));
 
         // Netensio Cookie Manager
         if ($this->sCookieManagerType === ManagerTypes::NET_COOKIE_MANAGER) {
@@ -104,6 +104,7 @@ class ViewConfig extends ViewConfig_parent
             $this->sCookieManagerType       === ManagerTypes::USERCENTRICS_MODULE
             or $this->sCookieManagerType    === ManagerTypes::USERCENTRICS_MANUALLY
             or $this->sCookieManagerType    === ManagerTypes::CONSENTMANAGER
+            or $this->sCookieManagerType    === ManagerTypes::COOKIEFIRST
             or $this->sCookieManagerType    === ManagerTypes::EXTERNAL_SERVICE
         )
         {
@@ -121,8 +122,7 @@ class ViewConfig extends ViewConfig_parent
      */
     public function getGtmScriptAttributes() :string
     {
-        $oConfig = Registry::getConfig();
-        $sCookieId = $oConfig->getConfigParam('d3_gtm_settings_cookieName');
+        $sCookieId = trim(Registry::getConfig()->getConfigParam('d3_gtm_settings_cookieName'));
 
         if (false === $this->shallUseOwnCookieManager()){
             return "";
@@ -148,6 +148,10 @@ class ViewConfig extends ViewConfig_parent
                         data-cmp-vendor="s905"
                         ';
             }
+        }
+
+        if ($this->sCookieManagerType === ManagerTypes::COOKIEFIRST){
+            return 'type="text/plain" data-cookiefirst-category="' . $sCookieId .'"';
         }
 
         return "";

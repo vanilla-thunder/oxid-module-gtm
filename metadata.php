@@ -1,5 +1,10 @@
 <?php
+
+use D3\GoogleAnalytics4\Modules\Application\Model\Basket as Basket;
+use D3\GoogleAnalytics4\Modules\Application\Model\Category as Category;
 use D3\GoogleAnalytics4\Modules\Core\ViewConfig;
+use OxidEsales\Eshop\Application\Model\Basket as OEBasket;
+use OxidEsales\Eshop\Application\Model\Category as OECategory;
 use OxidEsales\Eshop\Core\ViewConfig as OEViewConfig;
 
 $sMetadataVersion = '2.1';
@@ -17,19 +22,16 @@ $aModule          = [
                       Die Entwicklung basiert auf einem Fork von Marat Bedoev - <a href='https://github.com/vanilla-thunder/oxid-module-gtm'>Github-Link</a>
                       ",
     'thumbnail'   => 'thumbnail.png',
-    'version'     => '2.7.0',
+    'version'     => '2.9.0',
     'author'      => 'Data Development (Inh.: Thomas Dartsch)',
     'email'       => 'support@shopmodule.com',
     'url'         => 'https://www.oxidmodule.com/',
     'extend'      => [
-        OEViewConfig::class => ViewConfig::class
+        OEViewConfig::class => ViewConfig::class,
+        OECategory::class => Category::class,
+        OEBasket::class => Basket::class
     ],
-    'templates'   => [
-        // GA4 events
-        'ga4_add_to_cart.tpl'      => 'd3/googleanalytics4/Application/views/ga4/add_to_cart.tpl',
-        'ga4_search.tpl'           => 'd3/googleanalytics4/Application/views/ga4/search.tpl',
-        'ga4_view_item_list.tpl'   => 'd3/googleanalytics4/Application/views/ga4/view_item_list.tpl',
-    ],
+    'templates'   => [],
     'blocks'      => [
         // tag manager js
         [
@@ -55,12 +57,12 @@ $aModule          = [
         [
             'template' => 'page/checkout/basket.tpl',
             'block'    => 'checkout_basket_main',
-            'file'     => '/Application/views/blocks/checkout_s1.tpl'
+            'file'     => '/Application/views/blocks/view_cart.tpl'
         ],
         [
             'template' => 'page/checkout/thankyou.tpl',
             'block'    => 'checkout_thankyou_main',
-            'file'     => '/Application/views/blocks/checkout_s5.tpl'
+            'file'     => '/Application/views/blocks/purchase.tpl'
         ],
         // Lists
         // view_item_list
@@ -74,7 +76,7 @@ $aModule          = [
         [
             'template' => 'page/search/search.tpl',
             'block'    => 'search_results',
-            'file'     => '/Application/views/ga4/search.tpl',
+            'file'     => '/Application/views/ga4/view_search_result.tpl',
             'position' => 150
         ],
         // add_to_cart
@@ -126,7 +128,7 @@ $aModule          = [
             'name' => 'd3_gtm_settings_HAS_STD_MANAGER',
             'type' => 'select',
             'value' => 'none',
-            'constraints' => 'NONE|CONSENTMANAGER|USERCENTRICS',
+            'constraints' => 'NONE|CONSENTMANAGER|USERCENTRICS|COOKIEFIRST',
         ],
     ]
 ];
