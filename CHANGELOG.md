@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.10.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.9.0...1.10.0) - 2023-06-27
+### Added
+- Following Entries to dedicated event-templates
+  - coupon
+  - paymentType
+  - item_list_name
+  - item_category
+- Method to get the in order used Payment-Name
+- Method to get the current Article Category
+### Changed
+- cookieManager handling
+- general template cleanup
+- renaming the template to a more intuitive name
+
 ## [1.9.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.8.0...1.9.0) - 2023-06-19
 ### Changed
 - add_to_cart event template-structure
