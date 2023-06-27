@@ -34,6 +34,8 @@ class ManagerTypes
 
     const CONSENTMANAGER            = "CONSENTMANAGER";
 
+    const COOKIEFIRST               = "COOKIEFIRST";
+
     /**
      * @return array
      */
@@ -45,7 +47,8 @@ class ManagerTypes
             "net_cookie_manager"    => self::NET_COOKIE_MANAGER,
             "oxps_usercentrics"     => self::USERCENTRICS_MODULE,
             "usercentrics"          => self::USERCENTRICS_MANUALLY,
-            "consentmanager"        => self::CONSENTMANAGER
+            "consentmanager"        => self::CONSENTMANAGER,
+            "cookiefirst"        => self::COOKIEFIRST
         ];
     }
 

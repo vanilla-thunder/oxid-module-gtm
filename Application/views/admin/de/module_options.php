@@ -31,10 +31,17 @@ $aLang = [
     // for cookie manager settings
     'SHOP_MODULE_GROUP_d3_gtm_settings_cookiemanager'   => 'Cookie Manager Einstellungen',
     'SHOP_MODULE_d3_gtm_settings_hasOwnCookieManager'   => 'Cookie Manager nutzen?',
+    'HELP_SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER'              => 'Mehr Informationen zu den genannten Coookie-Manager finden Sie auf den folgenden Home-Pages<br><br>
+                                                                        <a href="https://consentmanager.net/">Consentmanager</a><br>
+                                                                        <a href="https://usercentrics.com/">Usercentrics</a><br>
+                                                                        <a href="https://cookiefirst.com">Cookiefirst</a><br>
+                                                                        <hr>
+                                                                        Bei weiteren Fragen stehen wir gern zur Verfügung! Kontaktieren Sie uns einfach unter <a href="https://www.d3data.de/">https://www.d3data.de/</a>',
     'SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER'                   => 'Nutzen Sie eine der folgenden Einbindungen?<br>
                                                                         Dann wählen Sie bitte die zutreffende aus.',
     'SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER_NONE'              => '---',
     'SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER_CONSENTMANAGER'    => 'consentmanager',
     'SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER_USERCENTRICS'      => 'usercentrics',
+    'SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER_COOKIEFIRST'       => 'cookiefirst',
     'SHOP_MODULE_d3_gtm_settings_cookieName'  => 'CookieID',
 ];
