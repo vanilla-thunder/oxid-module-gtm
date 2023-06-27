@@ -24,11 +24,13 @@
                         'item_id':          '[{$gtmCartArticles[$basketindex]->getFieldData('oxartnum')}]',
                         'item_name':        '[{$gtmCartArticles[$basketindex]->getFieldData('oxtitle')}]',
                         'item_variant':     '[{$gtmCartArticles[$basketindex]->getFieldData('oxvarselect')}]',
+                        [{if $gtmBasketItemCategory}]
                         'item_category':    '[{$gtmBasketItemCategory->getSplitCategoryArray(0)}]',
                         'item_category_2':  '[{$gtmBasketItemCategory->getSplitCategoryArray(1)}]',
                         'item_category_3':  '[{$gtmBasketItemCategory->getSplitCategoryArray(2)}]',
                         'item_category_4':  '[{$gtmBasketItemCategory->getSplitCategoryArray(3)}]',
                         'item_list_name':   '[{$gtmBasketItemCategory->getSplitCategoryArray()}]',
+                        [{/if}]
                         'price':            [{$d3oItemPrice->getPrice()}],
                         'coupon':           '[{foreach from=$oxcmp_basket->getVouchers() item=sVoucher key=key name=Voucher}][{$sVoucher->sVoucherNr}][{if !$smarty.foreach.Voucher.last}], [{/if}][{/foreach}]',
                         'quantity':         [{$basketitem->getAmount()}],
