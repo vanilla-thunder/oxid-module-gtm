@@ -32,7 +32,7 @@
                         'affiliation':      '[{$gtmBasketItem->getFieldData("oxtitle")}]',
                         'coupon':           '[{foreach from=$gtmOrderVouchers item="gtmOrderVoucher" name="gtmOrderVoucherIteration"}][{$gtmOrderVoucher}][{if !$smarty.foreach.gtmOrderVoucherIteration.last}], [{/if}][{/foreach}]',
                         'item_variant':     '[{$gtmBasketItem->getFieldData("oxselvariant")}]',
-                        [{if $gtmBasketItemCategory}]
+                        [{if $gtmPurchaseItemCategory}]
                         'item_category':    '[{$gtmPurchaseItemCategory->getSplitCategoryArray(0)}]',
                         'item_category_2':  '[{$gtmPurchaseItemCategory->getSplitCategoryArray(1)}]',
                         'item_category_3':  '[{$gtmPurchaseItemCategory->getSplitCategoryArray(2)}]',
