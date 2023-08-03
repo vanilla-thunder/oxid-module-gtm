@@ -7,6 +7,7 @@
             [{capture assign=d3_ga4_view_cart}]
                 dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
                 dataLayer.push({
+                    'isRemoveFromCart': true,
                     'event': 'remove_from_cart',
                     'eventLabel':'remove_from_cart',
                     'ecommerce': {
