@@ -1,10 +1,10 @@
 [{$smarty.block.parent}]
 
-[{assign var="d3BasketPrice" value=$oxcmp_basket->getPrice()}]
-
-[{if $hasBeenReloaded}]
-    [{strip}]
-            [{capture assign=d3_ga4_view_cart}]
+[{block name="d3_ga4_remove_from_cart_block"}]
+    [{if $hasBeenReloaded}]
+        [{assign var="d3BasketPrice" value=$oxcmp_basket->getPrice()}]
+        [{capture assign=d3_ga4_remove_from_cart}]
+            [{strip}]
                 dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
                 dataLayer.push({
                     'isRemoveFromCart': true,
@@ -39,7 +39,8 @@
                         ]
                     }
                 });
-            [{/capture}]
-    [{/strip}]
-    [{oxscript add=$d3_ga4_view_cart}]
-[{/if}]
+            [{/strip}]
+        [{/capture}]
+        [{oxscript add=$d3_ga4_remove_from_cart}]
+    [{/if}]
+[{/block}]
