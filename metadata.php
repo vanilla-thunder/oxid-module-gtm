@@ -1,8 +1,10 @@
 <?php
 
+use D3\GoogleAnalytics4\Modules\Application\Controller\BasketController;
 use D3\GoogleAnalytics4\Modules\Application\Model\Basket as Basket;
 use D3\GoogleAnalytics4\Modules\Application\Model\Category as Category;
 use D3\GoogleAnalytics4\Modules\Core\ViewConfig;
+use OxidEsales\Eshop\Application\Controller\BasketController as OEBasketController;
 use OxidEsales\Eshop\Application\Model\Basket as OEBasket;
 use OxidEsales\Eshop\Application\Model\Category as OECategory;
 use OxidEsales\Eshop\Core\ViewConfig as OEViewConfig;
@@ -29,7 +31,8 @@ $aModule          = [
     'extend'      => [
         OEViewConfig::class => ViewConfig::class,
         OECategory::class => Category::class,
-        OEBasket::class => Basket::class
+        OEBasket::class => Basket::class,
+        OEBasketController::class => BasketController::class
     ],
     'templates'   => [],
     'blocks'      => [
@@ -84,6 +87,13 @@ $aModule          = [
             'template' => 'page/details/inc/productmain.tpl',
             'block'    => 'details_productmain_tobasket',
             'file'     => '/Application/views/ga4/add_to_cart.tpl',
+            'position' => 150
+        ],
+        // remove_from_cart
+        [
+            'template' => 'page/checkout/basket.tpl',
+            'block'    => 'checkout_basket_main',
+            'file'     => '/Application/views/ga4/remove_from_cart.tpl',
             'position' => 150
         ]
     ],

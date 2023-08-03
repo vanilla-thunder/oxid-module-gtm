@@ -21,3 +21,7 @@ namespace D3\GoogleAnalytics4\Modules\Application\Model{
     class Category_parent extends \OxidEsales\Eshop\Application\Model\Category {}
     class Basket_parent extends \OxidEsales\Eshop\Application\Model\Basket {}
 }
+
+namespace D3\GoogleAnalytics4\Modules\Application\Controller{
+    class BasketController_parent extends \OxidEsales\Eshop\Application\Controller\BasketController {}
+}
