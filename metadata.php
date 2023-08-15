@@ -3,10 +3,12 @@
 use D3\GoogleAnalytics4\Modules\Application\Controller\BasketController;
 use D3\GoogleAnalytics4\Modules\Application\Model\Basket as Basket;
 use D3\GoogleAnalytics4\Modules\Application\Model\Category as Category;
+use D3\GoogleAnalytics4\Modules\Application\Model\Manufacturer as Manufacturer;
 use D3\GoogleAnalytics4\Modules\Core\ViewConfig;
 use OxidEsales\Eshop\Application\Controller\BasketController as OEBasketController;
 use OxidEsales\Eshop\Application\Model\Basket as OEBasket;
 use OxidEsales\Eshop\Application\Model\Category as OECategory;
+use OxidEsales\Eshop\Application\Model\Manufacturer as OEManufacturer;
 use OxidEsales\Eshop\Core\ViewConfig as OEViewConfig;
 
 $sMetadataVersion = '2.1';
@@ -31,6 +33,7 @@ $aModule          = [
     'extend'      => [
         OEViewConfig::class => ViewConfig::class,
         OECategory::class => Category::class,
+        OEManufacturer::class => Manufacturer::class,
         OEBasket::class => Basket::class,
         OEBasketController::class => BasketController::class
     ],
