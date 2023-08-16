@@ -2,9 +2,9 @@
 
 [{assign var="gtmProducts" value=$oView->getArticleList()}]
 
-[{block name="d3_ga4_add_to_cart_block"}]
+[{block name="d3_ga4_view_search_result_block"}]
   [{if $gtmProducts|@count}]
-    [{capture assign=d3_ga4_add_to_cart}]
+    [{capture assign=d3_ga4_view_search_result}]
       [{strip}]
         dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
         dataLayer.push({
@@ -37,6 +37,6 @@
         });
       [{/strip}]
     [{/capture}]
-    [{oxscript add=$d3_ga4_add_to_cart}]
+    [{oxscript add=$d3_ga4_view_search_result}]
   [{/if}]
 [{/block}]
