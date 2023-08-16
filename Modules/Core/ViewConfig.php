@@ -203,6 +203,11 @@ class ViewConfig extends ViewConfig_parent
         return json_encode([$dataLayer], JSON_PRETTY_PRINT);
     }
 
+    public function isDebugModeOn() :bool
+    {
+        return Registry::getConfig()->getConfigParam('d3_gtm_blEnableDebug');
+    }
+
     public function isPromotionList($listId)
     {
         $oConfig           = Registry::getConfig();

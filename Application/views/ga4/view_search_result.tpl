@@ -9,7 +9,7 @@
         dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
         dataLayer.push({
           'event': 'view_search_result',
-          'eventLabel':'view_search_result',
+          'eventLabel':'view_search_result[{if $oViewConf->isDebugModeOn()}]_test[{/if}]',
           'ecommerce': {
             'search_term': '[{$searchparamforhtml}]',
             'items': [
@@ -33,7 +33,9 @@
               }[{if !$smarty.foreach.gtmProducts.last}],[{/if}]
               [{/foreach}]
             ]
-          }
+          }[{if $oViewConf->isDebugModeOn()}],
+          'debug_mode': 'true'
+          [{/if}]
         });
       [{/strip}]
     [{/capture}]

@@ -40,7 +40,9 @@
                             }[{if !$smarty.foreach.gtmCartContents.last}],[{/if}]
                         [{/foreach}]
                         ]
-                }
+                }[{if $oViewConf->isDebugModeOn()}],
+                'debug_mode': 'true'
+                [{/if}]
             });
         [{/strip}]
     [{/capture}]

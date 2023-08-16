@@ -46,7 +46,9 @@
                             }[{if !$smarty.foreach.gtmArticles.last}],[{/if}]
                         [{/foreach}]
                     ]
-                }
+                }[{if $oViewConf->isDebugModeOn()}],
+                'debug_mode': 'true'
+                [{/if}]
             })
         [{/strip}]
     [{/capture}]

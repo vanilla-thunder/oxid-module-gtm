@@ -30,7 +30,9 @@
               'price': [{$d3PriceObject->getPrice()}]
             }
           ]
-        }
+        }[{if $oViewConf->isDebugModeOn()}],
+        'debug_mode': 'true'
+        [{/if}]
       });
     [{/strip}]
   [{/capture}]

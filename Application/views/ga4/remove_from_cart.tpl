@@ -37,7 +37,9 @@
                             }[{if !$smarty.foreach.gtmRemovedItems.last}],[{/if}]
                             [{/foreach}]
                         ]
-                    }
+                    }[{if $oViewConf->isDebugModeOn()}],
+                    'debug_mode': 'true'
+                    [{/if}]
                 });
             [{/strip}]
         [{/capture}]

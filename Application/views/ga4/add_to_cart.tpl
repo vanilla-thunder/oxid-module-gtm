@@ -41,7 +41,9 @@
               'quantity': iArtQuantity
               }
             ]
-          }
+          }[{if $oViewConf->isDebugModeOn()}],
+          'debug_mode': 'true'
+          [{/if}]
         });
       });
     [{/strip}]
