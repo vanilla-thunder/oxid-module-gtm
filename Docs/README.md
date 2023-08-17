@@ -23,6 +23,10 @@ Für den geregelten Ablauf sind folgende Blöcke nötig:
     - Blockname: details_productmain_tobasket
     - Datei: page/details/inc/productmain.tpl
     - GA4 Event: add_to_cart
+- aus dem WK entfernen
+    - Blockname: checkout_basket_main
+    - Datei: page/checkout/basket.tpl
+    - GA4 Event: remove_from_cart
 - Warenkorb
     - Blockname: checkout_basket_main
     - Datei: page/checkout/basket.tpl
@@ -65,4 +69,12 @@ Aktivieren Sie anschließend diese Weiche. Setzen Sie den Haken bei "Eigenen Coo
 - [OXID Cookie Management powered by usercentrics](https://docs.oxid-esales.com/modules/usercentrics/de/latest/einfuehrung.html)
   - In der Usercentrics-Verwaltung die Services "Google Analytics" und "Google Tag Manager" anlegen
   - Den Service ```Google Tag Manager``` in den Moduleinstellungen des 'Google Analytics 4' unter
-    ```Einstell. > Cookie Manager Einstellungen > Cookie-ID``` eintragen
+    Google Tag Manager eintragen
+  - 
+- [Consent Management Provider](https://www.consentmanager.net/)
+  - In der Consentmanager-Oberfläche den Anbieter "Google Tag Manager" mit der ID s905 hinzufügen
+  - Im Frontend, im consentmanager-Pop-up nach dem 'Google Tag Manager' suchen
+    - kleines Fragezeichen neben den Namen anklicken und ganz runter scrollen
+      - prüfen, ob ein Cookie vorgegeben ist
+      - sonst, in der Consentmanager-Oberfläche Cookie-Liste entsprechendes Cookie suchen und im Admin unter
+        ```Einstell. > Cookie Manager Einstellungen > Cookie-ID``` eintragen
