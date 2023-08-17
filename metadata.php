@@ -9,6 +9,7 @@ use OxidEsales\Eshop\Application\Controller\BasketController as OEBasketControll
 use OxidEsales\Eshop\Application\Controller\ThankYouController as OEThankYouController;
 use OxidEsales\Eshop\Application\Model\Basket as OEBasket;
 use OxidEsales\Eshop\Application\Model\Category as OECategory;
+use OxidEsales\Eshop\Application\Model\Manufacturer as OEManufacturer;
 use OxidEsales\Eshop\Core\ViewConfig as OEViewConfig;
 
 $sMetadataVersion = '2.1';
@@ -35,6 +36,7 @@ $aModule          = [
         OECategory::class => Category::class,
         OEBasket::class => Basket::class,
         OEBasketController::class => BasketController::class,
+        OEManufacturer::class => Manufacturer::class,
         OEThankYouController::class => ThankYouController::class
     ],
     'templates'   => [],
