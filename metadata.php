@@ -4,6 +4,7 @@ use D3\GoogleAnalytics4\Modules\Application\Controller\BasketController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\ThankYouController;
 use D3\GoogleAnalytics4\Modules\Application\Model\Basket as Basket;
 use D3\GoogleAnalytics4\Modules\Application\Model\Category as Category;
+use D3\GoogleAnalytics4\Modules\Application\Model\Manufacturer as Manufacturer;
 use D3\GoogleAnalytics4\Modules\Core\ViewConfig;
 use OxidEsales\Eshop\Application\Controller\BasketController as OEBasketController;
 use OxidEsales\Eshop\Application\Controller\ThankYouController as OEThankYouController;
