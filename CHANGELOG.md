@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - remove_from_cart
 - auto debug_mode setter
+- manufacturer extension for breadcrumb
 ### Changed
 - general template cleanup
 
