@@ -52,7 +52,8 @@ class BasketController extends BasketController_parent
 
             $sBasketItemId = Registry::getRequest()->getRequestEscapedParameter('bindex');
 
-            $aProducts[$sProductId] = ['am'           => $dAmount,
+            $aProducts[$sProductId] = [
+                'am'           => $dAmount,
                 'sel'          => $aSel,
                 'persparam'    => $aPersParam,
                 'basketitemid' => $sBasketItemId
@@ -63,9 +64,7 @@ class BasketController extends BasketController_parent
             $toRemoveArticleIdList = [];
             $artIdOnArtAmountList = [];
 
-            if (Registry::getRequest()->getRequestEscapedParameter('removeBtn') !== null
-                or Registry::getRequest()->getRequestParameter('updateBtn') !== null) {
-
+            if ($this->isArticleRemovedState($aProducts)) {
                 //setting amount to 0 if removing article from basket
                 foreach ($aProducts as $sProductId => $aProduct) {
                     if ((isset($aProduct['remove']) && $aProduct['remove']) or intval($aProduct['am']) === 0) {
@@ -99,5 +98,30 @@ class BasketController extends BasketController_parent
 
             $this->addTplParam('toRemoveArticles', $oArtList);
         }
+    }
+
+    /**
+     * @return bool
+     *
+     * checks, if we're in the short state of "an Article has been removed"
+     * We check by looking for the "'removeBtn' is not null", as a sign for it has been triggered/ clicked
+     * if that doesn't work, we check if there's an Article in the Products array, that has "'am' = 0"
+     * Which also shows we're in that state rn
+     */
+    protected function isArticleRemovedState(array $productsArray) :bool
+    {
+        if (Registry::getRequest()->getRequestEscapedParameter('removeBtn')
+            or Registry::getRequest()->getRequestEscapedParameter('updateBtn')
+        ){
+            return true;
+        }else{
+            foreach ($productsArray as $aProduct) {
+                if (intval($aProduct['am']) === 0) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
