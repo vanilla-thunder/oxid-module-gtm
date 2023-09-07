@@ -43,5 +43,6 @@ $aLang = [
     'SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER_CONSENTMANAGER'    => 'consentmanager',
     'SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER_USERCENTRICS'      => 'usercentrics',
     'SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER_COOKIEFIRST'       => 'cookiefirst',
+    'SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER_COOKIEBOT'         => 'Cookiebot',
     'SHOP_MODULE_d3_gtm_settings_cookieName'  => 'CookieID',
 ];
