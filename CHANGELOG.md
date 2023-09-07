@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.12.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.11.1...1.12.0) - 2023-09-07
+### Added
+- cookiebot functionality
+
 ## [1.11.1](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.11.0...1.11.1) - 2023-08-17
 ### Fixed
 - metadata class entry

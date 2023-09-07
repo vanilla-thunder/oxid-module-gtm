@@ -78,3 +78,6 @@ Aktivieren Sie anschließend diese Weiche. Setzen Sie den Haken bei "Eigenen Coo
       - prüfen, ob ein Cookie vorgegeben ist
       - sonst, in der Consentmanager-Oberfläche Cookie-Liste entsprechendes Cookie suchen und im Admin unter
         ```Einstell. > Cookie Manager Einstellungen > Cookie-ID``` eintragen
+  
+- [Cookiebot](https://www.cookiebot.com)
+  - Nähere Informationen folgen bald! Bis dato, besuchen Sie bitte die offizielle Webseite.
