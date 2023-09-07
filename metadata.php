@@ -1,10 +1,14 @@
 <?php
 
+use D3\GoogleAnalytics4\Modules\Application\Controller\BasketController;
 use D3\GoogleAnalytics4\Modules\Application\Model\Basket as Basket;
 use D3\GoogleAnalytics4\Modules\Application\Model\Category as Category;
+use D3\GoogleAnalytics4\Modules\Application\Model\Manufacturer as Manufacturer;
 use D3\GoogleAnalytics4\Modules\Core\ViewConfig;
+use OxidEsales\Eshop\Application\Controller\BasketController as OEBasketController;
 use OxidEsales\Eshop\Application\Model\Basket as OEBasket;
 use OxidEsales\Eshop\Application\Model\Category as OECategory;
+use OxidEsales\Eshop\Application\Model\Manufacturer as OEManufacturer;
 use OxidEsales\Eshop\Core\ViewConfig as OEViewConfig;
 
 $sMetadataVersion = '2.1';
@@ -22,14 +26,16 @@ $aModule          = [
                       Die Entwicklung basiert auf einem Fork von Marat Bedoev - <a href='https://github.com/vanilla-thunder/oxid-module-gtm'>Github-Link</a>
                       ",
     'thumbnail'   => 'thumbnail.png',
-    'version'     => '2.10.0',
+    'version'     => '2.12.0',
     'author'      => 'Data Development (Inh.: Thomas Dartsch)',
     'email'       => 'support@shopmodule.com',
     'url'         => 'https://www.oxidmodule.com/',
     'extend'      => [
         OEViewConfig::class => ViewConfig::class,
         OECategory::class => Category::class,
-        OEBasket::class => Basket::class
+        OEManufacturer::class => Manufacturer::class,
+        OEBasket::class => Basket::class,
+        OEBasketController::class => BasketController::class
     ],
     'templates'   => [],
     'blocks'      => [
@@ -85,6 +91,13 @@ $aModule          = [
             'block'    => 'details_productmain_tobasket',
             'file'     => '/Application/views/ga4/add_to_cart.tpl',
             'position' => 150
+        ],
+        // remove_from_cart
+        [
+            'template' => 'page/checkout/basket.tpl',
+            'block'    => 'checkout_basket_main',
+            'file'     => '/Application/views/ga4/remove_from_cart.tpl',
+            'position' => 150
         ]
     ],
     'settings'    => [
@@ -128,7 +141,7 @@ $aModule          = [
             'name' => 'd3_gtm_settings_HAS_STD_MANAGER',
             'type' => 'select',
             'value' => 'none',
-            'constraints' => 'NONE|CONSENTMANAGER|USERCENTRICS|COOKIEFIRST',
+            'constraints' => 'NONE|CONSENTMANAGER|USERCENTRICS|COOKIEFIRST|COOKIEBOT',
         ],
     ]
 ];
