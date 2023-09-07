@@ -36,6 +36,8 @@ class ManagerTypes
 
     const COOKIEFIRST               = "COOKIEFIRST";
 
+    const COOKIEBOT               = "COOKIEBOT";
+
     /**
      * @return array
      */
@@ -48,7 +50,8 @@ class ManagerTypes
             "oxps_usercentrics"     => self::USERCENTRICS_MODULE,
             "usercentrics"          => self::USERCENTRICS_MANUALLY,
             "consentmanager"        => self::CONSENTMANAGER,
-            "cookiefirst"        => self::COOKIEFIRST
+            "cookiefirst"           => self::COOKIEFIRST,
+            "cookiebot"             => self::COOKIEBOT,
         ];
     }
 

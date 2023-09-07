@@ -98,6 +98,7 @@ class ViewConfig extends ViewConfig_parent
             or $this->sCookieManagerType    === ManagerTypes::USERCENTRICS_MANUALLY
             or $this->sCookieManagerType    === ManagerTypes::CONSENTMANAGER
             or $this->sCookieManagerType    === ManagerTypes::COOKIEFIRST
+            or $this->sCookieManagerType    === ManagerTypes::COOKIEBOT
             or $this->sCookieManagerType    === ManagerTypes::EXTERNAL_SERVICE
         )
         {
@@ -146,6 +147,10 @@ class ViewConfig extends ViewConfig_parent
 
         if ($this->sCookieManagerType === ManagerTypes::COOKIEFIRST){
             return 'type="text/plain" data-cookiefirst-category="' . $sCookieId .'"';
+        }
+
+        if ($this->sCookieManagerType === ManagerTypes::COOKIEBOT){
+            return 'type="text/plain" data-cookieconsent="' . $sCookieId .'"';
         }
 
         return "";

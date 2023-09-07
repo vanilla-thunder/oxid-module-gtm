@@ -141,7 +141,7 @@ $aModule          = [
             'name' => 'd3_gtm_settings_HAS_STD_MANAGER',
             'type' => 'select',
             'value' => 'none',
-            'constraints' => 'NONE|CONSENTMANAGER|USERCENTRICS|COOKIEFIRST',
+            'constraints' => 'NONE|CONSENTMANAGER|USERCENTRICS|COOKIEFIRST|COOKIEBOT',
         ],
     ]
 ];
