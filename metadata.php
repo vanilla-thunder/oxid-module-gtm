@@ -133,7 +133,7 @@ $aModule          = [
             'group'    => 'd3_gtm_settings_cookiemanager',
             'name'     => 'd3_gtm_settings_controlParameter',
             'type'     => 'str',
-            'value'    => 'example',
+            'value'    => '',
             'position' => 999
         ],
         [
