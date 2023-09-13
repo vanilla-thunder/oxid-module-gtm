@@ -33,7 +33,7 @@ class ViewConfig extends ViewConfig_parent
     {
         if ($this->sContainerId === null)
         {
-            $this->sContainerId = $this->getConfig()->getConfigParam('d3_gtm_sContainerID');
+            $this->sContainerId = Registry::getConfig()->getConfigParam('d3_gtm_sContainerID');
         }
         return $this->sContainerId;
     }
@@ -74,7 +74,7 @@ class ViewConfig extends ViewConfig_parent
 
         $this->defineCookieManagerType();
 
-        $sCookieID = trim($oConfig->getConfigParam('d3_gtm_settings_cookieName'));
+        $sCookieID = trim($oConfig->getConfigParam('d3_gtm_settings_controlParameter'));
 
         // Netensio Cookie Manager
         if ($this->sCookieManagerType === ManagerTypes::NET_COOKIE_MANAGER) {
@@ -116,7 +116,7 @@ class ViewConfig extends ViewConfig_parent
      */
     public function getGtmScriptAttributes() :string
     {
-        $sControlParameter = trim(Registry::getConfig()->getConfigParam('d3_gtm_settings_cookieName'));
+        $sControlParameter = trim(Registry::getConfig()->getConfigParam('d3_gtm_settings_controlParameter'));
 
         if (false === $this->shallUseOwnCookieManager()){
             return "";
@@ -157,7 +157,7 @@ class ViewConfig extends ViewConfig_parent
     {
         if ($this->blGA4enabled === null)
         {
-            $this->sContainerId = $this->getConfig()->getConfigParam('d3_gtm_blEnableGA4');
+            $this->sContainerId = Registry::getConfig()->getConfigParam('d3_gtm_blEnableGA4');
         }
 
         return $this->blGA4enabled;
