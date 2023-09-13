@@ -118,7 +118,7 @@ class ViewConfig extends ViewConfig_parent
     {
         $sControlParameter = trim(Registry::getConfig()->getConfigParam('d3_gtm_settings_controlParameter'));
 
-        if (false === $this->shallUseOwnCookieManager()){
+        if (false === $this->shallUseOwnCookieManager() or ($sControlParameter === '')){
             return "";
         }
 
@@ -127,16 +127,12 @@ class ViewConfig extends ViewConfig_parent
             or $this->sCookieManagerType === ManagerTypes::USERCENTRICS_MANUALLY
         )
         {
-            if ($sControlParameter) {
-                return 'data-usercentrics="' . $sControlParameter . '" type="text/plain" async=""';
-            }
+            return 'data-usercentrics="' . $sControlParameter . '" type="text/plain" async=""';
         }
 
         if ($this->sCookieManagerType === ManagerTypes::CONSENTMANAGER)
         {
-            if ($sControlParameter) {
-                return 'type="text/plain" class="cmplazyload" data-cmp-vendor="'.$sControlParameter.'"';
-            }
+            return 'type="text/plain" class="cmplazyload" data-cmp-vendor="'.$sControlParameter.'"';
         }
 
         if ($this->sCookieManagerType === ManagerTypes::COOKIEFIRST){
