@@ -77,7 +77,7 @@ class ViewConfig extends ViewConfig_parent
 
         $this->defineCookieManagerType();
 
-        $sCookieID = trim($oConfig->getConfigParam('d3_gtm_settings_cookieName'));
+        $sCookieID = trim($oConfig->getConfigParam('d3_gtm_settings_controlParameter'));
 
         // Netensio Cookie Manager
         if ($this->sCookieManagerType === ManagerTypes::NET_COOKIE_MANAGER) {
@@ -119,7 +119,7 @@ class ViewConfig extends ViewConfig_parent
      */
     public function getGtmScriptAttributes() :string
     {
-        $sControlParameter = trim(Registry::getConfig()->getConfigParam('d3_gtm_settings_cookieName'));
+        $sControlParameter = trim(Registry::getConfig()->getConfigParam('d3_gtm_settings_controlParameter'));
 
         if (false === $this->shallUseOwnCookieManager()){
             return "";
