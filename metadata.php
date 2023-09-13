@@ -1,11 +1,12 @@
 <?php
 
-use D3\GoogleAnalytics4\Modules\Application\Controller\BasketController;
+
 use D3\GoogleAnalytics4\Modules\Application\Model\Basket as Basket;
 use D3\GoogleAnalytics4\Modules\Application\Model\Category as Category;
 use D3\GoogleAnalytics4\Modules\Application\Model\Manufacturer as Manufacturer;
 use D3\GoogleAnalytics4\Modules\Core\ViewConfig;
 use OxidEsales\Eshop\Application\Controller\BasketController as OEBasketController;
+use OxidEsales\Eshop\Application\Controller\ThankYouController as OEThankYouController;
 use OxidEsales\Eshop\Application\Model\Basket as OEBasket;
 use OxidEsales\Eshop\Application\Model\Category as OECategory;
 use OxidEsales\Eshop\Application\Model\Manufacturer as OEManufacturer;
@@ -33,9 +34,10 @@ $aModule          = [
     'extend'      => [
         OEViewConfig::class => ViewConfig::class,
         OECategory::class => Category::class,
-        OEManufacturer::class => Manufacturer::class,
         OEBasket::class => Basket::class,
-        OEBasketController::class => BasketController::class
+        OEBasketController::class => BasketController::class,
+        OEManufacturer::class => Manufacturer::class,
+        OEThankYouController::class => ThankYouController::class
     ],
     'templates'   => [],
     'blocks'      => [
@@ -131,9 +133,9 @@ $aModule          = [
         ],
         [
             'group'    => 'd3_gtm_settings_cookiemanager',
-            'name'     => 'd3_gtm_settings_cookieName',
+            'name'     => 'd3_gtm_settings_controlParameter',
             'type'     => 'str',
-            'value'    => 'example',
+            'value'    => '',
             'position' => 999
         ],
         [

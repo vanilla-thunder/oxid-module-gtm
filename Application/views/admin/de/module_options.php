@@ -44,5 +44,10 @@ $aLang = [
     'SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER_USERCENTRICS'      => 'usercentrics',
     'SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER_COOKIEFIRST'       => 'cookiefirst',
     'SHOP_MODULE_d3_gtm_settings_HAS_STD_MANAGER_COOKIEBOT'         => 'Cookiebot',
-    'SHOP_MODULE_d3_gtm_settings_cookieName'  => 'CookieID',
+    'SHOP_MODULE_d3_gtm_settings_controlParameter'        => 'Steuerungsparameter',
+    'HELP_SHOP_MODULE_d3_gtm_settings_controlParameter'   => 'Nähere infos zum <a target="_blank" href="https://git.d3data.de/D3Public/GoogleAnalytics4/src/branch/master/Docs">"<strong>Steuerungsparameter</strong>"</a><hr>
+                                                        <strong>Beachte:</strong><br>
+                                                        Sofern Sie die <a target="_blank" href="https://consentmanager.net" style="color: blue">consentmanager</a> CMP verwenden,
+                                                        bitte ich Sie, gründlichst, die Hinweise der <a target="_blank" href="https://git.d3data.de/D3Public/GoogleAnalytics4/src/branch/master/Docs/CMP/consentmanager.md">Moduldokumentation/Consentmanager</a> zu lesen.
+                                                        '
 ];

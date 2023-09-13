@@ -24,4 +24,5 @@ namespace D3\GoogleAnalytics4\Modules\Application\Model{
 
 namespace D3\GoogleAnalytics4\Modules\Application\Controller{
     class BasketController_parent extends \OxidEsales\Eshop\Application\Controller\BasketController {}
+    class ThankYouController_parent extends \OxidEsales\Eshop\Application\Controller\ThankYouController {}
 }

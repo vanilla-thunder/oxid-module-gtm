@@ -116,6 +116,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.1...2.0) - 2023-01-20
 ### Added
 - using of ContainerFactory in ViewConfig
+## [1.13.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.12.0...1.13.0) - 2023-09-13
+### Added
+- extended Docs
+### Changed
+- control-param name
+- control-param function
+- adjusted check for set control-param
+- consentmanager-script-adjustments
+
+## [1.12.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.11.1...1.12.0) - 2023-09-07
+### Added
+- cookiebot functionality
+
+## [1.11.1](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.11.0...1.11.1) - 2023-08-17
+### Fixed
+- metadata class entry
+
+## [1.11.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.10.0...1.11.0) - 2023-08-16
+### Added
+- remove_from_cart
+- auto debug_mode setter
+- manufacturer extension for breadcrumb
+### Changed
+- general template cleanup
 
 ## [1.10.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.9.0...1.10.0) - 2023-06-27
 ### Added
