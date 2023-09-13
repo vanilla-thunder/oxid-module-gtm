@@ -19,6 +19,8 @@ use OxidEsales\Eshop\Core\Config;
 use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
 use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ModuleSettingBridgeInterface;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class ViewConfig extends ViewConfig_parent
 {
@@ -117,7 +119,7 @@ class ViewConfig extends ViewConfig_parent
      */
     public function getGtmScriptAttributes() :string
     {
-        $sCookieId = trim(Registry::getConfig()->getConfigParam('d3_gtm_settings_cookieName'));
+        $sControlParameter = trim(Registry::getConfig()->getConfigParam('d3_gtm_settings_cookieName'));
 
         if (false === $this->shallUseOwnCookieManager()){
             return "";
@@ -128,29 +130,24 @@ class ViewConfig extends ViewConfig_parent
             or $this->sCookieManagerType === ManagerTypes::USERCENTRICS_MANUALLY
         )
         {
-            if ($sCookieId) {
-                return 'data-usercentrics="' . $sCookieId . '" type="text/plain" async=""';
+            if ($sControlParameter) {
+                return 'data-usercentrics="' . $sControlParameter . '" type="text/plain" async=""';
             }
         }
 
         if ($this->sCookieManagerType === ManagerTypes::CONSENTMANAGER)
         {
-            if ($sCookieId) {
-                return 'async 
-                        type="text/plain"
-                        data-cmp-src="https://www.googletagmanager.com/gtm.js?id='.$this->getGtmContainerId().'"
-                        class="cmplazyload"
-                        data-cmp-vendor="s905"
-                        ';
+            if ($sControlParameter) {
+                return 'type="text/plain" class="cmplazyload" data-cmp-vendor="'.$sControlParameter.'"';
             }
         }
 
         if ($this->sCookieManagerType === ManagerTypes::COOKIEFIRST){
-            return 'type="text/plain" data-cookiefirst-category="' . $sCookieId .'"';
+            return 'type="text/plain" data-cookiefirst-category="' . $sControlParameter .'"';
         }
 
         if ($this->sCookieManagerType === ManagerTypes::COOKIEBOT){
-            return 'type="text/plain" data-cookieconsent="' . $sCookieId .'"';
+            return 'type="text/plain" data-cookieconsent="' . $sControlParameter .'"';
         }
 
         return "";
@@ -158,6 +155,10 @@ class ViewConfig extends ViewConfig_parent
 
     private $blGA4enabled = null;
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function isGA4enabled()
     {
         if ($this->blGA4enabled === null)
