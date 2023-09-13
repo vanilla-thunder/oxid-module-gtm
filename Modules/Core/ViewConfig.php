@@ -17,11 +17,6 @@ use D3\GoogleAnalytics4\Application\Model\ManagerTypes;
 use OxidEsales\Eshop\Application\Controller\FrontendController;
 use OxidEsales\Eshop\Core\Config;
 use OxidEsales\Eshop\Core\Registry;
-
-
-
-
-
 class ViewConfig extends ViewConfig_parent
 {
 
