@@ -5,6 +5,13 @@ Die Einbindung dieser Event-Templates erfolgt über TPL-Blöcke unter `source/mo
 *Hinweis: nicht alle templates sind bereits gefüllt. Wünschen Sie die Implementierung eines unausgefüllten templates?
 Kommen Sie auf uns zu unter https://www.d3data.de/
 
+## Steuerungsparameter
+Tragen Sie hier im Normalfall die ID des zu prüfenden Cookies ein.  
+In bestimmten Fällen, müssen Sie hier alternative Werte eintragen. Diese Fälle sind bedingt
+nach der gewählten CMP (Consent Manager Platform).  
+  
+> nähere Infos unter [CMP](#consent-manager-platform-cmp)  
+
 ## Blöcke
 Für den geregelten Ablauf sind folgende Blöcke nötig:
 - Suchergebnisse
@@ -53,6 +60,9 @@ Sie nutzen einen eigenen, als Modul im Shop installierten, Cookie-manager?
 Dann tragen Sie in den Folgeeinstellungen unter "Cookie Manager Einstellungen", 
 die Cookie-ID des zugehörigen Cookies ein.  
 Aktivieren Sie anschließend diese Weiche. Setzen Sie den Haken bei "Eigenen Cookie Manager nutzen?".
+
+## Consent Manager Platform (CMP)
+- [Consentmanager](https://git.d3data.de/D3Public/GoogleAnalytics4/src/branch/master/Docs/CMP/consentmanager.md)
 
 ### Unterstützung für
 - [aggrosoft - oxid-cookie-compliance](https://github.com/aggrosoft/oxid-cookie-compliance)
