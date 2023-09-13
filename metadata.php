@@ -1,6 +1,8 @@
 <?php
 
 
+use D3\GoogleAnalytics4\Modules\Application\Controller\BasketController;
+use D3\GoogleAnalytics4\Modules\Application\Controller\ThankYouController;
 use D3\GoogleAnalytics4\Modules\Application\Model\Basket as Basket;
 use D3\GoogleAnalytics4\Modules\Application\Model\Category as Category;
 use D3\GoogleAnalytics4\Modules\Application\Model\Manufacturer as Manufacturer;
@@ -27,7 +29,7 @@ $aModule          = [
                       Die Entwicklung basiert auf einem Fork von Marat Bedoev - <a href='https://github.com/vanilla-thunder/oxid-module-gtm'>Github-Link</a>
                       ",
     'thumbnail'   => 'thumbnail.png',
-    'version'     => '2.12.0',
+    'version'     => '2.13.0',
     'author'      => 'Data Development (Inh.: Thomas Dartsch)',
     'email'       => 'support@shopmodule.com',
     'url'         => 'https://www.oxidmodule.com/',

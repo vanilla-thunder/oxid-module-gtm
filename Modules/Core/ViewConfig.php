@@ -19,6 +19,8 @@ use OxidEsales\Eshop\Core\Config;
 use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
 use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ModuleSettingBridgeInterface;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class ViewConfig extends ViewConfig_parent
 {
@@ -155,7 +157,10 @@ class ViewConfig extends ViewConfig_parent
 
     private $blGA4enabled = null;
 
-    
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function isGA4enabled()
     {
         if ($this->blGA4enabled === null)
