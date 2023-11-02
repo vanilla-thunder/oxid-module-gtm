@@ -23,6 +23,18 @@ namespace D3\GoogleAnalytics4\Modules\Application\Model{
 }
 
 namespace D3\GoogleAnalytics4\Modules\Application\Controller{
+
+    use OxidEsales\Eshop\Application\Controller\ArticleListController;
+
     class BasketController_parent extends \OxidEsales\Eshop\Application\Controller\BasketController {}
     class ThankYouController_parent extends \OxidEsales\Eshop\Application\Controller\ThankYouController {}
+
+    class ArticleListController_AddToCartHelpMethods_parent extends ArticleListController {}
+}
+
+namespace D3\GoogleAnalytics4\Modules\Application\Component{
+
+    use OxidEsales\Eshop\Application\Component\BasketComponent;
+
+    class d3GtmBasketComponentExtension_parent extends BasketComponent {}
 }

@@ -1,11 +1,15 @@
 <?php
 
+use D3\GoogleAnalytics4\Modules\Application\Component\d3GtmBasketComponentExtension;
+use D3\GoogleAnalytics4\Modules\Application\Controller\ArticleListController_AddToCartHelpMethods;
 use D3\GoogleAnalytics4\Modules\Application\Controller\BasketController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\ThankYouController;
 use D3\GoogleAnalytics4\Modules\Application\Model\Basket as Basket;
 use D3\GoogleAnalytics4\Modules\Application\Model\Category as Category;
 use D3\GoogleAnalytics4\Modules\Application\Model\Manufacturer as Manufacturer;
 use D3\GoogleAnalytics4\Modules\Core\ViewConfig;
+use OxidEsales\Eshop\Application\Component\BasketComponent as OEBasketComponent;
+use OxidEsales\Eshop\Application\Controller\ArticleListController as OEArticleListController;
 use OxidEsales\Eshop\Application\Controller\BasketController as OEBasketController;
 use OxidEsales\Eshop\Application\Controller\ThankYouController as OEThankYouController;
 use OxidEsales\Eshop\Application\Model\Basket as OEBasket;
@@ -38,7 +42,9 @@ $aModule          = [
         OEBasket::class => Basket::class,
         OEBasketController::class => BasketController::class,
         OEManufacturer::class => Manufacturer::class,
-        OEThankYouController::class => ThankYouController::class
+        OEThankYouController::class => ThankYouController::class,
+        OEArticleListController::class => ArticleListController_AddToCartHelpMethods::class,
+        OEBasketComponent::class => d3GtmBasketComponentExtension::class
     ],
     'templates'   => [],
     'blocks'      => [
@@ -93,6 +99,12 @@ $aModule          = [
             'template' => 'page/details/inc/productmain.tpl',
             'block'    => 'details_productmain_tobasket',
             'file'     => '/Application/views/ga4/add_to_cart.tpl',
+            'position' => 150
+        ],
+        [
+            'template' => 'page/list/list.tpl',
+            'block'    => 'page_list_listbody',
+            'file'     => '/Application/views/ga4/add_to_cart_listtpl.tpl',
             'position' => 150
         ],
         // remove_from_cart
