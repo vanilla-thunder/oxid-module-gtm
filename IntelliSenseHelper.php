@@ -30,6 +30,8 @@ namespace D3\GoogleAnalytics4\Modules\Application\Controller{
     class ThankYouController_parent extends \OxidEsales\Eshop\Application\Controller\ThankYouController {}
 
     class ArticleListController_AddToCartHelpMethods_parent extends ArticleListController {}
+
+    class ArticleDetailsController_parent extends \OxidEsales\Eshop\Application\Controller\ArticleDetailsController {}
 }
 
 namespace D3\GoogleAnalytics4\Modules\Application\Component{
