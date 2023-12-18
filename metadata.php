@@ -7,6 +7,7 @@ use D3\GoogleAnalytics4\Modules\Application\Controller\BasketController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmAccountNoticeListController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmAccountRecommlistController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmAccountWishlistController;
+use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmStartController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\ThankYouController;
 use D3\GoogleAnalytics4\Modules\Application\Model\Basket as Basket;
 use D3\GoogleAnalytics4\Modules\Application\Model\Category as Category;
@@ -19,6 +20,7 @@ use OxidEsales\Eshop\Application\Controller\AccountWishlistController as OEAccou
 use OxidEsales\Eshop\Application\Controller\ArticleDetailsController as OEArticleDetailsController;
 use OxidEsales\Eshop\Application\Controller\ArticleListController as OEArticleListController;
 use OxidEsales\Eshop\Application\Controller\BasketController as OEBasketController;
+use OxidEsales\Eshop\Application\Controller\StartController as OEStartController;
 use OxidEsales\Eshop\Application\Controller\ThankYouController as OEThankYouController;
 use OxidEsales\Eshop\Application\Model\Basket as OEBasket;
 use OxidEsales\Eshop\Application\Model\Category as OECategory;
@@ -56,7 +58,8 @@ $aModule          = [
         OEArticleDetailsController::class       => ArticleDetailsController::class,
         OEAccountNoticeListController::class    => d3GtmAccountNoticeListController::class,
         OEAccountRecommlistController::class    => d3GtmAccountRecommlistController::class,
-        OEAccountWishlistController::class      => d3GtmAccountWishlistController::class
+        OEAccountWishlistController::class      => d3GtmAccountWishlistController::class,
+        OEStartController::class                => d3GtmStartController::class
     ],
     'templates'   => [
         // own callable files
@@ -126,6 +129,12 @@ $aModule          = [
             'template' => 'page/list/list.tpl',
             'block'    => 'page_list_listbody',
             'file'     => '/Application/views/blocks/page_list_listbody.tpl',
+            'position' => 150
+        ],
+        [
+            'template' => 'page/shop/start.tpl',
+            'block'    => 'start_welcome_text',
+            'file'     => '/Application/views/blocks/start_welcome_text.tpl',
             'position' => 150
         ],
         // remove_from_cart
