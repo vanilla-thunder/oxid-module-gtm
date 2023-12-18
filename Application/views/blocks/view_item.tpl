@@ -4,7 +4,7 @@
 [{assign var="gtmManufacturer" value=$gtmProduct->getManufacturer()}]
 
 [{block name="d3_ga4_view_item_block"}]
-  [{capture assign=d3_ga4_view_item}]
+  [{capture name="d3_ga4_view_item"}]
     [{strip}]
       dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
 
@@ -36,5 +36,5 @@
       });
     [{/strip}]
   [{/capture}]
-  [{oxscript add=$d3_ga4_view_item}]
+  [{oxscript add=$smarty.capture.d3_ga4_view_item}]
 [{/block}]

@@ -4,7 +4,7 @@
 
 [{block name="d3_ga4_view_search_result_block"}]
   [{if $gtmProducts|@count}]
-    [{capture assign=d3_ga4_view_search_result}]
+    [{capture name="d3_ga4_view_search_result"}]
       [{strip}]
         dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
         dataLayer.push({
@@ -39,6 +39,6 @@
         });
       [{/strip}]
     [{/capture}]
-    [{oxscript add=$d3_ga4_view_search_result}]
+    [{oxscript add=$smarty.capture.d3_ga4_view_search_result}]
   [{/if}]
 [{/block}]

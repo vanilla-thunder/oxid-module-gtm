@@ -3,7 +3,7 @@
 [{block name="d3_ga4_remove_from_cart_block"}]
     [{if $hasBeenReloaded}]
         [{assign var="d3BasketPrice" value=$oxcmp_basket->getPrice()}]
-        [{capture assign=d3_ga4_remove_from_cart}]
+        [{capture name="d3_ga4_remove_from_cart"}]
             [{strip}]
                 dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
                 dataLayer.push({
@@ -43,6 +43,6 @@
                 });
             [{/strip}]
         [{/capture}]
-        [{oxscript add=$d3_ga4_remove_from_cart}]
+        [{oxscript add=$smarty.capture.d3_ga4_remove_from_cart}]
     [{/if}]
 [{/block}]

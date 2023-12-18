@@ -6,7 +6,7 @@
 [{assign var='gtmCartArticles' value=$oView->getBasketArticles()}]
 
 [{block name="d3_ga4_view_cart_block"}]
-    [{capture assign=d3_ga4_view_cart}]
+    [{capture name="d3_ga4_view_cart"}]
         [{strip}]
             dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
             dataLayer.push({
@@ -46,5 +46,5 @@
             });
         [{/strip}]
     [{/capture}]
-    [{oxscript add=$d3_ga4_view_cart}]
+    [{oxscript add=$smarty.capture.d3_ga4_view_cart}]
 [{/block}]

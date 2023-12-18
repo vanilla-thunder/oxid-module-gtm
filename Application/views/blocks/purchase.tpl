@@ -1,7 +1,7 @@
 [{$smarty.block.parent}]
 
 [{block name="d3_ga4_purchase_block"}]
-    [{capture assign=d3_ga4_purchase}]
+    [{capture name="d3_ga4_purchase"}]
         [{strip}]
             dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
             [{assign var="gtmOrder"         value=$oView->getOrder()}]
@@ -52,5 +52,5 @@
             })
         [{/strip}]
     [{/capture}]
-    [{oxscript add=$d3_ga4_purchase}]
+    [{oxscript add=$smarty.capture.d3_ga4_purchase}]
 [{/block}]

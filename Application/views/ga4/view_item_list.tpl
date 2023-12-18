@@ -6,7 +6,7 @@
 
 [{block name="d3_ga4_view_item_list_block"}]
     [{if $gtmProducts|@count}]
-        [{capture assign=d3_ga4_view_item_list}]
+        [{capture name="d3_ga4_view_item_list"}]
             [{strip}]
                 dataLayer.push({ecommerce: null});
                 dataLayer.push({
@@ -41,6 +41,6 @@
                 });
             [{/strip}]
         [{/capture}]
-        [{oxscript add=$d3_ga4_view_item_list}]
+        [{oxscript add=$smarty.capture.d3_ga4_view_item_list}]
     [{/if}]
 [{/block}]
