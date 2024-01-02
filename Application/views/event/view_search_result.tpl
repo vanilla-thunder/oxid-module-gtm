@@ -1,5 +1,3 @@
-[{$smarty.block.parent}]
-
 [{assign var="gtmProducts" value=$oView->getArticleList()}]
 
 [{block name="d3_ga4_view_search_result_block"}]

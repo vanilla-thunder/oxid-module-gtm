@@ -62,8 +62,14 @@ $aModule          = [
         OEStartController::class                => d3GtmStartController::class
     ],
     'templates'   => [
-        // own callable files
-        'addtocart.tpl'                     => 'd3/googleanalytics4/Application/views/ga4/add_to_cart.tpl',
+        // Event files that store the GA4 Event-Information
+        'event/add_to_cart.tpl'                     => 'd3/googleanalytics4/Application/views/event/add_to_cart.tpl',
+        'event/view_item.tpl'                       => 'd3/googleanalytics4/Application/views/event/view_item.tpl',
+        'event/view_cart.tpl'                       => 'd3/googleanalytics4/Application/views/event/view_cart.tpl',
+        'event/purchase.tpl'                        => 'd3/googleanalytics4/Application/views/event/purchase.tpl',
+        'event/view_item_list.tpl'                  => 'd3/googleanalytics4/Application/views/event/view_item_list.tpl',
+        'event/view_search_result.tpl'              => 'd3/googleanalytics4/Application/views/event/view_search_result.tpl',
+        'event/remove_from_cart.tpl'                => 'd3/googleanalytics4/Application/views/event/remove_from_cart.tpl',
 
         // complete overwritten file of OXID-Originals
         // the path of the template-name is the original path to the file in OXID-context from tpl/->
@@ -108,14 +114,14 @@ $aModule          = [
         [
             'template' => 'page/list/list.tpl',
             'block'    => 'page_list_productlist',
-            'file'     => '/Application/views/ga4/view_item_list.tpl',
+            'file'     => '/Application/views/blocks/view_item_list.tpl',
             'position' => 150
         ],
         // view_search_result
         [
             'template' => 'page/search/search.tpl',
             'block'    => 'search_results',
-            'file'     => '/Application/views/ga4/view_search_result.tpl',
+            'file'     => '/Application/views/blocks/view_search_result.tpl',
             'position' => 150
         ],
         // add_to_cart
@@ -141,7 +147,7 @@ $aModule          = [
         [
             'template' => 'page/checkout/basket.tpl',
             'block'    => 'checkout_basket_main',
-            'file'     => '/Application/views/ga4/remove_from_cart.tpl',
+            'file'     => '/Application/views/blocks/remove_from_cart.tpl',
             'position' => 150
         ]
     ],

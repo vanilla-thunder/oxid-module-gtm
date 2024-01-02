@@ -1,3 +1,3 @@
 [{$smarty.block.parent}]
 
-[{include file="addtocart.tpl" htmlIdAmountOfArticles='#amountToBasket'}]
+[{include file="event/add_to_cart.tpl" htmlIdAmountOfArticles='#amountToBasket'}]

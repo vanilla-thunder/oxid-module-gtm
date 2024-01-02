@@ -21,7 +21,7 @@
         [{/if}]
     [{/block}]
 
-    [{include file="addtocart.tpl" htmlIdAmountOfArticles='#amountToBasket'}]
+    [{include file="event/add_to_cart.tpl" htmlIdAmountOfArticles='#amountToBasket'}]
 
     [{insert name="oxid_tracker" title=$template_title}]
 [{/capture}]

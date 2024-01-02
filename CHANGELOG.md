@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.14.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.13.0...1.14.0) - 2024-01-03
+### Added
+- add_to_cart Event to several new shop-pages (landing-page, Account, category article-list)
+### Changed
+- template structure
+- code cleanup
+
 ## [1.13.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.12.0...1.13.0) - 2023-09-13
 ### Added
 - extended Docs

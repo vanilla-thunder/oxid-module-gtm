@@ -1,5 +1,3 @@
-[{$smarty.block.parent}]
-
 [{block name="d3_ga4_remove_from_cart_block"}]
     [{if $hasBeenReloaded}]
         [{assign var="d3BasketPrice" value=$oxcmp_basket->getPrice()}]
