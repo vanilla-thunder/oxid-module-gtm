@@ -3,8 +3,8 @@ parameters:
         - IntelliSenseHelper.php
         - ../../oxid-esales/oxideshop-ce/source/oxfunctions.php
         - ../../oxid-esales/oxideshop-ce/source/overridablefunctions.php
-    level: 9
-    phpVersion: 70100
+    paths:
+        - ./
+    level: 0
+    phpVersion: 70200
     checkMissingIterableValueType: false
-    ignoreErrors:
-        - '#Psr\\Container\\ContainerExceptionInterface is not subtype of Throwable#'
