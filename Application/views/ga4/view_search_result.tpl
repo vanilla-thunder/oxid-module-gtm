@@ -3,7 +3,7 @@
 [{assign var="gtmProducts" value=$oView->getArticleList()}]
 
 [{block name="d3_ga4_view_search_result_block"}]
-  [{if $gtmProducts|@count}]
+  [{if $gtmProducts}]
     [{capture assign=d3_ga4_view_search_result}]
       [{strip}]
         dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
