@@ -22,10 +22,10 @@
                             'item_name':        '[{$rmItem->getFieldData('oxtitle')}]',
                             'item_variant':     '[{$rmItem->getFieldData('oxvarselect')}]',
                             [{if $gtmBasketItemCategory}]
-                            'item_category':    '[{$gtmBasketItemCategory->getSplitCategoryArray(0)}]',
-                            'item_category_2':  '[{$gtmBasketItemCategory->getSplitCategoryArray(1)}]',
-                            'item_category_3':  '[{$gtmBasketItemCategory->getSplitCategoryArray(2)}]',
-                            'item_category_4':  '[{$gtmBasketItemCategory->getSplitCategoryArray(3)}]',
+                            'item_category':    '[{$gtmBasketItemCategory->getSplitCategoryArray(0, true)}]',
+                            'item_category_2':  '[{$gtmBasketItemCategory->getSplitCategoryArray(1, true)}]',
+                            'item_category_3':  '[{$gtmBasketItemCategory->getSplitCategoryArray(2, true)}]',
+                            'item_category_4':  '[{$gtmBasketItemCategory->getSplitCategoryArray(3, true)}]',
                             'item_list_name':   '[{$gtmBasketItemCategory->getSplitCategoryArray()}]',
                             [{/if}]
                             'price':            [{$d3oItemPrice->getPrice()}],

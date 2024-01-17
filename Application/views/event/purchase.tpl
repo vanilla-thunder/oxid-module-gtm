@@ -34,10 +34,10 @@
                             'coupon':           '[{foreach from=$gtmOrderVouchers item="gtmOrderVoucher" name="gtmOrderVoucherIteration"}][{$gtmOrderVoucher}][{if !$smarty.foreach.gtmOrderVoucherIteration.last}], [{/if}][{/foreach}]',
                             'item_variant':     '[{$gtmBasketItem->getFieldData("oxselvariant")}]',
                             [{if $gtmPurchaseItemCategory}]
-                            'item_category':    '[{$gtmPurchaseItemCategory->getSplitCategoryArray(0)}]',
-                            'item_category_2':  '[{$gtmPurchaseItemCategory->getSplitCategoryArray(1)}]',
-                            'item_category_3':  '[{$gtmPurchaseItemCategory->getSplitCategoryArray(2)}]',
-                            'item_category_4':  '[{$gtmPurchaseItemCategory->getSplitCategoryArray(3)}]',
+                            'item_category':    '[{$gtmPurchaseItemCategory->getSplitCategoryArray(0, true)}]',
+                            'item_category_2':  '[{$gtmPurchaseItemCategory->getSplitCategoryArray(1, true)}]',
+                            'item_category_3':  '[{$gtmPurchaseItemCategory->getSplitCategoryArray(2, true)}]',
+                            'item_category_4':  '[{$gtmPurchaseItemCategory->getSplitCategoryArray(3, true)}]',
                             'item_list_name':   '[{$gtmPurchaseItemCategory->getSplitCategoryArray()}]',
                             [{/if}]
                             'price':            [{$gtmPurchaseItemPriceObject->getPrice()}],

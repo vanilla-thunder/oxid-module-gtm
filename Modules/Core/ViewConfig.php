@@ -185,8 +185,8 @@ class ViewConfig extends ViewConfig_parent
                 'title' => $oView->getTitle(),
                 'cl'    => $cl,
             ],
-            'userid'    => ($oUser ? $oUser->getId() : false),
-            'sessionid' => session_id() ?? false,
+            'userid'    => is_bool($oUser) ? false : $oUser->getId(),
+            'sessionid' => session_id(),
             //'httpref'   => $_SERVER["HTTP_REFERER"] ?? "unknown"
         ];
 

@@ -8,9 +8,9 @@ class Manufacturer extends Manufacturer_parent
      * @param int $indexOfArray
      * @return string
      */
-    public function getSplitCategoryArray(int $indexOfArray = -1) :string
+    public function getSplitCategoryArray(int $indexOfArray = -1, bool $bShallTakeStd = false) :string
     {
-        if ($indexOfArray > -1){
+        if ($bShallTakeStd){
             $splitCatArray =
                 array_values(
                     array_filter(
@@ -26,7 +26,7 @@ class Manufacturer extends Manufacturer_parent
                     )
                 );
 
-            if ($splitCatArray[$indexOfArray]){
+            if (($indexOfArray >= 0) and (false === empty($splitCatArray[$indexOfArray]))){
                 return $splitCatArray[$indexOfArray];
             }else{
                 return "";

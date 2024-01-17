@@ -10,6 +10,6 @@ parameters:
         - '#.*is not subtype of Throwable.*#'
     paths:
         - ./
-    level: 3
+    level: 4
     phpVersion: 70200
     checkMissingIterableValueType: false
