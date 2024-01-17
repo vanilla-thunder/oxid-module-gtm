@@ -1,7 +1,7 @@
 [{assign var="gtmProducts" value=$oView->getArticleList()}]
 
 [{block name="d3_ga4_view_search_result_block"}]
-  [{if $gtmProducts|@count}]
+  [{if $gtmProducts}]
     [{capture name="d3_ga4_view_search_result"}]
       [{strip}]
         dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});  /* Clear the previous ecommerce object. */
@@ -40,3 +40,5 @@
     [{oxscript add=$smarty.capture.d3_ga4_view_search_result}]
   [{/if}]
 [{/block}]
+
+[{include file="event/add_to_cart.tpl" htmlIdAmountOfArticles='#amountToBasket'}]

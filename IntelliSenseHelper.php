@@ -29,6 +29,7 @@ namespace D3\GoogleAnalytics4\Modules\Application\Controller{
     use OxidEsales\Eshop\Application\Controller\AccountRecommlistController;
     use OxidEsales\Eshop\Application\Controller\AccountWishlistController;
     use OxidEsales\Eshop\Application\Controller\ArticleListController;
+    use OxidEsales\Eshop\Application\Controller\SearchController;
     use OxidEsales\Eshop\Application\Controller\StartController;
 
     class BasketController_parent extends \OxidEsales\Eshop\Application\Controller\BasketController {}
@@ -45,6 +46,8 @@ namespace D3\GoogleAnalytics4\Modules\Application\Controller{
     class d3GtmAccountWishlistController_parent extends AccountWishlistController {}
 
     class d3GtmStartController_parent extends StartController {}
+
+    class d3GtmSearchController_parent extends SearchController {}
 }
 
 namespace D3\GoogleAnalytics4\Modules\Application\Component{

@@ -7,6 +7,7 @@ use D3\GoogleAnalytics4\Modules\Application\Controller\BasketController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmAccountNoticeListController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmAccountRecommlistController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmAccountWishlistController;
+use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmSearchController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmStartController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\ThankYouController;
 use D3\GoogleAnalytics4\Modules\Application\Model\Basket as Basket;
@@ -20,6 +21,7 @@ use OxidEsales\Eshop\Application\Controller\AccountWishlistController as OEAccou
 use OxidEsales\Eshop\Application\Controller\ArticleDetailsController as OEArticleDetailsController;
 use OxidEsales\Eshop\Application\Controller\ArticleListController as OEArticleListController;
 use OxidEsales\Eshop\Application\Controller\BasketController as OEBasketController;
+use OxidEsales\Eshop\Application\Controller\SearchController as OESearchController;
 use OxidEsales\Eshop\Application\Controller\StartController as OEStartController;
 use OxidEsales\Eshop\Application\Controller\ThankYouController as OEThankYouController;
 use OxidEsales\Eshop\Application\Model\Basket as OEBasket;
@@ -59,7 +61,8 @@ $aModule          = [
         OEAccountNoticeListController::class    => d3GtmAccountNoticeListController::class,
         OEAccountRecommlistController::class    => d3GtmAccountRecommlistController::class,
         OEAccountWishlistController::class      => d3GtmAccountWishlistController::class,
-        OEStartController::class                => d3GtmStartController::class
+        OEStartController::class                => d3GtmStartController::class,
+        OESearchController::class               => d3GtmSearchController::class
     ],
     'templates'   => [
         // Event files that store the GA4 Event-Information
