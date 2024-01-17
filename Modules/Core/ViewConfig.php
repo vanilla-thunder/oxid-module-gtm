@@ -15,6 +15,7 @@ namespace D3\GoogleAnalytics4\Modules\Core;
 use D3\GoogleAnalytics4\Application\Model\ManagerHandler;
 use D3\GoogleAnalytics4\Application\Model\ManagerTypes;
 use OxidEsales\Eshop\Application\Controller\FrontendController;
+use OxidEsales\Eshop\Application\Model\User;
 use OxidEsales\Eshop\Core\Config;
 use OxidEsales\Eshop\Core\Registry;
 class ViewConfig extends ViewConfig_parent
@@ -160,7 +161,8 @@ class ViewConfig extends ViewConfig_parent
 
         $oConfig = Registry::getConfig();
         $oView   = $oConfig->getTopActiveView();
-        /** @var FrontendController $oShop */
+
+        /** @var User $oUser */
         $oUser = $oConfig->getUser();
 
         $cl         = $this->getTopActiveClassName();

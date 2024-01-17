@@ -1,10 +1,15 @@
 parameters:
     scanFiles:
         - IntelliSenseHelper.php
-        - ../../oxid-esales/oxideshop-ce/source/oxfunctions.php
-        - ../../oxid-esales/oxideshop-ce/source/overridablefunctions.php
+        - ../../../../Shops/CE/6.1.x/616_/vendor/oxid-esales/oxideshop-ce/source/bootstrap.php
+        - ../../../../Shops/CE/6.1.x/616_/vendor/oxid-esales/oxideshop-ce/source/oxfunctions.php
+        - ../../../../Shops/CE/6.1.x/616_/vendor/oxid-esales/oxideshop-ce/source/overridablefunctions.php
+    scanDirectories:
+        - ../../../../Shops/CE/6.1.x/616_/vendor/oxid-esales
+    ignoreErrors:
+        - '#.*is not subtype of Throwable.*#'
     paths:
         - ./
-    level: 0
+    level: 3
     phpVersion: 70200
     checkMissingIterableValueType: false

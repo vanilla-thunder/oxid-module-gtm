@@ -3,6 +3,7 @@
 namespace D3\GoogleAnalytics4\Modules\Application\Controller;
 
 use OxidEsales\Eshop\Application\Model\Country;
+use OxidEsales\Eshop\Application\Model\Order;
 
 class ThankYouController extends ThankYouController_parent
 {
@@ -11,7 +12,9 @@ class ThankYouController extends ThankYouController_parent
      */
     public function d3GAGetUserCountry()
     {
-        $sCountryId = $this->getOrder()->getFieldData('oxbillcountryid');
+        /** @var Order $oOrder */
+        $oOrder = $this->getOrder();
+        $sCountryId = $oOrder->getFieldData('oxbillcountryid');
 
         /** @var Country $oCountry */
         $oCountry = oxNew(Country::class);
