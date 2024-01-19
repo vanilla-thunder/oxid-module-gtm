@@ -162,7 +162,7 @@ class ViewConfig extends ViewConfig_parent
         $oConfig = Registry::getConfig();
         $oView   = $oConfig->getTopActiveView();
 
-        /** @var User $oUser */
+        /** @var User|false|null $oUser */
         $oUser = $oConfig->getUser();
 
         $cl         = $this->getTopActiveClassName();
@@ -185,7 +185,7 @@ class ViewConfig extends ViewConfig_parent
                 'title' => $oView->getTitle(),
                 'cl'    => $cl,
             ],
-            'userid'    => is_bool($oUser) ? false : $oUser->getId(),
+            'userid'    => $oUser instanceof User ? $oUser->getId() : false,
             'sessionid' => session_id(),
             //'httpref'   => $_SERVER["HTTP_REFERER"] ?? "unknown"
         ];

@@ -8,7 +8,7 @@ parameters:
         - ../../../../Shops/CE/6.1.x/616_/vendor/oxid-esales
     ignoreErrors:
         - '#.*is not subtype of Throwable.*#'
-        - '#Parameter \#2 \$sValue of method OxidEsales\\EshopCommunity\\Core\\Controller\\BaseController::addTplParam\(\) expects string, true given#'
+        - '#\$sValue of method OxidEsales\\EshopCommunity\\Core\\Controller\\BaseController::addTplParam\(\) expects string,[ a-zA-Z\.]+#'
     paths:
         - ./
     level: 5
