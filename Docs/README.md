@@ -10,38 +10,7 @@ Tragen Sie hier im Normalfall die ID des zu prüfenden Cookies ein.
 In bestimmten Fällen, müssen Sie hier alternative Werte eintragen. Diese Fälle sind bedingt
 nach der gewählten CMP (Consent Manager Platform).  
   
-> nähere Infos unter [CMP](#consent-manager-platform-cmp)  
-
-## Blöcke
-Für den geregelten Ablauf sind folgende Blöcke nötig:
-- Suchergebnisse
-    - Blockname: search_results
-    - Datei: page/search/search.tpl
-    - GA4 Event: view_search_results
-- Artikelliste
-    - Blockname: page_list_productlist
-    - Datei: page/list/list.tpl
-    - GA4 Event: view_item_list
-- Detailseite
-    - Blockname: details_productmain_title
-    - Datei: page/details/inc/productmain.tpl
-    - GA4 Event: view_item
-- dem WK hinzufügen (button)
-    - Blockname: details_productmain_tobasket
-    - Datei: page/details/inc/productmain.tpl
-    - GA4 Event: add_to_cart
-- aus dem WK entfernen
-    - Blockname: checkout_basket_main
-    - Datei: page/checkout/basket.tpl
-    - GA4 Event: remove_from_cart
-- Warenkorb
-    - Blockname: checkout_basket_main
-    - Datei: page/checkout/basket.tpl
-    - GA4 Event: view_cart
-- abgeschlossener Kauf
-    - Blockname: checkout_thankyou_main
-    - Datei: page/checkout/thankyou.tpl
-    - GA4 Event: purchase
+> nähere Infos unter [CMP](#consent-manager-platform-cmp)
 
 ## Verfügbare Datalayer Variablen
 Für die einfachste Übersicht der enthaltenen Daten empfehle ich den Vorschau-Modus vom Google Tag Manager.
@@ -80,7 +49,7 @@ Aktivieren Sie anschließend diese Weiche. Setzen Sie den Haken bei "Eigenen Coo
   - In der Usercentrics-Verwaltung die Services "Google Analytics" und "Google Tag Manager" anlegen
   - Den Service ```Google Tag Manager``` in den Moduleinstellungen des 'Google Analytics 4' unter
     Google Tag Manager eintragen
-  - 
+ 
 - [Consent Management Provider](https://www.consentmanager.net/)
   - In der Consentmanager-Oberfläche den Anbieter "Google Tag Manager" mit der ID s905 hinzufügen
   - Im Frontend, im consentmanager-Pop-up nach dem 'Google Tag Manager' suchen
@@ -88,6 +57,9 @@ Aktivieren Sie anschließend diese Weiche. Setzen Sie den Haken bei "Eigenen Coo
       - prüfen, ob ein Cookie vorgegeben ist
       - sonst, in der Consentmanager-Oberfläche Cookie-Liste entsprechendes Cookie suchen und im Admin unter
         ```Einstell. > Cookie Manager Einstellungen > Cookie-ID``` eintragen
-  
-- [Cookiebot](https://www.cookiebot.com)
-  - Nähere Informationen folgen bald! Bis dato, besuchen Sie bitte die offizielle Webseite.
+
+- [Cookiefirst](https://cookiefirst.com)
+  - im Cookiefirst-Hub das jeweilige Cookie finden underen zugeordnete Kategorie kopieren
+  - die kopierte Kategory wird nun in den Einstellungen des Moduls hinterlegt:
+  ```Erweiterungen > Module > Google Analytics 4 > Einstell. > Cookie Manager Einstellungen > Steuerungsparameter (vormals CookieID)```
+  - **Wichtig!** bei Nutzung des Consent-Managers von Google, muss zwangsläufig die Einstellung "Cookie manager Nutzen?" __ausgeschalten!__ werden
