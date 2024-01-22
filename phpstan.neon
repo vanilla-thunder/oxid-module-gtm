@@ -1,16 +1,17 @@
 parameters:
-    scanFiles:
+    bootstrapFiles:
+        - ../../../../Shops/CE/65x/vendor/oxid-esales/oxideshop-ce/source/bootstrap.php
         - IntelliSenseHelper.php
-        - ../../../../Shops/CE/6.1.x/616_/vendor/oxid-esales/oxideshop-ce/source/bootstrap.php
-        - ../../../../Shops/CE/6.1.x/616_/vendor/oxid-esales/oxideshop-ce/source/oxfunctions.php
-        - ../../../../Shops/CE/6.1.x/616_/vendor/oxid-esales/oxideshop-ce/source/overridablefunctions.php
+    scanFiles:
+        - ../../../../Shops/CE/65x/vendor/oxid-esales/oxideshop-ce/source/oxfunctions.php
+        - ../../../../Shops/CE/65x/vendor/oxid-esales/oxideshop-ce/source/overridablefunctions.php
     scanDirectories:
-        - ../../../../Shops/CE/6.1.x/616_/vendor/oxid-esales
+        - ../../../../Shops/CE/65x/vendor/oxid-esales
     ignoreErrors:
         - '#.*is not subtype of Throwable.*#'
         - '#\$sValue of method OxidEsales\\EshopCommunity\\Core\\Controller\\BaseController::addTplParam\(\) expects string,[ a-zA-Z\.]+#'
     paths:
         - ./
     level: 5
-    phpVersion: 70200
+    phpVersion: 80100
     checkMissingIterableValueType: false
