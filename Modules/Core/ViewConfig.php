@@ -16,7 +16,7 @@ use D3\GoogleAnalytics4\Application\Model\ManagerHandler;
 use D3\GoogleAnalytics4\Application\Model\ManagerTypes;
 use OxidEsales\Eshop\Application\Controller\FrontendController;
 use OxidEsales\Eshop\Core\Config;
-use OxidEsales\Eshop\Core\Registry;
+use OxidEsales\Eshop\Application\Model\User;use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
 use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ModuleSettingBridgeInterface;
 use Psr\Container\ContainerExceptionInterface;
@@ -174,7 +174,7 @@ class ViewConfig extends ViewConfig_parent
 
         $oConfig = Registry::getConfig();
         $oView   = $oConfig->getTopActiveView();
-        /** @var FrontendController $oShop */
+        /** @var User|false|null $oUser */
         $oUser = $oConfig->getUser();
 
         $cl         = $this->getTopActiveClassName();
@@ -197,8 +197,8 @@ class ViewConfig extends ViewConfig_parent
                 'title' => $oView->getTitle(),
                 'cl'    => $cl,
             ],
-            'userid'    => ($oUser ? $oUser->getId() : false),
-            'sessionid' => session_id() ?? false,
+            'userid'    => $oUser instanceof User ? $oUser->getId() : false,
+            'sessionid' => session_id(),
             //'httpref'   => $_SERVER["HTTP_REFERER"] ?? "unknown"
         ];
 

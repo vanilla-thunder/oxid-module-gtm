@@ -7,7 +7,7 @@ use OxidEsales\Eshop\Application\Model\Payment;
 class Basket extends Basket_parent
 {
     /**
-     * @return void
+     * @return string
      */
     public function getPaymentOnPaymentId() :string
     {

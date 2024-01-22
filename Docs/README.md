@@ -1,6 +1,6 @@
 # Technische Doku
 ## GA4 Events / Customizing
-Für alle implementierten GA4 Events existieren Templates unter `source/modules/d3/googleanalytics4/Application/views/ga4/`, dabei entspricht der Dateiname dem Eventnamen in GA4.
+Für alle implementierten GA4 Events existieren Templates unter `source/modules/d3/googleanalytics4/Application/views/event/`, dabei entspricht der Dateiname dem Eventnamen in GA4.
 Die Einbindung dieser Event-Templates erfolgt über TPL-Blöcke unter `source/modules/d3/googleanalytics4/Application/views/blocks/`.  
 *Hinweis: nicht alle templates sind bereits gefüllt. Wünschen Sie die Implementierung eines unausgefüllten templates?
 Kommen Sie auf uns zu unter https://www.d3data.de/
@@ -19,7 +19,7 @@ Für den geregelten Ablauf sind folgende Blöcke nötig:
     - Datei: page/search/search.tpl
     - GA4 Event: view_search_results
 - Artikelliste
-    - Blockname: page_list_productlist (muss hinzugefügt werden)
+    - Blockname: page_list_productlist
     - Datei: page/list/list.tpl
     - GA4 Event: view_item_list
 - Detailseite
@@ -30,6 +30,10 @@ Für den geregelten Ablauf sind folgende Blöcke nötig:
     - Blockname: details_productmain_tobasket
     - Datei: page/details/inc/productmain.tpl
     - GA4 Event: add_to_cart
+- aus dem WK entfernen
+    - Blockname: checkout_basket_main
+    - Datei: page/checkout/basket.tpl
+    - GA4 Event: remove_from_cart
 - Warenkorb
     - Blockname: checkout_basket_main
     - Datei: page/checkout/basket.tpl
@@ -84,6 +88,6 @@ Aktivieren Sie anschließend diese Weiche. Setzen Sie den Haken bei "Eigenen Coo
       - prüfen, ob ein Cookie vorgegeben ist
       - sonst, in der Consentmanager-Oberfläche Cookie-Liste entsprechendes Cookie suchen und im Admin unter
         ```Einstell. > Cookie Manager Einstellungen > Cookie-ID``` eintragen
-      
+  
 - [Cookiebot](https://www.cookiebot.com)
   - Nähere Informationen folgen bald! Bis dato, besuchen Sie bitte die offizielle Webseite.

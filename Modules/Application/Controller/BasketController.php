@@ -11,7 +11,7 @@ use oxSystemComponentException;
 class BasketController extends BasketController_parent
 {
     /**
-     * @throws oxSystemComponentException
+     * @return string
      */
     public function render()
     {
@@ -33,22 +33,18 @@ class BasketController extends BasketController_parent
         $aProducts = Registry::getRequest()->getRequestEscapedParameter('aproducts');
 
         // collecting specified item
-        $sProductId = $sProductId ?? Registry::getRequest()->getRequestEscapedParameter('aid');
+        $sProductId = Registry::getRequest()->getRequestEscapedParameter('aid');
         if ($sProductId) {
             // additionally fetching current product info
-            $dAmount = $dAmount ?? Registry::getRequest()->getRequestEscapedParameter('am');
+            $dAmount = Registry::getRequest()->getRequestEscapedParameter('am');
 
             // select lists
-            $aSel = $aSel ?? Registry::getRequest()->getRequestEscapedParameter('sel');
+            $aSel = Registry::getRequest()->getRequestEscapedParameter('sel');
 
-            // persistent parameters
-            if (empty($aPersParam)) {
+            /** @var BasketComponent $oBasketComponent */
+            $oBasketComponent = $this->getComponent('oxcmp_basket');
 
-                /** @var BasketComponent $oBasketComponent */
-                $oBasketComponent = $this->getComponent('oxcmp_basket');
-
-                $aPersParam = $oBasketComponent->__call('getPersistedParameters', []);
-            }
+            $aPersParam = $oBasketComponent->__call('getPersistedParameters', []);
 
             $sBasketItemId = Registry::getRequest()->getRequestEscapedParameter('bindex');
 
