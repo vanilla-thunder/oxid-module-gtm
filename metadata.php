@@ -1,12 +1,14 @@
 <?php
 
 use D3\GoogleAnalytics4\Modules\Application\Component\d3GtmBasketComponentExtension;
+use D3\GoogleAnalytics4\Modules\Application\Component\Widget\d3GtmWidgetArticleDetails as d3GtmWidgetArticleDetails;
 use D3\GoogleAnalytics4\Modules\Application\Controller\ArticleDetailsController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\ArticleListController_AddToCartHelpMethods;
 use D3\GoogleAnalytics4\Modules\Application\Controller\BasketController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmAccountNoticeListController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmAccountRecommlistController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmAccountWishlistController;
+use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmManufacturerListController as d3GtmManufacturerListController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmSearchController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmStartController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\ThankYouController;
@@ -15,12 +17,14 @@ use D3\GoogleAnalytics4\Modules\Application\Model\Category as Category;
 use D3\GoogleAnalytics4\Modules\Application\Model\Manufacturer as Manufacturer;
 use D3\GoogleAnalytics4\Modules\Core\ViewConfig;
 use OxidEsales\Eshop\Application\Component\BasketComponent as OEBasketComponent;
+use OxidEsales\Eshop\Application\Component\Widget\ArticleDetails as OEArticleDetails;
 use OxidEsales\Eshop\Application\Controller\AccountNoticeListController as OEAccountNoticeListController;
 use OxidEsales\Eshop\Application\Controller\AccountRecommlistController as OEAccountRecommlistController;
 use OxidEsales\Eshop\Application\Controller\AccountWishlistController as OEAccountWishlistController;
 use OxidEsales\Eshop\Application\Controller\ArticleDetailsController as OEArticleDetailsController;
 use OxidEsales\Eshop\Application\Controller\ArticleListController as OEArticleListController;
 use OxidEsales\Eshop\Application\Controller\BasketController as OEBasketController;
+use OxidEsales\Eshop\Application\Controller\ManufacturerListController as OEManufacturerListController;
 use OxidEsales\Eshop\Application\Controller\SearchController as OESearchController;
 use OxidEsales\Eshop\Application\Controller\StartController as OEStartController;
 use OxidEsales\Eshop\Application\Controller\ThankYouController as OEThankYouController;
@@ -49,20 +53,29 @@ $aModule          = [
     'email'       => 'support@shopmodule.com',
     'url'         => 'https://www.oxidmodule.com/',
     'extend'      => [
+        // Core
         OEViewConfig::class                     => ViewConfig::class,
+
+        // Model
         OECategory::class                       => Category::class,
         OEBasket::class                         => Basket::class,
-        OEBasketController::class               => BasketController::class,
         OEManufacturer::class                   => Manufacturer::class,
+
+        // Controller
+        OEBasketController::class               => BasketController::class,
         OEThankYouController::class             => ThankYouController::class,
         OEArticleListController::class          => ArticleListController_AddToCartHelpMethods::class,
-        OEBasketComponent::class                => d3GtmBasketComponentExtension::class,
         OEArticleDetailsController::class       => ArticleDetailsController::class,
         OEAccountNoticeListController::class    => d3GtmAccountNoticeListController::class,
         OEAccountRecommlistController::class    => d3GtmAccountRecommlistController::class,
         OEAccountWishlistController::class      => d3GtmAccountWishlistController::class,
         OEStartController::class                => d3GtmStartController::class,
-        OESearchController::class               => d3GtmSearchController::class
+        OESearchController::class               => d3GtmSearchController::class,
+        OEManufacturerListController::class     => d3GtmManufacturerListController::class,
+
+        // Component
+        OEArticleDetails::class                 => d3GtmWidgetArticleDetails::class,
+        OEBasketComponent::class                => d3GtmBasketComponentExtension::class,
     ],
     'templates'   => [
         // Event files that store the GA4 Event-Information
