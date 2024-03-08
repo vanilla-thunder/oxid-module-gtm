@@ -1,6 +1,9 @@
 <?php
 
-
+use D3\GoogleAnalytics4\Modules\Application\Component\d3GtmBasketComponentExtension;
+use D3\GoogleAnalytics4\Modules\Application\Component\Widget\d3GtmWidgetArticleDetails as d3GtmWidgetArticleDetails;
+use D3\GoogleAnalytics4\Modules\Application\Controller\ArticleDetailsController;
+use D3\GoogleAnalytics4\Modules\Application\Controller\ArticleListController_AddToCartHelpMethods;
 use D3\GoogleAnalytics4\Modules\Application\Controller\BasketController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmAccountNoticeListController;
 use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmAccountRecommlistController;
@@ -45,7 +48,7 @@ $aModule          = [
                       Die Entwicklung basiert auf einem Fork von Marat Bedoev - <a href='https://github.com/vanilla-thunder/oxid-module-gtm'>Github-Link</a>
                       ",
     'thumbnail'   => 'thumbnail.png',
-    'version'     => '2.13.1',
+    'version'     => '2.15.0',
     'author'      => 'Data Development (Inh.: Thomas Dartsch)',
     'email'       => 'support@shopmodule.com',
     'url'         => 'https://www.oxidmodule.com/',

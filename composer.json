@@ -47,7 +47,8 @@
     "php": ">=7.1",
     "oxid-esales/oxideshop-ce": "^6.5",
     "google/apiclient":" ^2.0",
-    "phpstan/phpstan": "^1.8"  },
+    "phpstan/phpstan": "^1.10"
+  },
   "autoload": {
     "psr-4": {
       "D3\\GoogleAnalytics4\\": "../../../source/modules/d3/googleanalytics4"

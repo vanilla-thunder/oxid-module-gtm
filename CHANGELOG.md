@@ -4,8 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.15.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/2.14.0...2.15.0) - 2024-02-05
+### Fixed
+- missing Component-ArticleDetails extension, missing ManufacturerListController extension
+
+## [2.14.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/2.13.1...2.14.0) - 2023-01-22
+### Added
+- add_to_cart Event to several new shop-pages (landing-page, Account, category article-list, start)
+- PHPStan code-cleanup
+### Changed
+- template structure
+- code cleanup
+
 ## [2.13.1](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/2.13.0...2.13.1) - 2023-01-03
-## Fixed
+### Fixed
 - error on array-count at zero entries
 
 ## [2.13.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/2.12.0...2.13.0) - 2023-09-13
@@ -129,6 +141,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.1...2.0) - 2023-01-20
 ### Added
 - using of ContainerFactory in ViewConfig
+
 ## [1.15.0](https://git.d3data.de/D3Public/GoogleAnalytics4/compare/1.14.0...1.15.0) - 2024-01-25
 ### Fixed
 - missing Component-ArticleDetails extension, missing ManufacturerListController extension

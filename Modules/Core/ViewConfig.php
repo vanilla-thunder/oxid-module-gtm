@@ -65,14 +65,6 @@ class ViewConfig extends ViewConfig_parent
     /**
      * @return bool
      */
-    public function shallUseOwnCookieManager()
-    {
-        return (bool) Registry::getConfig()->getConfigParam('d3_gtm_settings_hasOwnCookieManager');
-    }
-
-    /**
-     * @return bool
-     */
     public function D3blShowGtmScript()
     {
         /** @var Config $oConfig */
@@ -181,7 +173,6 @@ class ViewConfig extends ViewConfig_parent
 
         $oConfig = Registry::getConfig();
         $oView   = $oConfig->getTopActiveView();
-
         /** @var User|false|null $oUser */
         $oUser = $oConfig->getUser();
 
