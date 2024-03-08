@@ -1,6 +1,6 @@
 # Technische Doku
 ## GA4 Events / Customizing
-Für alle implementierten GA4 Events existieren Templates unter `source/modules/d3/googleanalytics4/Application/views/ga4/`, dabei entspricht der Dateiname dem Eventnamen in GA4.
+Für alle implementierten GA4 Events existieren Templates unter `source/modules/d3/googleanalytics4/Application/views/event/`, dabei entspricht der Dateiname dem Eventnamen in GA4.
 Die Einbindung dieser Event-Templates erfolgt über TPL-Blöcke unter `source/modules/d3/googleanalytics4/Application/views/blocks/`.  
 *Hinweis: nicht alle templates sind bereits gefüllt. Wünschen Sie die Implementierung eines unausgefüllten templates?
 Kommen Sie auf uns zu unter https://www.d3data.de/
