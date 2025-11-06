@@ -1,0 +1,55 @@
+{% set d3BasketPrice = oxcmp_basket.getPrice() %}
+{% set d3BasketObject = oxcmp_basket %}
+{% set gtmCartArticles = d3BasketObject.getBasketArticles() %}
+{% set gtmCurrency = oView.getActCurrency() %}
+
+{% block d3_ga4_begin_checkout_block %}
+    {% set doNotShow %}{% apply spaceless %}
+        <script type="text/javascript">
+            {% set d3_ga4_begin_checkout %}
+                {% apply spaceless %}
+                    dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});
+                    dataLayer.push({
+                    'event': 'begin_checkout',
+                    'eventLabel':'Begin of checkout',
+                    'ecommerce': {
+                        'actionField': "Begin Checkout - Step 2",
+                        'currency': "{{ gtmCurrency.name }}",
+                        'value': {{ d3BasketPrice.getPrice() }},
+                        'coupon':         '{% for key, sVoucher in oxcmp_basket.getVouchers() %}{{ sVoucher.sVoucherNr }}{% if not loop.last %}, {% endif %}{% endfor %}',
+                        'items': [
+                            {% for basketindex, basketitem in oxcmp_basket.getContents() %}
+                                {% set d3oItemPrice = basketitem.getPrice() %}
+                                {% set gtmBasketItem = basketitem.getArticle() %}
+                                {% set gtmBasketItemCategory = gtmBasketItem.getCategory() %}
+                                {% set gtmManufacturer = gtmBasketItem.getManufacturer() %}
+                                {
+                                'item_oxid': '{{ gtmProduct.getFieldData("oxid") }}',
+                                'item_id':          '{{ gtmCartArticles[basketindex].getFieldData('oxartnum') }}',
+                                'item_name':        '{{ gtmCartArticles[basketindex].getRawFieldData('oxtitle')|raw }}',
+                                'item_variant':     '{{ gtmCartArticles[basketindex].getFieldData('oxvarselect') }}',
+                                'item_brand': '{% if gtmManufacturer %}{{ gtmManufacturer.getRawFieldData('oxtitle') }}{% endif %}',
+                                {% if gtmBasketItemCategory %}
+                                    'item_category':    '{{ gtmBasketItemCategory.getSplitCategoryArray(0, true) }}',
+                                    'item_category2':  '{{ gtmBasketItemCategory.getSplitCategoryArray(1, true) }}',
+                                    'item_category3':  '{{ gtmBasketItemCategory.getSplitCategoryArray(2, true) }}',
+                                    'item_category4':  '{{ gtmBasketItemCategory.getSplitCategoryArray(3, true) }}',
+                                    'item_list_name':   '{{ gtmBasketItemCategory.getSplitCategoryArray() }}',
+                                {% endif %}
+                                'price':            {{ d3oItemPrice.getPrice() }},
+                                'coupon':           '{% for key, sVoucher in oxcmp_basket.getVouchers() %}{{ sVoucher.sVoucherNr }}{% if not loop.last %}, {% endif %}{% endfor %}',
+                                'quantity':         {{ basketitem.getAmount() }},
+                                'position':         {{ loop.index0 }}
+                                }{% if not loop.last %},{% endif %}
+                            {% endfor %}
+                        ]
+                    }{% if oViewConf.isDebugModeOn() %},
+                    'debug_mode': 'true'
+                    {% endif %}
+                    });
+                {% endapply %}
+            {% endset %}
+            {{ script({ add: d3_ga4_begin_checkout.__toString(), dynamic: __oxid_include_dynamic }) }}
+        </script>
+    {% endapply %}{% endset %}
+{% endblock %}

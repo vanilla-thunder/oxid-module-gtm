@@ -1,0 +1,74 @@
+{# setAttribute muss hier mal noch dynamisch hinzufügbar sein! -> bei consentmanager, muss ein "Attribute Feld" or 'Bool: data-cmp-ab="1" hinzufügen?' hinzugefügt werden -> https://help.consentmanager.net/books/cmp/page/automatic-blocking-of-codes-and-cookies #}
+
+{% extends "layout/base.html.twig" %}
+
+{% block head_meta_robots %}
+    {# Always prepare the data layer to avoid errors #}
+    {% if oViewConf.isGA4enabled() %}
+        {% set d3GtmContainerIdString = oViewConf.getGtmContainerId() %}
+        <script>
+            var dataLayer = {{ oViewConf.getGtmDataLayer()|raw }} || [];
+        </script>
+    {% endif %}
+    {% if oViewConf.isGA4enabled() and oViewConf.D3blShowGtmScript() %}
+        {% if d3GtmContainerIdString %}
+            {% apply spaceless %}
+                {% if oViewConf.isGtmConsentModeSetActivated() %}
+                    <script type="text/javascript">
+                        {% if oViewConf.d3IsUsercentricsCMPChosen() and oViewConf.d3GetModuleConfigParam('_blEnableMeasurementCapabilities') %}
+                        {{ oViewConf.d3GetModuleConfigParam('_sMeasurementCapabilities')|striptags }}
+                        {% else %}
+                        function gtag() {
+                            dataLayer.push(arguments);
+                        }
+
+                        gtag("consent", "default", {
+                            ad_user_data: "denied",
+                            ad_personalization: "denied",
+                            ad_storage: "denied",
+                            analytics_storage: "denied",
+                            wait_for_update: 2000
+                        });
+                        {% endif %}
+                    </script>
+                {% endif %}
+
+                {% if oViewConf.d3IsUsercentricsCMPChosen() and oViewConf.d3GetModuleConfigParam('_blEnableUsercentricsConsentModeApi') %}
+                    <script type="text/javascript">
+                        {{ oViewConf.d3GetModuleConfigParam('_sUsercentricsConsentModeApi')|striptags }}
+                    </script>
+                {% endif %}
+
+                <!-- Google Tag Manager -->
+                <script {{ oViewConf.getGtmScriptAttributes() }}>
+                    (function (w, d, s, l, i) {
+                        w[l] = w[l] || [];
+                        w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+                        var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+                        j.async = true;
+                        j.src = '{{ oViewConf.getServerSidetaggingJsDomain() }}?id=' + i + dl;
+                        f.parentNode.insertBefore(j, f);
+                    })(window, document, 'script', 'dataLayer', '{{ d3GtmContainerIdString }}');
+                </script>
+                <!-- End Google Tag Manager -->
+            {% endapply %}
+        {% endif %}
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block theme_svg_icons %}
+    {% if oViewConf.D3blShowGtmScript() %}
+        {% if oViewConf.getGtmContainerId() %}{% apply spaceless %}
+            <!-- Google Tag Manager (noscript) -->
+            <noscript>
+                <iframe src="{{ oViewConf.getServerSidetaggingNoJsDomain() }}?id={{ oViewConf.getGtmContainerId() }}"
+                        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+            </noscript>
+            <!-- End Google Tag Manager (noscript) -->
+        {% endapply %}{% endif %}
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}

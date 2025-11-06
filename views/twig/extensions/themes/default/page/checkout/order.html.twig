@@ -1,0 +1,7 @@
+{% extends "page/checkout/order.html.twig" %}
+
+{% block checkout_order_main %}
+    {{ parent() }}
+
+    {% include "@d3googleanalytics4/event/add_payment_info.html.twig" %}
+{% endblock %}

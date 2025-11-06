@@ -1,0 +1,53 @@
+{% block d3_ga4_remove_from_cart_block %}
+    {% if hasBeenReloaded %}
+        {% set doNotShow %}{% apply spaceless %}
+            <script type="text/javascript">
+                {% set d3BasketPrice = oxcmp_basket.getPrice() %}
+                {% set d3_ga4_remove_from_cart %}
+                    {% apply spaceless %}
+                        dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});
+                        dataLayer.push({
+                            'isRemoveFromCart': true,
+                            'event': 'remove_from_cart',
+                            'eventLabel':'remove_from_cart',
+                            'ecommerce': {
+                                'actionField': "step: 1",
+                                'currency': "{{ currency.name }}",
+                                'value': {{ d3BasketPrice.getPrice() }},
+                                'coupon':         '{% for key, sVoucher in oxcmp_basket.getVouchers() %}{{ sVoucher.sVoucherNr }}{% if not loop.last %}, {% endif %}{% endfor %}',
+                                'items': [
+                                    {% for rmItemindex, rmItem in toRemoveArticles.getArray() %}
+                                        {% set d3oItemPrice = rmItem.getPrice() %}
+                                        {% set gtmBasketItemCategory = rmItem.getCategory() %}
+                                        {% set gtmManufacturer = gtmBasketItem.getManufacturer() %}
+                                        {
+                                        'item_oxid': '{{ gtmProduct.getFieldData("oxid") }}',
+                                        'item_id':          '{{ rmItem.getFieldData('oxartnum') }}',
+                                        'item_name':        '{{ rmItem.getFieldData('oxtitle')|raw }}',
+                                        'item_variant':     '{{ rmItem.getFieldData('oxvarselect') }}',
+                                        'item_brand': '{% if gtmManufacturer %}{{ gtmManufacturer.getRawFieldData('oxtitle') }}{% endif %}',
+                                        {% if gtmBasketItemCategory %}
+                                            'item_category':    '{{ gtmBasketItemCategory.getSplitCategoryArray(0, true) }}',
+                                            'item_category2':  '{{ gtmBasketItemCategory.getSplitCategoryArray(1, true) }}',
+                                            'item_category3':  '{{ gtmBasketItemCategory.getSplitCategoryArray(2, true) }}',
+                                            'item_category4':  '{{ gtmBasketItemCategory.getSplitCategoryArray(3, true) }}',
+                                            'item_list_name':   '{{ gtmBasketItemCategory.getSplitCategoryArray() }}',
+                                        {% endif %}
+                                        'price':            {{ d3oItemPrice.getPrice() }},
+                                        'coupon':           '{% for key, sVoucher in oxcmp_basket.getVouchers() %}{{ sVoucher.sVoucherNr }}{% if not loop.last %}, {% endif %}{% endfor %}',
+                                        'quantity':         '{{ rmItem.getFieldData('d3AmountThatGotRemoved') }}',
+                                        'position':         {{ loop.index0 }}
+                                        }{% if not loop.last %},{% endif %}
+                                    {% endfor %}
+                                ]
+                            }{% if oViewConf.isDebugModeOn() %},
+                                'debug_mode': 'true'
+                            {% endif %}
+                        });
+                    {% endapply %}
+                {% endset %}
+                {{ script({ add: d3_ga4_remove_from_cart.__toString(), dynamic: __oxid_include_dynamic }) }}
+            </script>
+        {% endapply %}{% endset %}
+    {% endif %}
+{% endblock %}

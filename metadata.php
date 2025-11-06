@@ -1,167 +1,291 @@
 <?php
-/**
- * vanilla-thunder/oxid-module-gtm
- * Google Tag Manager Integration for OXID eShop v6.2+
- *
- * This program is free software;
- * you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation;
- * either version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses/>
- **/
+
+use D3\GoogleAnalytics4\Application\Controller\Admin\GA4AdminUserInterface_main as GA4AdminUserInterfaceMainController;
+use D3\GoogleAnalytics4\Application\Model\Constants as Constants;
+use D3\GoogleAnalytics4\Modules\Application\Component\d3GtmBasketComponentExtension;
+use D3\GoogleAnalytics4\Modules\Application\Component\Widget\d3GtmWidgetArticleDetails as d3GtmWidgetArticleDetails;
+use D3\GoogleAnalytics4\Modules\Application\Controller\ArticleDetailsController;
+use D3\GoogleAnalytics4\Modules\Application\Controller\ArticleListController_AddToCartHelpMethods;
+use D3\GoogleAnalytics4\Modules\Application\Controller\BasketController;
+use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmAccountNoticeListController;
+use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmAccountRecommlistController;
+use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmAccountWishlistController;
+use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmManufacturerListController as d3GtmManufacturerListController;
+use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmSearchController;
+use D3\GoogleAnalytics4\Modules\Application\Controller\d3GtmStartController;
+use D3\GoogleAnalytics4\Modules\Application\Controller\ThankYouController;
+use D3\GoogleAnalytics4\Modules\Application\Model\Basket as Basket;
+use D3\GoogleAnalytics4\Modules\Application\Model\Category as Category;
+use D3\GoogleAnalytics4\Modules\Application\Model\gtmPayment as gtmPayment;
+use D3\GoogleAnalytics4\Modules\Application\Model\Manufacturer as Manufacturer;
+use D3\GoogleAnalytics4\Modules\Core\ViewConfig;
+use OxidEsales\Eshop\Application\Component\BasketComponent as OEBasketComponent;
+use OxidEsales\Eshop\Application\Component\Widget\ArticleDetails as OEArticleDetails;
+use OxidEsales\Eshop\Application\Controller\AccountNoticeListController as OEAccountNoticeListController;
+use OxidEsales\Eshop\Application\Controller\AccountRecommlistController as OEAccountRecommlistController;
+use OxidEsales\Eshop\Application\Controller\AccountWishlistController as OEAccountWishlistController;
+use OxidEsales\Eshop\Application\Controller\ArticleDetailsController as OEArticleDetailsController;
+use OxidEsales\Eshop\Application\Controller\ArticleListController as OEArticleListController;
+use OxidEsales\Eshop\Application\Controller\BasketController as OEBasketController;
+use OxidEsales\Eshop\Application\Controller\ManufacturerListController as OEManufacturerListController;
+use OxidEsales\Eshop\Application\Controller\SearchController as OESearchController;
+use OxidEsales\Eshop\Application\Controller\StartController as OEStartController;
+use OxidEsales\Eshop\Application\Controller\ThankYouController as OEThankYouController;
+use OxidEsales\Eshop\Application\Model\Basket as OEBasket;
+use OxidEsales\Eshop\Application\Model\Category as OECategory;
+use OxidEsales\Eshop\Application\Model\Manufacturer as OEManufacturer;
+use OxidEsales\Eshop\Application\Model\Payment as OEPayment;
+use OxidEsales\Eshop\Core\ViewConfig as OEViewConfig;
 
 $sMetadataVersion = '2.1';
-$aModule          = [
-    'id'          => 'vt-gtm',
-    'title'       => '[vt] Google Tag Manager',
-    'description' => 'Google Tag Manager Integration for OXID eShop v6.2+',
-    'thumbnail'   => 'thumbnail.png',
-    'version'     => '0.5.0 ( 2021-07-17 )',
-    'author'      => 'Marat Bedoev',
-    'email'       => openssl_decrypt("Az6pE7kPbtnTzjHlPhPCa4ktJLphZ/w9gKgo5vA//p4=", str_rot13("nrf-128-pop"), str_rot13("gvalzpr")),
-    'url'         => 'https://github.com/vanilla-thunder/oxid-module-gtm',
-    'extend'      => [
-        \OxidEsales\Eshop\Core\ViewConfig::class => VanillaThunder\GoogleTagManager\Application\Extend\ViewConfig::class
+$aModule = [
+    'id' => Constants::OXID_MODULE_ID,
+    'title' => 'Google Analytics 4',
+    'description' => "Dieses Modul bietet die Möglichkeit in Ihrem OXID eShop (6.x) die neue 'Property' 
+                      Google Analytics 4 (GA4) von Google zu integrieren.<br>
+                      Hierfür stehen Ihnen verschiedene 'templates' zur verfügung, 
+                      mit denen Sie bestimmte Events tracken können.<br>
+                      Beispiele dafür sind: view_item, add_to_basket, purchase, ...<br><br>
+                      Die Integration und Verbindung zu Google wird mithilfe des gtag (Google Tag Manager) realisiert.<br><br>
+                      Weiterführende Informationen: https://developers.google.com/analytics/devguides/collection/ga4<br>
+                      <hr>
+                      Die Entwicklung basiert auf einem Fork von Marat Bedoev - <a href='https://github.com/vanilla-thunder/oxid-module-gtm'>Github-Link</a>
+                      ",
+    'thumbnail' => 'thumbnail.png',
+    'version' => '3.1.0.1',
+    'author' => 'Data Development (Inh.: Thomas Dartsch)',
+    'email' => 'support@shopmodule.com',
+    'url' => 'https://www.oxidmodule.com/',
+    'controllers' => [
+        'd3googleanalytics4_main' => GA4AdminUserInterfaceMainController::class,
     ],
-    'templates'   => [
-        // GA4 events
-        'ga4_add_payment_info.tpl' => 'vt/GoogleTagManager/Application/views/ga4/add_payment_info.tpl',
-        'add_shipping_info.tpl'    => 'vt/GoogleTagManager/Application/views/ga4/add_shipping_info.tpl',
-        'ga4_add_to_cart.tpl'      => 'vt/GoogleTagManager/Application/views/ga4/add_to_cart.tpl',
-        'ga4_begin_checkout.tpl'   => 'vt/GoogleTagManager/Application/views/ga4/begin_checkout.tpl',
-        'ga4_generate_lead.tpl'    => 'vt/GoogleTagManager/Application/views/ga4/generate_lead.tpl',
-        'ga4_login.tpl'            => 'vt/GoogleTagManager/Application/views/ga4/login.tpl',
-        'ga4_purchase.tpl'         => 'vt/GoogleTagManager/Application/views/ga4/purchase.tpl',
-        'ga4_remove_from_cart.tpl' => 'vt/GoogleTagManager/Application/views/ga4/remove_from_cart.tpl',
-        'ga4_search.tpl'           => 'vt/GoogleTagManager/Application/views/ga4/search.tpl',
-        'ga4_select_content.tpl'   => 'vt/GoogleTagManager/Application/views/ga4/select_content.tpl',
-        'ga4_select_item.tpl'      => 'vt/GoogleTagManager/Application/views/ga4/select_item.tpl',
-        'ga4_select_promotion.tpl' => 'vt/GoogleTagManager/Application/views/ga4/select_promotion.tpl',
-        'ga4_sign_up.tpl'          => 'vt/GoogleTagManager/Application/views/ga4/sign_up.tpl',
-        'ga4_view_cart.tpl'        => 'vt/GoogleTagManager/Application/views/ga4/view_cart.tpl',
-        'ga4_view_item.tpl'        => 'vt/GoogleTagManager/Application/views/ga4/view_item.tpl',
-        'ga4_view_item_list.tpl'   => 'vt/GoogleTagManager/Application/views/ga4/view_item_list.tpl',
-        'ga4_view_promotion.tpl'   => 'vt/GoogleTagManager/Application/views/ga4/view_promotion.tpl',
-        /*
-        'gtm_ua_impression' => 'vt/GoogleTagManager/Application/views/ua/impression.tpl'
-        'gtm_view_promotion.tpl'   => 'vt/GoogleTagManager/Application/views/view_promotion.tpl',
-        'gtm_select_promotion.tpl' => 'vt/GoogleTagManager/Application/views/select_promotion.tpl',
-        'gtm_begin_checkout.tpl'   => 'vt/GoogleTagManager/Application/views/begin_checkout.tpl',
-        */
+    'extend' => [
+        // Core
+        OEViewConfig::class                     => ViewConfig::class,
+        \OxidEsales\Eshop\Core\WidgetControl::class                     => \D3\GoogleAnalytics4\Modules\Core\WidgetControl::class,
+
+        // Model
+        OECategory::class => Category::class,
+        OEBasket::class => Basket::class,
+        OEManufacturer::class => Manufacturer::class,
+        OEPayment::class => gtmPayment::class,
+
+        // Controller
+        OEBasketController::class => BasketController::class,
+        OEThankYouController::class => ThankYouController::class,
+        OEArticleListController::class => ArticleListController_AddToCartHelpMethods::class,
+        OEArticleDetailsController::class => ArticleDetailsController::class,
+        OEAccountNoticeListController::class => d3GtmAccountNoticeListController::class,
+        OEAccountRecommlistController::class => d3GtmAccountRecommlistController::class,
+        OEAccountWishlistController::class => d3GtmAccountWishlistController::class,
+        OEStartController::class => d3GtmStartController::class,
+        OESearchController::class => d3GtmSearchController::class,
+        OEManufacturerListController::class => d3GtmManufacturerListController::class,
+
+        // Component
+        OEArticleDetails::class => d3GtmWidgetArticleDetails::class,
+        OEBasketComponent::class => d3GtmBasketComponentExtension::class,
     ],
-    'blocks'      => [
+    'templates' => [
+        // Event files that store the GA4 Event-Information
+        '@' . Constants::OXID_MODULE_ID . '/event/add_to_cart.tpl'      => 'views/smarty/event/add_to_cart.tpl',
+        '@' . Constants::OXID_MODULE_ID . '/event/view_item.tpl'        => 'views/smarty/event/view_item.tpl',
+        '@' . Constants::OXID_MODULE_ID . '/event/view_cart.tpl'        => 'views/smarty/event/view_cart.tpl',
+        '@' . Constants::OXID_MODULE_ID . '/event/begin_checkout.tpl'   => 'views/smarty/event/begin_checkout.tpl',
+        '@' . Constants::OXID_MODULE_ID . '/event/add_payment_info.tpl' => 'views/smarty/event/add_payment_info.tpl',
+        '@' . Constants::OXID_MODULE_ID . '/event/purchase.tpl'         => 'views/smarty/event/purchase.tpl',
+        '@' . Constants::OXID_MODULE_ID . '/event/view_item_list.tpl'   => 'views/smarty/event/view_item_list.tpl',
+        '@' . Constants::OXID_MODULE_ID . '/event/view_search_result.tpl' => 'views/smarty/event/view_search_result.tpl',
+        '@' . Constants::OXID_MODULE_ID . '/event/remove_from_cart.tpl' => 'views/smarty/event/remove_from_cart.tpl',
+
+        // complete overwritten file of OXID-Originals
+        // the path of the template-name is the original path to the file in OXID-context from tpl/->
+        '@' . Constants::OXID_MODULE_ID . '/d3gtmnoticelist.tpl'            => 'views/smarty/d3gtmnoticelist.tpl',
+        '@' . Constants::OXID_MODULE_ID . '/d3gtmrecommendationlist.tpl'    => 'views/smarty/d3gtmrecommendationlist.tpl',
+        '@' . Constants::OXID_MODULE_ID . '/d3gtmwishlist.tpl'              => 'views/smarty/d3gtmwishlist.tpl',
+
+        // Admin Templates
+        '@' . Constants::OXID_MODULE_ID . '/admin/d3ga4uimain.tpl'          => 'views/smarty/admin/d3googleanalytics4_main.tpl',
+        '@' . Constants::OXID_MODULE_ID . '/admin/d3ga4uiheaditem.tpl'      => 'views/smarty/admin/d3googleanalytics4_headitem.tpl',
+    ],
+    'blocks' => [
         // tag manager js
         [
             'template' => 'layout/base.tpl',
-            'block'    => 'head_meta_robots',
-            'file'     => '/Application/views/blocks/_gtm_js.tpl'
+            'block' => 'head_meta_robots',
+            'file' => 'views/smarty/blocks/_gtm_js.tpl',
+            'position' => 150,
         ],
         // tag manager nojs
         [
             'template' => 'layout/base.tpl',
-            'block'    => 'theme_svg_icons',
-            'file'     => '/Application/views/blocks/_gtm_nojs.tpl'
-        ],
-        // add to cart
-        [
-            'template' => 'layout/header.tpl',
-            'block'    => 'header_main',
-            'file'     => '/Application/views/blocks/add_to_cart.tpl'
-        ],
-        // widget_product_list
-        [
-            'template' => 'widget/product/list.tpl',
-            'block'    => 'widget_product_list',
-            'file'     => '/Application/views/blocks/widget_product_list.tpl'
+            'block' => 'theme_svg_icons',
+            'file' => 'views/smarty/blocks/_gtm_nojs.tpl',
+			'position' => 150,
         ],
         // details
         [
             'template' => 'page/details/inc/productmain.tpl',
-            'block'    => 'details_productmain_title',
-            'file'     => '/Application/views/blocks/detail.tpl'
+            'block' => 'details_productmain_title',
+            'file' => 'views/smarty/blocks/view_item.tpl',
+            'position' => 150,
         ],
-        // checkout
+        // View Cart
         [
             'template' => 'page/checkout/basket.tpl',
-            'block'    => 'checkout_basket_main',
-            'file'     => '/Application/views/blocks/checkout_s1.tpl'
+            'block' => 'checkout_basket_main',
+            'file' => 'views/smarty/blocks/view_cart.tpl',
+            'position' => 150,
         ],
+        // add_to_cart
         [
-            'template' => 'form/user_checkout_change.tpl',
-            'block'    => 'user_checkout_change',
-            'file'     => '/Application/views/blocks/checkout_s2.tpl'
+            'template' => 'page/details/inc/productmain.tpl',
+            'block' => 'details_productmain_tobasket',
+            'file' => 'views/smarty/blocks/details_productmain_tobasket.tpl',
+            'position' => 150,
         ],
+        // remove_from_cart
         [
-            'template' => 'form/user_checkout_register.tpl',
-            'block'    => 'user_checkout_register',
-            'file'     => '/Application/views/blocks/checkout_s2.tpl'
-        ],
-        [
-            'template' => 'form/user_checkout_noregister.tpl',
-            'block'    => 'user_checkout_noregister',
-            'file'     => '/Application/views/blocks/checkout_s2.tpl'
-        ],
-        [
-            'template' => 'page/checkout/payment.tpl',
-            'block'    => 'checkout_payment_main',
-            'file'     => '/Application/views/blocks/checkout_s3.tpl'
-        ],
-        [
-            'template' => 'page/checkout/order.tpl',
-            'block'    => 'checkout_order_main',
-            'file'     => '/Application/views/blocks/checkout_s4.tpl'
+            'template' => 'page/checkout/basket.tpl',
+            'block' => 'checkout_basket_main',
+            'file' => 'views/smarty/blocks/remove_from_cart.tpl',
+            'position' => 150,
         ],
         [
             'template' => 'page/checkout/thankyou.tpl',
-            'block'    => 'checkout_thankyou_main',
-            'file'     => '/Application/views/blocks/checkout_s5.tpl'
+            'block' => 'checkout_thankyou_main',
+            'file' => 'views/smarty/blocks/purchase.tpl',
+			'position' => 150,
+        ],
+        // Lists
+        // view_item_list
+        [
+            'template' => 'page/list/list.tpl',
+            'block' => 'page_list_productlist',
+            'file' => 'views/smarty/blocks/view_item_list.tpl',
+            'position' => 150,
+        ],
+        // view_search_result
+        [
+            'template' => 'page/search/search.tpl',
+            'block' => 'search_results',
+            'file' => 'views/smarty/blocks/view_search_result.tpl',
+            'position' => 150,
+        ],
+        [
+            'template' => 'page/list/list.tpl',
+            'block' => 'page_list_listbody',
+            'file' => 'views/smarty/blocks/page_list_listbody.tpl',
+            'position' => 150,
+        ],
+        [
+            'template' => 'page/shop/start.tpl',
+            'block' => 'start_welcome_text',
+            'file' => 'views/smarty/blocks/start_welcome_text.tpl',
+            'position' => 150,
+        ],
+        // Checkout process
+        // Begin CHeckout
+        [
+            'template' => 'page/checkout/user.tpl',
+            'block' => 'checkout_user_main',
+            'file' => 'views/smarty/blocks/begin_checkout.tpl',
+            'position' => 150,
+        ],
+        [
+            'template' => 'page/checkout/order.tpl',
+            'block' => 'checkout_order_main',
+            'file' => 'views/smarty/blocks/add_payment_info.tpl',
+            'position' => 150,
+        ],
+    ],
+    'settings' => [
+        /* String values */
+        [
+            'name'  => Constants::OXID_MODULE_ID.'_sContainerID',
+            'type'  => 'str',
+            'value' => 'GTM-'
+        ],
+        [
+            'name'  => Constants::OXID_MODULE_ID.'_sControlParameter',
+            'type'  => 'str',
+            'value' => ''
+        ],
+        [
+            'name'  => Constants::OXID_MODULE_ID.'_sServersidetagging_js',
+            'type'  => 'str',
+            'value' => 'https://www.googletagmanager.com/gtm.js'
+        ],
+        [
+            'name'  => Constants::OXID_MODULE_ID.'_sServersidetagging_nojs',
+            'type'  => 'str',
+            'value' => 'https://www.googletagmanager.com/ns.html'
+        ],
+        [
+            'name'  => Constants::OXID_MODULE_ID.'_sReplaceChars',
+            'type'  => 'str',
+            'value' => ''
+        ],
+        [
+            'name'  => Constants::OXID_MODULE_ID.'_sMeasurementCapabilities',
+            'type'  => 'str',
+            'value' => ''
+        ],
+        [
+            'name'  => Constants::OXID_MODULE_ID.'_sUsercentricsConsentModeApi',
+            'type'  => 'str',
+            'value' => 'Testshop'
+        ],
+        [
+            'name'  => Constants::OXID_MODULE_ID.'_HAS_STD_MANAGER',
+            'type'  => 'str',
+            'value' => 'externalService'
+        ],
+
+        /* Bool values */
+        [
+            'name'  => Constants::OXID_MODULE_ID.'_blEnableGa4',
+            'type'  => 'bool',
+            'value' => false
+        ],
+        [
+            'name'  => Constants::OXID_MODULE_ID.'_blEnableDebug',
+            'type'  => 'bool',
+            'value' => false
+        ],
+        [
+            'name'  => Constants::OXID_MODULE_ID.'_blEnableConsentMode',
+            'type'  => 'bool',
+            'value' => false
+        ],
+        [
+            'name'  => Constants::OXID_MODULE_ID.'_blEnableOwnCookieManager',
+            'type'  => 'bool',
+            'value' => false
+        ],
+        [
+            'name'  => Constants::OXID_MODULE_ID.'_blViewItemAddVariants',
+            'type'  => 'bool',
+            'value' => false
+        ],
+        [
+            'name'  => Constants::OXID_MODULE_ID.'_blUseRealCategoyTitles',
+            'type'  => 'bool',
+            'value' => false
+        ],
+        [
+            'name'  => Constants::OXID_MODULE_ID.'_blEnableMeasurementCapabilities',
+            'type'  => 'bool',
+            'value' => false
+        ],
+        [
+            'name'  => Constants::OXID_MODULE_ID.'_blEnableUsercentricsConsentModeApi',
+            'type'  => 'bool',
+            'value' => false
         ]
     ],
-    'settings'    => [
-        [
-            'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_sContainerID',
-            'type'     => 'str',
-            'value'    => 'GTM-',
-            'position' => 0
-        ],
-        [
-            'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_blGA4enabled',
-            'type'     => 'bool',
-            'value'    => true,
-            'position' => 1
-        ],
-        [
-            'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_blUAenabled',
-            'type'     => 'bool',
-            'value'    => true,
-            'position' => 2
-        ],
-        [
-            'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_sMpapisecret',
-            'type'     => 'str',
-            'value'    => '',
-            'position' => 3
-        ],
-        [
-            'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_aPromotionlistIDs',
-            'type'     => 'arr',
-            'value'    => [],
-            'position' => 4
-        ],
-        [
-            'group'    => 'vt_gtm_settings',
-            'name'     => 'vt_gtm_blEnableDebug',
-            'type'     => 'bool',
-            'value'    => false,
-            'position' => 999
-        ]
-
-    ]
+    'events' => [
+        'onActivate' => '\D3\GoogleAnalytics4\Setup\Events::onActivate',
+        'onDeactivate' => '\D3\GoogleAnalytics4\Setup\Events::onDeactivate',
+    ],
 ];

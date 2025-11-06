@@ -1,0 +1,8 @@
+{% extends "page/shop/start.html.twig" %}
+
+{% block start_welcome_text %}
+    {{ parent() }}
+
+    {# ToDo: fix add_to_cart #}
+    {# {% include '@d3googleanalytics4/event/add_to_cart.html.twig' with {htmlIdAmountOfArticles: 'amountToBasket'} %} #}
+{% endblock %}

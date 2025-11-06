@@ -1,0 +1,66 @@
+{% if d3CmpBasket and d3CmpBasket.d3GtmRequestedArticleLoadedByAnid() != "null" %}
+    {% set oGtmProduct = d3CmpBasket.d3GtmRequestedArticleLoadedByAnid() %}
+    {% set oGtmAmountArticlesAdded = d3CmpBasket.getD3GtmAddToCartAmountArticles() %}
+    {% set d3PriceObject = oGtmProduct.getPrice() %}
+    {% set gtmCurrency = oView.getActCurrency() %}
+    {% set gtmManufacturer = oGtmProduct.getManufacturer() %}
+    {% set gtmCategory = oGtmProduct.getCategory() %}
+
+    {% block d3_ga4_add_to_cart_list_block %}
+        {% set doNotShow %}{% apply spaceless %}
+            <script type="text/javascript">
+                {% set d3_ga4_add_to_cart_listtpl %}
+                    {% apply spaceless %}
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var toBasketButton = document.getElementById('toBasket');
+
+                            if (toBasketButton) {
+                                toBasketButton.addEventListener('click', function() {
+                                    dataLayer.push({"event": null, "eventLabel": null, "ecommerce": null});
+
+                                    let iArtQuantity = document.getElementById("{{ htmlIdAmountOfArticles }}").value;
+                                    let iArtQuantityAdded = {{ oGtmAmountArticlesAdded }};
+
+                                    if(!iArtQuantity && (iArtQuantityAdded === 1)){
+                                        iArtQuantity = 1;
+                                    }else{
+                                        iArtQuantity = iArtQuantityAdded;
+                                    }
+
+                                    dataLayer.push({
+                                        'isAddToBasket': true,
+                                        'event':'add_to_cart',
+                                        'eventLabel': 'add_to_cart',
+                                        'ecommerce': {
+                                            'currency':   "{{ currency.name }}",
+                                            'value':      iArtQuantity*{{ d3PriceObject.getPrice() }},
+                                            'items': [{
+                                                'item_oxid': '{{ gtmProduct.getFieldData("oxid") }}',
+                                                'item_id':        '{{ oGtmProduct.getFieldData('oxartnum') }}',
+                                                'item_name':      '{{ oGtmProduct.getRawFieldData('oxtitle')|raw }}',
+                                                'price':          {{ d3PriceObject.getPrice() }},
+                                                'item_brand':     '{% if gtmManufacturer %}{{ gtmManufacturer.getFieldData('oxtitle')|raw }}{% endif %}',
+                                                'item_variant':   '{% if oGtmProduct.getFieldData('oxvarselect') %}{{ oGtmProduct.getFieldData('oxvarselect') }}{% endif %}',
+                                                {% if gtmCategory %}
+                                                    'item_category':  '{{ gtmCategory.getSplitCategoryArray(0, true) }}',
+                                                    'item_category2':'{{ gtmCategory.getSplitCategoryArray(1, true) }}',
+                                                    'item_category3':'{{ gtmCategory.getSplitCategoryArray(2, true) }}',
+                                                    'item_category4':'{{ gtmCategory.getSplitCategoryArray(3, true) }}',
+                                                    'item_list_name':'{{ gtmCategory.getSplitCategoryArray() }}',
+                                                {% endif %}
+                                                'quantity': iArtQuantity
+                                            }]
+                                        }{% if oViewConf.isDebugModeOn() %},
+                                        'debug_mode': 'true'
+                                        {% endif %}
+                                    });
+                                });
+                            }
+                        });
+                    {% endapply %}
+                {% endset %}
+            </script>
+        {% endapply %}{% endset %}
+        {{ script({ add: d3_ga4_add_to_cart_listtpl.__toString(), dynamic: __oxid_include_dynamic }) }}
+    {% endblock %}
+{% endif %}

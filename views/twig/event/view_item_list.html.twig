@@ -1,0 +1,48 @@
+{% set gtmProducts = oView.getArticleList() %}
+{% set gtmCategory = oView.getActiveCategory() %}
+
+{% set breadCrumb = '' %}
+
+{% block d3_ga4_view_item_list_block %}
+    {% if gtmProducts|length %}
+        {% set doNotShow %}{% apply spaceless %}
+            <script type="text/javascript">
+                {% set d3_ga4_view_item_list %}{% apply spaceless %}
+                    dataLayer.push({ecommerce: null});
+                    dataLayer.push({
+                        'event':'view_item_list',
+                        'event_name': 'view_item_list',
+                        'ecommerce': {
+                            'item_list_id': '{{ oView.getCategoryId() }}',
+                            'item_list_name': '{% for sCrum in oView.getBreadCrumb() %}{% if sCrum.title  %}{{ breadCrumb|cat(sCrum.title)|cat(" > ")|raw }}{% endif %}{% endfor %}',
+                            'items': [
+                                {% for gtmProduct in gtmProducts %}
+                                    {% set d3PriceObject = gtmProduct.getPrice() %}
+                                    {% set gtmManufacturer = gtmProduct.getManufacturer() %}
+                                    {% if not gtmCategory %}{% set gtmCategory = gtmProduct.getCategory() %}{% endif %}
+                                    {
+                                        'item_oxid': '{{ gtmProduct.getFieldData("oxid") }}',
+                                        'item_id': '{{ gtmProduct.getFieldData("oxartnum") }}',
+                                        'item_name': '{{ gtmProduct.getRawFieldData('oxtitle')|raw }}',
+                                        'price': {{ d3PriceObject.getPrice() }},
+                                        'item_brand': '{% if gtmManufacturer %}{{ gtmManufacturer.getFieldData('oxtitle')|raw }}{% endif %}',
+                                        {% if gtmCategory %}
+                                            'item_category':  '{{ gtmCategory.getSplitCategoryArray(0, true) }}',
+                                            'item_category2':'{{ gtmCategory.getSplitCategoryArray(1, true) }}',
+                                            'item_category3':'{{ gtmCategory.getSplitCategoryArray(2, true) }}',
+                                            'item_category4':'{{ gtmCategory.getSplitCategoryArray(3, true) }}',
+                                        {% endif %}
+                                        'quantity': 1
+                                    }{% if not loop.last %},{% endif %}
+                                {% endfor %}
+                            ]
+                        }{% if oViewConf.isDebugModeOn() %},
+                            'debug_mode': 'true'
+                        {% endif %}
+                    });
+                {% endapply %}{% endset %}
+                {{ script({ add: d3_ga4_view_item_list.__toString(), dynamic: __oxid_include_dynamic }) }}
+            </script>
+        {% endapply %}{% endset %}
+    {% endif %}
+{% endblock %}

@@ -1,8 +1,19 @@
 {
-  "name": "vanilla-thunder/oxid-module-gtm",
-  "description": "Google Tag Manager with new Google Analytics 4 for OXID eShop v6.2+<br/>more about GA4: <a href='https://developers.google.com/tag-manager/ecommerce-ga4' target='_blank'>Ecommerce (GA4) Developer Guide</a>",
+  "name": "d3/google-analytics4",
+  "description": "Google Tag Manager with new Google Analytics 4 for OXID eShop v6",
   "type": "oxideshop-module",
-  "homepage": "https://github.com/vanilla-thunder/oxid-module-gtm",
+  "keywords": [
+    "oxid",
+    "modules",
+    "eShop",
+    "d3",
+    "google",
+    "ga4",
+    "googleanalytics",
+    "gtm",
+    "configuration"
+  ],
+  "homepage": "https://www.d3data.de",
   "license": [
     "GPL-3.0"
   ],
@@ -10,21 +21,32 @@
     {
       "name": "Marat Bedoev",
       "email": "hello@mb-dev.pro"
+    },
+    {
+      "name": "D3 Data Development (Inh. Thomas Dartsch)",
+      "email": "info@shopmodule.com",
+      "homepage": "https://www.d3data.de"
     }
   ],
-  "extra": {
-    "oxideshop": {
-      "target-directory": "vt/GoogleTagManager"
-    }
+  "supports": {
+    "email": "support@shopmodule.com"
   },
   "require": {
-    "php": ">=7.1",
-    "oxid-esales/oxideshop-ce": "^v6.2",
+    "php": "^8.0",
+    "oxid-esales/oxideshop-ce": "7.0 - 7.2",
     "google/apiclient":" ^2.0"
   },
-  "autoload": {
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.9",
+    "phpstan/phpstan": "^1.10"
+  },
+    "autoload": {
     "psr-4": {
-      "VanillaThunder\\": "../../../source/modules/vt"
+      "D3\\GoogleAnalytics4\\": ""
     }
+  },
+  "scripts": {
+    "php-cs-fixer_audit": "./vendor/bin/php-cs-fixer list-files --config=./vendor/d3/google-analytics4/.php-cs-fixer.php",
+    "php-cs-fixer_fix": "./vendor/bin/php-cs-fixer fix --config=./vendor/d3/google-analytics4/.php-cs-fixer.php"
   }
 }
